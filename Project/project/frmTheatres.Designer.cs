@@ -108,6 +108,7 @@ namespace project
             this.lblChangeTheatre.Size = new System.Drawing.Size(182, 39);
             this.lblChangeTheatre.TabIndex = 5;
             this.lblChangeTheatre.Text = "Change Theatre";
+            this.lblChangeTheatre.Click += new System.EventHandler(this.lblChangeTheatre_Click);
             // 
             // lblDeleteTheatre
             // 
@@ -120,6 +121,7 @@ namespace project
             this.lblDeleteTheatre.Size = new System.Drawing.Size(172, 39);
             this.lblDeleteTheatre.TabIndex = 6;
             this.lblDeleteTheatre.Text = "Delete Theatre";
+            this.lblDeleteTheatre.Click += new System.EventHandler(this.lblDeleteTheatre_Click);
             // 
             // gbTheatre
             // 
@@ -145,7 +147,7 @@ namespace project
             this.dgvDisplayTheatres.Location = new System.Drawing.Point(35, 249);
             this.dgvDisplayTheatres.Name = "dgvDisplayTheatres";
             this.dgvDisplayTheatres.RowHeadersWidth = 51;
-            this.dgvDisplayTheatres.Size = new System.Drawing.Size(640, 233);
+            this.dgvDisplayTheatres.Size = new System.Drawing.Size(329, 183);
             this.dgvDisplayTheatres.TabIndex = 8;
             // 
             // bttnDeleteTheatre
@@ -156,6 +158,7 @@ namespace project
             this.bttnDeleteTheatre.TabIndex = 7;
             this.bttnDeleteTheatre.Text = "Delete Theatre";
             this.bttnDeleteTheatre.UseVisualStyleBackColor = true;
+            this.bttnDeleteTheatre.Click += new System.EventHandler(this.bttnDeleteTheatre_Click);
             // 
             // bttnUpdateTheatre
             // 
@@ -165,6 +168,7 @@ namespace project
             this.bttnUpdateTheatre.TabIndex = 6;
             this.bttnUpdateTheatre.Text = "Update Theatre";
             this.bttnUpdateTheatre.UseVisualStyleBackColor = true;
+            this.bttnUpdateTheatre.Click += new System.EventHandler(this.bttnUpdateTheatre_Click);
             // 
             // cbTheatreID
             // 
@@ -210,6 +214,7 @@ namespace project
             this.bttnAddTheatre.TabIndex = 1;
             this.bttnAddTheatre.Text = "Add Theatre";
             this.bttnAddTheatre.UseVisualStyleBackColor = true;
+            this.bttnAddTheatre.Click += new System.EventHandler(this.bttnAddTheatre_Click);
             // 
             // frmTheatres
             // 
