@@ -76,6 +76,12 @@
     <Compile Include="frmTheatres.Designer.cs">
       <DependentUpon>frmTheatres.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTime_Allocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTime_Allocation.Designer.cs">
+      <DependentUpon>frmTime_Allocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTheatres.resx">
       <DependentUpon>frmTheatres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTime_Allocation.resx">
+      <DependentUpon>frmTime_Allocation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>

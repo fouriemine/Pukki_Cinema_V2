@@ -142,3 +142,4 @@ C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.G
 C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.exe
 C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.pdb
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
