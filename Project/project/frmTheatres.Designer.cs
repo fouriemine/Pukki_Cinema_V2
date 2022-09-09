@@ -29,6 +29,7 @@ namespace project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTheatres));
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTheatreHeading = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -44,6 +45,7 @@ namespace project
             this.lblAddTheatreCapacity = new System.Windows.Forms.Label();
             this.lblTheatreID = new System.Windows.Forms.Label();
             this.bttnAddTheatre = new System.Windows.Forms.Button();
+            this.lblMaxNumberValidation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbTheatre.SuspendLayout();
@@ -125,6 +127,7 @@ namespace project
             // 
             // gbTheatre
             // 
+            this.gbTheatre.Controls.Add(this.lblMaxNumberValidation);
             this.gbTheatre.Controls.Add(this.dgvDisplayTheatres);
             this.gbTheatre.Controls.Add(this.bttnDeleteTheatre);
             this.gbTheatre.Controls.Add(this.bttnUpdateTheatre);
@@ -216,6 +219,15 @@ namespace project
             this.bttnAddTheatre.UseVisualStyleBackColor = true;
             this.bttnAddTheatre.Click += new System.EventHandler(this.bttnAddTheatre_Click);
             // 
+            // lblMaxNumberValidation
+            // 
+            this.lblMaxNumberValidation.Location = new System.Drawing.Point(370, 249);
+            this.lblMaxNumberValidation.Name = "lblMaxNumberValidation";
+            this.lblMaxNumberValidation.Size = new System.Drawing.Size(317, 183);
+            this.lblMaxNumberValidation.TabIndex = 9;
+            this.lblMaxNumberValidation.Text = resources.GetString("lblMaxNumberValidation.Text");
+            this.lblMaxNumberValidation.Visible = false;
+            // 
             // frmTheatres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,5 +267,6 @@ namespace project
         private System.Windows.Forms.Label lblAddTheatreCapacity;
         private System.Windows.Forms.Label lblTheatreID;
         private System.Windows.Forms.Button bttnAddTheatre;
+        private System.Windows.Forms.Label lblMaxNumberValidation;
     }
 }

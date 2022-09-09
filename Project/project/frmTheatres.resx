@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblMaxNumberValidation.Text" xml:space="preserve">
+    <value>The maximum number of theatres allowed is 3.
+If you try to add more than 3 theatres, you will recieve the following error:
+"The transaction ended in the trigger. Tha batch has been aborted."  and the 
+form will close.</value>
+  </data>
 </root>
