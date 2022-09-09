@@ -1,0 +1,128 @@
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\bin\Debug\project.exe.config
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\bin\Debug\project.exe
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\bin\Debug\project.pdb
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.Menu.resources
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.exe
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.pdb
+C:\Users\asvat\Desktop\CMPG 223\Zaid\project\project\obj\Debug\project.Login.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\bin\Debug\project.exe.config
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\bin\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\bin\Debug\project.pdb
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.Login.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.frmUsers.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.Menu.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\Project\Zaid\project\project\obj\Debug\project.pdb
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\bin\Debug\project.exe.config
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\bin\Debug\project.exe
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\bin\Debug\project.pdb
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.Login.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.Menu.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.exe
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\PukkiCinema\Project\project\obj\Debug\project.pdb
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\bin\Debug\project.exe.config
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\bin\Debug\project.exe
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\bin\Debug\project.pdb
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.Login.resources
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.Menu.resources
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.exe
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.pdb
+C:\Users\DELL\Desktop\New project\PukkiCinema\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.exe.config
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.exe
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.pdb
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Login.resources
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Menu.resources
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.exe
+C:\Users\29842522\Desktop\Academics\2nd Semester\Cmpg 223\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.pdb
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.exe.config
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.pdb
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Login.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\Genre.frmGenre.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Menu.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.pdb
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.exe.config
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\bin\Debug\project.pdb
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Login.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\Genre.frmGenre.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Menu.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\PukkiCinema (3) (1)\PukkiCinema (2) (1)\PukkiCinema (2)\PukkiCinema\Project\project\obj\Debug\project.pdb
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\bin\Debug\project.exe.config
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\bin\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\bin\Debug\project.pdb
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.Login.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\Genre.frmGenre.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.Menu.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.exe
+C:\Users\tasmi\Desktop\213&223 project\Project\Project\project\obj\Debug\project.pdb
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\bin\Debug\project.exe.config
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\bin\Debug\project.exe
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\bin\Debug\project.pdb
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\Genre.frmGenre.resources
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.Menu.resources
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.exe
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.pdb
+C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.frmLogin.resources
