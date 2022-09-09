@@ -37,17 +37,17 @@ namespace project
             this.lbl_addFilms = new System.Windows.Forms.Label();
             this.lbl_UpdateFilms = new System.Windows.Forms.Label();
             this.gbxSchedule = new System.Windows.Forms.GroupBox();
+            this.cbxTimes = new System.Windows.Forms.ComboBox();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.cbxTheatres = new System.Windows.Forms.ComboBox();
+            this.cbxFilms = new System.Windows.Forms.ComboBox();
+            this.dtpShowDate = new System.Windows.Forms.DateTimePicker();
             this.dgvSchedule = new System.Windows.Forms.DataGridView();
             this.lblFilm = new System.Windows.Forms.Label();
             this.lbl_status = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTheatre = new System.Windows.Forms.Label();
             this.btnSchedule = new System.Windows.Forms.Button();
-            this.dtpShowDate = new System.Windows.Forms.DateTimePicker();
-            this.cbxFilms = new System.Windows.Forms.ComboBox();
-            this.cbxTheatres = new System.Windows.Forms.ComboBox();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.cbxTime = new System.Windows.Forms.ComboBox();
             this.pnlScheduleHeading.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbxSchedule.SuspendLayout();
@@ -141,7 +141,7 @@ namespace project
             // 
             // gbxSchedule
             // 
-            this.gbxSchedule.Controls.Add(this.cbxTime);
+            this.gbxSchedule.Controls.Add(this.cbxTimes);
             this.gbxSchedule.Controls.Add(this.lblTime);
             this.gbxSchedule.Controls.Add(this.cbxTheatres);
             this.gbxSchedule.Controls.Add(this.cbxFilms);
@@ -162,6 +162,56 @@ namespace project
             this.gbxSchedule.TabIndex = 12;
             this.gbxSchedule.TabStop = false;
             this.gbxSchedule.Text = "Add Schedule";
+            // 
+            // cbxTimes
+            // 
+            this.cbxTimes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTimes.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxTimes.FormattingEnabled = true;
+            this.cbxTimes.Location = new System.Drawing.Point(532, 103);
+            this.cbxTimes.Name = "cbxTimes";
+            this.cbxTimes.Size = new System.Drawing.Size(200, 31);
+            this.cbxTimes.TabIndex = 34;
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lblTime.Location = new System.Drawing.Point(392, 103);
+            this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(57, 33);
+            this.lblTime.TabIndex = 33;
+            this.lblTime.Text = "Time";
+            // 
+            // cbxTheatres
+            // 
+            this.cbxTheatres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTheatres.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxTheatres.FormattingEnabled = true;
+            this.cbxTheatres.Location = new System.Drawing.Point(159, 103);
+            this.cbxTheatres.Name = "cbxTheatres";
+            this.cbxTheatres.Size = new System.Drawing.Size(186, 31);
+            this.cbxTheatres.TabIndex = 32;
+            // 
+            // cbxFilms
+            // 
+            this.cbxFilms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxFilms.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFilms.FormattingEnabled = true;
+            this.cbxFilms.Location = new System.Drawing.Point(159, 61);
+            this.cbxFilms.Name = "cbxFilms";
+            this.cbxFilms.Size = new System.Drawing.Size(186, 31);
+            this.cbxFilms.TabIndex = 31;
+            // 
+            // dtpShowDate
+            // 
+            this.dtpShowDate.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpShowDate.Location = new System.Drawing.Point(532, 62);
+            this.dtpShowDate.Name = "dtpShowDate";
+            this.dtpShowDate.Size = new System.Drawing.Size(200, 30);
+            this.dtpShowDate.TabIndex = 30;
             // 
             // dgvSchedule
             // 
@@ -235,53 +285,7 @@ namespace project
             this.btnSchedule.TabIndex = 11;
             this.btnSchedule.Text = "add";
             this.btnSchedule.UseVisualStyleBackColor = false;
-            // 
-            // dtpShowDate
-            // 
-            this.dtpShowDate.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpShowDate.Location = new System.Drawing.Point(532, 62);
-            this.dtpShowDate.Name = "dtpShowDate";
-            this.dtpShowDate.Size = new System.Drawing.Size(200, 30);
-            this.dtpShowDate.TabIndex = 30;
-            // 
-            // cbxFilms
-            // 
-            this.cbxFilms.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxFilms.FormattingEnabled = true;
-            this.cbxFilms.Location = new System.Drawing.Point(159, 61);
-            this.cbxFilms.Name = "cbxFilms";
-            this.cbxFilms.Size = new System.Drawing.Size(186, 31);
-            this.cbxFilms.TabIndex = 31;
-            // 
-            // cbxTheatres
-            // 
-            this.cbxTheatres.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxTheatres.FormattingEnabled = true;
-            this.cbxTheatres.Location = new System.Drawing.Point(159, 103);
-            this.cbxTheatres.Name = "cbxTheatres";
-            this.cbxTheatres.Size = new System.Drawing.Size(186, 31);
-            this.cbxTheatres.TabIndex = 32;
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblTime.Location = new System.Drawing.Point(392, 103);
-            this.lblTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(57, 33);
-            this.lblTime.TabIndex = 33;
-            this.lblTime.Text = "Time";
-            // 
-            // cbxTime
-            // 
-            this.cbxTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxTime.FormattingEnabled = true;
-            this.cbxTime.Location = new System.Drawing.Point(532, 103);
-            this.cbxTime.Name = "cbxTime";
-            this.cbxTime.Size = new System.Drawing.Size(200, 31);
-            this.cbxTime.TabIndex = 34;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // frmSchedule
             // 
@@ -320,7 +324,7 @@ namespace project
         private System.Windows.Forms.Label lblTheatre;
         private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.DateTimePicker dtpShowDate;
-        private System.Windows.Forms.ComboBox cbxTime;
+        private System.Windows.Forms.ComboBox cbxTimes;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.ComboBox cbxTheatres;
         private System.Windows.Forms.ComboBox cbxFilms;
