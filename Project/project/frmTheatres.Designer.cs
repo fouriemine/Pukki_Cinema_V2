@@ -29,6 +29,7 @@ namespace project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTheatres));
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTheatreHeading = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -44,6 +45,7 @@ namespace project
             this.lblAddTheatreCapacity = new System.Windows.Forms.Label();
             this.lblTheatreID = new System.Windows.Forms.Label();
             this.bttnAddTheatre = new System.Windows.Forms.Button();
+            this.lblMaxNumberValidation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbTheatre.SuspendLayout();
@@ -108,6 +110,7 @@ namespace project
             this.lblChangeTheatre.Size = new System.Drawing.Size(182, 39);
             this.lblChangeTheatre.TabIndex = 5;
             this.lblChangeTheatre.Text = "Change Theatre";
+            this.lblChangeTheatre.Click += new System.EventHandler(this.lblChangeTheatre_Click);
             // 
             // lblDeleteTheatre
             // 
@@ -120,9 +123,11 @@ namespace project
             this.lblDeleteTheatre.Size = new System.Drawing.Size(172, 39);
             this.lblDeleteTheatre.TabIndex = 6;
             this.lblDeleteTheatre.Text = "Delete Theatre";
+            this.lblDeleteTheatre.Click += new System.EventHandler(this.lblDeleteTheatre_Click);
             // 
             // gbTheatre
             // 
+            this.gbTheatre.Controls.Add(this.lblMaxNumberValidation);
             this.gbTheatre.Controls.Add(this.dgvDisplayTheatres);
             this.gbTheatre.Controls.Add(this.bttnDeleteTheatre);
             this.gbTheatre.Controls.Add(this.bttnUpdateTheatre);
@@ -145,7 +150,7 @@ namespace project
             this.dgvDisplayTheatres.Location = new System.Drawing.Point(35, 249);
             this.dgvDisplayTheatres.Name = "dgvDisplayTheatres";
             this.dgvDisplayTheatres.RowHeadersWidth = 51;
-            this.dgvDisplayTheatres.Size = new System.Drawing.Size(640, 233);
+            this.dgvDisplayTheatres.Size = new System.Drawing.Size(329, 183);
             this.dgvDisplayTheatres.TabIndex = 8;
             // 
             // bttnDeleteTheatre
@@ -156,6 +161,7 @@ namespace project
             this.bttnDeleteTheatre.TabIndex = 7;
             this.bttnDeleteTheatre.Text = "Delete Theatre";
             this.bttnDeleteTheatre.UseVisualStyleBackColor = true;
+            this.bttnDeleteTheatre.Click += new System.EventHandler(this.bttnDeleteTheatre_Click);
             // 
             // bttnUpdateTheatre
             // 
@@ -165,6 +171,7 @@ namespace project
             this.bttnUpdateTheatre.TabIndex = 6;
             this.bttnUpdateTheatre.Text = "Update Theatre";
             this.bttnUpdateTheatre.UseVisualStyleBackColor = true;
+            this.bttnUpdateTheatre.Click += new System.EventHandler(this.bttnUpdateTheatre_Click);
             // 
             // cbTheatreID
             // 
@@ -210,6 +217,16 @@ namespace project
             this.bttnAddTheatre.TabIndex = 1;
             this.bttnAddTheatre.Text = "Add Theatre";
             this.bttnAddTheatre.UseVisualStyleBackColor = true;
+            this.bttnAddTheatre.Click += new System.EventHandler(this.bttnAddTheatre_Click);
+            // 
+            // lblMaxNumberValidation
+            // 
+            this.lblMaxNumberValidation.Location = new System.Drawing.Point(370, 249);
+            this.lblMaxNumberValidation.Name = "lblMaxNumberValidation";
+            this.lblMaxNumberValidation.Size = new System.Drawing.Size(317, 183);
+            this.lblMaxNumberValidation.TabIndex = 9;
+            this.lblMaxNumberValidation.Text = resources.GetString("lblMaxNumberValidation.Text");
+            this.lblMaxNumberValidation.Visible = false;
             // 
             // frmTheatres
             // 
@@ -250,5 +267,6 @@ namespace project
         private System.Windows.Forms.Label lblAddTheatreCapacity;
         private System.Windows.Forms.Label lblTheatreID;
         private System.Windows.Forms.Button bttnAddTheatre;
+        private System.Windows.Forms.Label lblMaxNumberValidation;
     }
 }
