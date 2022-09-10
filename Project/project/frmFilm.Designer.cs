@@ -37,6 +37,13 @@ namespace project
             this.lbl_updateFilm = new System.Windows.Forms.Label();
             this.lbl_addFilm = new System.Windows.Forms.Label();
             this.gbx_films = new System.Windows.Forms.GroupBox();
+            this.lv_genre = new System.Windows.Forms.ListView();
+            this.lv_title = new System.Windows.Forms.ListView();
+            this.lv_filmID = new System.Windows.Forms.ListView();
+            this.btn_clear = new System.Windows.Forms.Button();
+            this.pnl_Status = new System.Windows.Forms.Panel();
+            this.rdo_Inactive = new System.Windows.Forms.RadioButton();
+            this.rdo_Active = new System.Windows.Forms.RadioButton();
             this.cbx_title = new System.Windows.Forms.ComboBox();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_delete = new System.Windows.Forms.Button();
@@ -57,14 +64,11 @@ namespace project
             this.lbl_title = new System.Windows.Forms.Label();
             this.txt_title = new System.Windows.Forms.TextBox();
             this.lbl_filmID = new System.Windows.Forms.Label();
-            this.pnl_Status = new System.Windows.Forms.Panel();
-            this.rdo_Active = new System.Windows.Forms.RadioButton();
-            this.rdo_Inactive = new System.Windows.Forms.RadioButton();
             this.pnl_purple.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gbx_films.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_films)).BeginInit();
             this.pnl_Status.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_films)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_purple
@@ -148,6 +152,10 @@ namespace project
             // 
             // gbx_films
             // 
+            this.gbx_films.Controls.Add(this.lv_genre);
+            this.gbx_films.Controls.Add(this.lv_title);
+            this.gbx_films.Controls.Add(this.lv_filmID);
+            this.gbx_films.Controls.Add(this.btn_clear);
             this.gbx_films.Controls.Add(this.pnl_Status);
             this.gbx_films.Controls.Add(this.cbx_title);
             this.gbx_films.Controls.Add(this.btn_update);
@@ -178,14 +186,89 @@ namespace project
             this.gbx_films.TabStop = false;
             this.gbx_films.Text = "Add Films";
             // 
+            // lv_genre
+            // 
+            this.lv_genre.HideSelection = false;
+            this.lv_genre.Location = new System.Drawing.Point(769, 191);
+            this.lv_genre.Name = "lv_genre";
+            this.lv_genre.Size = new System.Drawing.Size(234, 48);
+            this.lv_genre.TabIndex = 26;
+            this.lv_genre.UseCompatibleStateImageBehavior = false;
+            // 
+            // lv_title
+            // 
+            this.lv_title.HideSelection = false;
+            this.lv_title.Location = new System.Drawing.Point(252, 126);
+            this.lv_title.Name = "lv_title";
+            this.lv_title.Size = new System.Drawing.Size(234, 48);
+            this.lv_title.TabIndex = 25;
+            this.lv_title.UseCompatibleStateImageBehavior = false;
+            // 
+            // lv_filmID
+            // 
+            this.lv_filmID.HideSelection = false;
+            this.lv_filmID.Location = new System.Drawing.Point(252, 63);
+            this.lv_filmID.Name = "lv_filmID";
+            this.lv_filmID.Size = new System.Drawing.Size(234, 48);
+            this.lv_filmID.TabIndex = 24;
+            this.lv_filmID.UseCompatibleStateImageBehavior = false;
+            // 
+            // btn_clear
+            // 
+            this.btn_clear.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btn_clear.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clear.ForeColor = System.Drawing.Color.White;
+            this.btn_clear.Location = new System.Drawing.Point(32, 493);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(160, 51);
+            this.btn_clear.TabIndex = 23;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = false;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
+            // pnl_Status
+            // 
+            this.pnl_Status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_Status.Controls.Add(this.rdo_Inactive);
+            this.pnl_Status.Controls.Add(this.rdo_Active);
+            this.pnl_Status.Location = new System.Drawing.Point(769, 245);
+            this.pnl_Status.Name = "pnl_Status";
+            this.pnl_Status.Size = new System.Drawing.Size(234, 75);
+            this.pnl_Status.TabIndex = 22;
+            // 
+            // rdo_Inactive
+            // 
+            this.rdo_Inactive.AutoSize = true;
+            this.rdo_Inactive.Font = new System.Drawing.Font("Arial", 11F);
+            this.rdo_Inactive.Location = new System.Drawing.Point(133, 25);
+            this.rdo_Inactive.Name = "rdo_Inactive";
+            this.rdo_Inactive.Size = new System.Drawing.Size(96, 26);
+            this.rdo_Inactive.TabIndex = 1;
+            this.rdo_Inactive.TabStop = true;
+            this.rdo_Inactive.Text = "Inactive";
+            this.rdo_Inactive.UseVisualStyleBackColor = true;
+            // 
+            // rdo_Active
+            // 
+            this.rdo_Active.AutoSize = true;
+            this.rdo_Active.Font = new System.Drawing.Font("Arial", 11F);
+            this.rdo_Active.Location = new System.Drawing.Point(3, 25);
+            this.rdo_Active.Name = "rdo_Active";
+            this.rdo_Active.Size = new System.Drawing.Size(83, 26);
+            this.rdo_Active.TabIndex = 0;
+            this.rdo_Active.TabStop = true;
+            this.rdo_Active.Text = "Active";
+            this.rdo_Active.UseVisualStyleBackColor = true;
+            // 
             // cbx_title
             // 
             this.cbx_title.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_title.FormattingEnabled = true;
-            this.cbx_title.Location = new System.Drawing.Point(252, 126);
+            this.cbx_title.Location = new System.Drawing.Point(252, 127);
             this.cbx_title.Name = "cbx_title";
             this.cbx_title.Size = new System.Drawing.Size(234, 48);
             this.cbx_title.TabIndex = 21;
+            this.cbx_title.SelectedIndexChanged += new System.EventHandler(this.cbx_title_SelectedIndexChanged);
             // 
             // btn_update
             // 
@@ -268,7 +351,7 @@ namespace project
             this.cbx_genre.FormattingEnabled = true;
             this.cbx_genre.Location = new System.Drawing.Point(772, 191);
             this.cbx_genre.Name = "cbx_genre";
-            this.cbx_genre.Size = new System.Drawing.Size(234, 48);
+            this.cbx_genre.Size = new System.Drawing.Size(231, 48);
             this.cbx_genre.TabIndex = 13;
             // 
             // lbl_ageRestriction
@@ -366,40 +449,6 @@ namespace project
             this.lbl_filmID.TabIndex = 2;
             this.lbl_filmID.Text = "Film ID";
             // 
-            // pnl_Status
-            // 
-            this.pnl_Status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_Status.Controls.Add(this.rdo_Inactive);
-            this.pnl_Status.Controls.Add(this.rdo_Active);
-            this.pnl_Status.Location = new System.Drawing.Point(769, 245);
-            this.pnl_Status.Name = "pnl_Status";
-            this.pnl_Status.Size = new System.Drawing.Size(234, 75);
-            this.pnl_Status.TabIndex = 22;
-            // 
-            // rdo_Active
-            // 
-            this.rdo_Active.AutoSize = true;
-            this.rdo_Active.Font = new System.Drawing.Font("Arial", 11F);
-            this.rdo_Active.Location = new System.Drawing.Point(3, 25);
-            this.rdo_Active.Name = "rdo_Active";
-            this.rdo_Active.Size = new System.Drawing.Size(83, 26);
-            this.rdo_Active.TabIndex = 0;
-            this.rdo_Active.TabStop = true;
-            this.rdo_Active.Text = "Active";
-            this.rdo_Active.UseVisualStyleBackColor = true;
-            // 
-            // rdo_Inactive
-            // 
-            this.rdo_Inactive.AutoSize = true;
-            this.rdo_Inactive.Font = new System.Drawing.Font("Arial", 11F);
-            this.rdo_Inactive.Location = new System.Drawing.Point(133, 25);
-            this.rdo_Inactive.Name = "rdo_Inactive";
-            this.rdo_Inactive.Size = new System.Drawing.Size(96, 26);
-            this.rdo_Inactive.TabIndex = 1;
-            this.rdo_Inactive.TabStop = true;
-            this.rdo_Inactive.Text = "Inactive";
-            this.rdo_Inactive.UseVisualStyleBackColor = true;
-            // 
             // frmFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -417,9 +466,9 @@ namespace project
             this.panel2.PerformLayout();
             this.gbx_films.ResumeLayout(false);
             this.gbx_films.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_films)).EndInit();
             this.pnl_Status.ResumeLayout(false);
             this.pnl_Status.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_films)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -457,5 +506,9 @@ namespace project
         private System.Windows.Forms.Panel pnl_Status;
         private System.Windows.Forms.RadioButton rdo_Inactive;
         private System.Windows.Forms.RadioButton rdo_Active;
+        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.ListView lv_genre;
+        private System.Windows.Forms.ListView lv_title;
+        private System.Windows.Forms.ListView lv_filmID;
     }
 }
