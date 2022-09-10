@@ -161,24 +161,7 @@ namespace project
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            try
-            {   
-                String title = cbx_title.GetItemText(cbx_title.SelectedItem);
-                conn.Open();
-                com = new SqlCommand("SELECT * FROM TABLES WHERE Title=@title", conn);
-                com.Parameters.AddWithValue("@title", title);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Added the record successfully");
-                reLoad();
-                comboBoxesload();
-                ClearData();
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -362,6 +345,28 @@ namespace project
                 {
                     MessageBox.Show("Invalid status");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void updateFilm()
+        {
+            try
+            {
+                String title = cbx_title.GetItemText(cbx_title.SelectedItem);
+                conn.Open();
+                com = new SqlCommand("SELECT * FROM TABLES WHERE Title=@title", conn);
+                com.Parameters.AddWithValue("@title", title);
+                com.ExecuteNonQuery();
+                MessageBox.Show("Added the record successfully");
+                reLoad();
+                comboBoxesload();
+                ClearData();
+
+
             }
             catch (Exception ex)
             {
