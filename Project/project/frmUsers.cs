@@ -293,6 +293,7 @@ namespace project
         //DELETE USERS DETAILS
         private void btn_Delete_Click(object sender, EventArgs e)
         {
+            lbl_PasswordDisp.Visible = false;
             if (txtBox_UserID.Text != "")
             {
                 conn.Open();
