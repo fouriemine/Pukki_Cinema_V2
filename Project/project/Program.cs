@@ -16,7 +16,7 @@ namespace project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTime_Allocation());
+            Application.Run(new frmUsers());
         }
     }
 }
