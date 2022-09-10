@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -21,6 +22,8 @@ namespace project
         public DataSet ds;
         public SqlDataAdapter adap;
         string sql = " ";
+
+        private String isValidPass;
 
         public frmUsers()
         {
@@ -117,7 +120,10 @@ namespace project
             txtBox_UserID.Visible = false;
             btn_Update.Visible = false;
             btn_Delete.Visible = false;
-           // btn_GetUser.Visible = false;
+            // btn_GetUser.Visible = false;
+            { //Minimum of 8 characters and maximum of 14 characters
+
+            }
             ClearData();
             reLoad();
         }
@@ -188,15 +194,23 @@ namespace project
                     isAdmin = "true";
                 }
 
-                conn.Open();
-                com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
-                com.Parameters.AddWithValue("@username", textbx_Username.Text);
-                com.Parameters.AddWithValue("@password", txt_password.Text);
-                com.Parameters.AddWithValue("@IsAdmin", isAdmin);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Added the record successfully");
-                reLoad();
-                ClearData();
+                if(isValidPass != "")
+                {
+                    MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    conn.Open();
+                    com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
+                    com.Parameters.AddWithValue("@username", textbx_Username.Text);
+                    com.Parameters.AddWithValue("@password", txt_password.Text);
+                    com.Parameters.AddWithValue("@IsAdmin", isAdmin);
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Added the record successfully");
+                    reLoad();
+                    ClearData();
+                }
+                
             }
             else
             {
@@ -223,17 +237,22 @@ namespace project
                 {
                     isAdmin = "true";
                 }
-                conn.Open();
-                com = new SqlCommand("update USERS set Username=@username , Password = @password , IsAdmin = @IsAdmin where Users_ID= @id", conn);
-                com.Parameters.AddWithValue("@id", txtBox_UserID.Text);
-                com.Parameters.AddWithValue("@username", textbx_Username.Text);
-                com.Parameters.AddWithValue("@password", txt_password.Text);
-                com.Parameters.AddWithValue("@IsAdmin", isAdmin);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Updated the record successfully");
-                conn.Close();
-                reLoad();
-                ClearData();
+                if (isValidPass != "")
+                {
+                    MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    conn.Open();
+                    com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
+                    com.Parameters.AddWithValue("@username", textbx_Username.Text);
+                    com.Parameters.AddWithValue("@password", txt_password.Text);
+                    com.Parameters.AddWithValue("@IsAdmin", isAdmin);
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Added the record successfully");
+                    reLoad();
+                    ClearData();
+                }
             }
             else
             {
@@ -306,34 +325,36 @@ namespace project
 
        private void txt_password_TextChanged(object sender, EventArgs e)
          { //Minimum of 8 characters and maximum of 14 characters
-             if (txt_password.TextLength < 8 || txt_password.TextLength > 14)
+
+            String temp = txt_password.Text;
+            lbl_PasswordDisp.Visible = true;
+            string regex = "^(?=.*[a-z])(?=."
+                    + "*[A-Z])(?=.*\\d)"
+                    + "(?=.*[-+_!@#$%^&*., ?]).+$";
+
+            Regex p = new Regex(regex);
+
+            Match m = p.Match(temp);
+            if (!(temp.Length < 8 || temp.Length > 14))
              {
-                MessageBox.Show("Password should be a minimum of 8 characters and a maximum of 14 letters");
-             }
-             /*
-             //password should contain one upper case
-             else if ( txt_password >= 'a' && txt_password <= 'z')
-                MessageBox.Show("Password should contain one upper case");
-
-            //Password should contain one lower case
-            else if (!txt_password.Any(char.IsLower))
-                MessageBox.Show("Password should contain one lower case");
-
-            //Password should not have any white spaces
-            else if (txt_password.Contains(" "))
-                MessageBox.Show("Password should not contain any white spaces");
-
-            //checks if password has any special characters
-            string specialCh = @"%!@#$%^&*()?/>.<,:;'\|}]{[_~`+=-" + "\"";
-             char[] specialCh = specialCh.ToCharArray();
-             foreach (char ch in specialChArray)
-             {
-                 if (txt_password.Contains(ch))
-                    MessageBox.Show("Strong Password, you may continue");
-            }*/
-
-
-
+                if (!m.Success || temp.Contains(" "))
+                {
+                    isValidPass = "Password should contain upper case, lower case and a special character\n" +
+                        "Passowrd should not contain whitespace.";
+                    lbl_PasswordDisp.Text =isValidPass;
+                }
+                else
+                {
+                    isValidPass = "";
+                    lbl_PasswordDisp.Text = "";
+                }
+            }
+            else
+            {
+                isValidPass = "Password should be a minimum of 8 characters and a maximum of 14 letters";
+                lbl_PasswordDisp.Text = isValidPass;
+            }
+            
          }
     }
 }

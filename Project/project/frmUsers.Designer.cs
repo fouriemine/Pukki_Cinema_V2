@@ -37,10 +37,13 @@ namespace project
             this.lbl_UpdateFilms = new System.Windows.Forms.Label();
             this.lbl_films = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnclose_help = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.lbl_DeleteUsers = new System.Windows.Forms.Label();
             this.lblAdd_Users = new System.Windows.Forms.Label();
             this.lblUpdate_Users = new System.Windows.Forms.Label();
             this.gbx_users = new System.Windows.Forms.GroupBox();
+            this.HelpFunctionPicture = new System.Windows.Forms.PictureBox();
             this.pnl_Admin = new System.Windows.Forms.Panel();
             this.rdo_AdminNo = new System.Windows.Forms.RadioButton();
             this.rdo_AdminYes = new System.Windows.Forms.RadioButton();
@@ -56,16 +59,14 @@ namespace project
             this.lbl_adminYN = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.HelpFunctionPicture = new System.Windows.Forms.PictureBox();
-            this.btnclose_help = new System.Windows.Forms.Button();
+            this.lbl_PasswordDisp = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbx_users.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).BeginInit();
             this.pnl_Admin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -159,6 +160,32 @@ namespace project
             this.panel1.Size = new System.Drawing.Size(203, 791);
             this.panel1.TabIndex = 10;
             // 
+            // btnclose_help
+            // 
+            this.btnclose_help.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnclose_help.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
+            this.btnclose_help.ForeColor = System.Drawing.Color.White;
+            this.btnclose_help.Location = new System.Drawing.Point(22, 721);
+            this.btnclose_help.Name = "btnclose_help";
+            this.btnclose_help.Size = new System.Drawing.Size(166, 49);
+            this.btnclose_help.TabIndex = 12;
+            this.btnclose_help.Text = "Help Close";
+            this.btnclose_help.UseVisualStyleBackColor = false;
+            this.btnclose_help.Click += new System.EventHandler(this.btnclose_help_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(22, 668);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 47);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Help Function Open";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // lbl_DeleteUsers
             // 
             this.lbl_DeleteUsers.AutoSize = true;
@@ -200,6 +227,7 @@ namespace project
             // 
             // gbx_users
             // 
+            this.gbx_users.Controls.Add(this.lbl_PasswordDisp);
             this.gbx_users.Controls.Add(this.HelpFunctionPicture);
             this.gbx_users.Controls.Add(this.pnl_Admin);
             this.gbx_users.Controls.Add(this.btn_Delete);
@@ -224,14 +252,25 @@ namespace project
             this.gbx_users.Text = "~";
             this.gbx_users.Enter += new System.EventHandler(this.gbx_users_Enter);
             // 
+            // HelpFunctionPicture
+            // 
+            this.HelpFunctionPicture.Image = global::project.Properties.Resources.pukkicinema_Helpfunction;
+            this.HelpFunctionPicture.Location = new System.Drawing.Point(35, 458);
+            this.HelpFunctionPicture.Name = "HelpFunctionPicture";
+            this.HelpFunctionPicture.Size = new System.Drawing.Size(428, 286);
+            this.HelpFunctionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.HelpFunctionPicture.TabIndex = 12;
+            this.HelpFunctionPicture.TabStop = false;
+            this.HelpFunctionPicture.Visible = false;
+            // 
             // pnl_Admin
             // 
             this.pnl_Admin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_Admin.Controls.Add(this.rdo_AdminNo);
             this.pnl_Admin.Controls.Add(this.rdo_AdminYes);
-            this.pnl_Admin.Location = new System.Drawing.Point(213, 274);
+            this.pnl_Admin.Location = new System.Drawing.Point(213, 365);
             this.pnl_Admin.Name = "pnl_Admin";
-            this.pnl_Admin.Size = new System.Drawing.Size(243, 100);
+            this.pnl_Admin.Size = new System.Drawing.Size(243, 87);
             this.pnl_Admin.TabIndex = 34;
             // 
             // rdo_AdminNo
@@ -355,17 +394,18 @@ namespace project
             this.txt_password.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(243, 41);
             this.txt_password.TabIndex = 3;
+            this.txt_password.TextChanged += new System.EventHandler(this.txt_password_TextChanged);
             // 
             // lbl_adminYN
             // 
             this.lbl_adminYN.AutoSize = true;
             this.lbl_adminYN.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_adminYN.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_adminYN.Location = new System.Drawing.Point(28, 274);
+            this.lbl_adminYN.Location = new System.Drawing.Point(28, 390);
             this.lbl_adminYN.Name = "lbl_adminYN";
-            this.lbl_adminYN.Size = new System.Drawing.Size(141, 41);
+            this.lbl_adminYN.Size = new System.Drawing.Size(89, 41);
             this.lbl_adminYN.TabIndex = 12;
-            this.lbl_adminYN.Text = "Admin(y/n)";
+            this.lbl_adminYN.Text = "Admin";
             // 
             // lbl_password
             // 
@@ -391,42 +431,13 @@ namespace project
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // button2
+            // lbl_PasswordDisp
             // 
-            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(22, 668);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 47);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Help Function Open";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // HelpFunctionPicture
-            // 
-            this.HelpFunctionPicture.Image = global::project.Properties.Resources.pukkicinema_Helpfunction;
-            this.HelpFunctionPicture.Location = new System.Drawing.Point(44, 402);
-            this.HelpFunctionPicture.Name = "HelpFunctionPicture";
-            this.HelpFunctionPicture.Size = new System.Drawing.Size(428, 286);
-            this.HelpFunctionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.HelpFunctionPicture.TabIndex = 12;
-            this.HelpFunctionPicture.TabStop = false;
-            this.HelpFunctionPicture.Visible = false;
-            // 
-            // btnclose_help
-            // 
-            this.btnclose_help.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnclose_help.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
-            this.btnclose_help.ForeColor = System.Drawing.Color.White;
-            this.btnclose_help.Location = new System.Drawing.Point(22, 721);
-            this.btnclose_help.Name = "btnclose_help";
-            this.btnclose_help.Size = new System.Drawing.Size(166, 49);
-            this.btnclose_help.TabIndex = 12;
-            this.btnclose_help.Text = "Help Close";
-            this.btnclose_help.UseVisualStyleBackColor = false;
-            this.btnclose_help.Click += new System.EventHandler(this.btnclose_help_Click);
+            this.lbl_PasswordDisp.Font = new System.Drawing.Font("Arial", 10F);
+            this.lbl_PasswordDisp.Location = new System.Drawing.Point(213, 235);
+            this.lbl_PasswordDisp.Name = "lbl_PasswordDisp";
+            this.lbl_PasswordDisp.Size = new System.Drawing.Size(243, 127);
+            this.lbl_PasswordDisp.TabIndex = 1000;
             // 
             // frmUsers
             // 
@@ -447,10 +458,10 @@ namespace project
             this.panel1.PerformLayout();
             this.gbx_users.ResumeLayout(false);
             this.gbx_users.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).EndInit();
             this.pnl_Admin.ResumeLayout(false);
             this.pnl_Admin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -487,5 +498,6 @@ namespace project
         private System.Windows.Forms.PictureBox HelpFunctionPicture;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnclose_help;
+        private System.Windows.Forms.Label lbl_PasswordDisp;
     }
 }
