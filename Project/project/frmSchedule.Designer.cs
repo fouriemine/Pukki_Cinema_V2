@@ -29,6 +29,8 @@ namespace project
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblScheduleHeading = new System.Windows.Forms.Label();
             this.pnlScheduleHeading = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -172,6 +174,7 @@ namespace project
             this.cbxTimes.Name = "cbxTimes";
             this.cbxTimes.Size = new System.Drawing.Size(200, 31);
             this.cbxTimes.TabIndex = 34;
+            this.cbxTimes.SelectedIndexChanged += new System.EventHandler(this.cbxTimes_SelectedIndexChanged);
             // 
             // lblTime
             // 
@@ -200,28 +203,41 @@ namespace project
             this.cbxFilms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFilms.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxFilms.FormattingEnabled = true;
-            this.cbxFilms.Location = new System.Drawing.Point(159, 61);
+            this.cbxFilms.Location = new System.Drawing.Point(503, 25);
             this.cbxFilms.Name = "cbxFilms";
             this.cbxFilms.Size = new System.Drawing.Size(186, 31);
             this.cbxFilms.TabIndex = 31;
+            this.cbxFilms.SelectedIndexChanged += new System.EventHandler(this.cbxFilms_SelectedIndexChanged);
             // 
             // dtpShowDate
             // 
             this.dtpShowDate.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpShowDate.Location = new System.Drawing.Point(532, 62);
+            this.dtpShowDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpShowDate.Location = new System.Drawing.Point(159, 60);
             this.dtpShowDate.Name = "dtpShowDate";
-            this.dtpShowDate.Size = new System.Drawing.Size(200, 30);
+            this.dtpShowDate.Size = new System.Drawing.Size(186, 30);
             this.dtpShowDate.TabIndex = 30;
+            this.dtpShowDate.ValueChanged += new System.EventHandler(this.dtpShowDate_ValueChanged);
             // 
             // dgvSchedule
             // 
             this.dgvSchedule.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light SemiCondensed", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSchedule.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSchedule.Location = new System.Drawing.Point(40, 181);
             this.dgvSchedule.Margin = new System.Windows.Forms.Padding(2);
             this.dgvSchedule.Name = "dgvSchedule";
             this.dgvSchedule.ReadOnly = true;
-            this.dgvSchedule.RowHeadersWidth = 51;
+            this.dgvSchedule.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift SemiLight Condensed", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvSchedule.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSchedule.RowTemplate.Height = 24;
             this.dgvSchedule.Size = new System.Drawing.Size(722, 186);
             this.dgvSchedule.TabIndex = 29;
@@ -231,7 +247,7 @@ namespace project
             this.lblFilm.AutoSize = true;
             this.lblFilm.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFilm.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblFilm.Location = new System.Drawing.Point(16, 54);
+            this.lblFilm.Location = new System.Drawing.Point(360, 18);
             this.lblFilm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFilm.Name = "lblFilm";
             this.lblFilm.Size = new System.Drawing.Size(53, 33);
@@ -254,7 +270,7 @@ namespace project
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblDate.Location = new System.Drawing.Point(389, 59);
+            this.lblDate.Location = new System.Drawing.Point(16, 57);
             this.lblDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(56, 33);
