@@ -46,6 +46,7 @@ namespace project
             this.lblAddTheatreCapacity = new System.Windows.Forms.Label();
             this.lblTheatreID = new System.Windows.Forms.Label();
             this.bttnAddTheatre = new System.Windows.Forms.Button();
+            this.bttnPrevFromTime = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbTheatre.SuspendLayout();
@@ -77,6 +78,7 @@ namespace project
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel5.Controls.Add(this.bttnPrevFromTime);
             this.panel5.Controls.Add(this.lblAddTheatre);
             this.panel5.Controls.Add(this.lblChangeTheatre);
             this.panel5.Controls.Add(this.lblDeleteTheatre);
@@ -242,6 +244,19 @@ namespace project
             this.bttnAddTheatre.UseVisualStyleBackColor = false;
             this.bttnAddTheatre.Click += new System.EventHandler(this.bttnAddTheatre_Click);
             // 
+            // bttnPrevFromTime
+            // 
+            this.bttnPrevFromTime.BackColor = System.Drawing.Color.Purple;
+            this.bttnPrevFromTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnPrevFromTime.Location = new System.Drawing.Point(32, 485);
+            this.bttnPrevFromTime.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnPrevFromTime.Name = "bttnPrevFromTime";
+            this.bttnPrevFromTime.Size = new System.Drawing.Size(120, 41);
+            this.bttnPrevFromTime.TabIndex = 8;
+            this.bttnPrevFromTime.Text = "Previous";
+            this.bttnPrevFromTime.UseVisualStyleBackColor = false;
+            this.bttnPrevFromTime.Click += new System.EventHandler(this.bttnPrevFromTime_Click);
+            // 
             // frmTheatres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,5 +299,6 @@ namespace project
         private System.Windows.Forms.Label lblTheatreID;
         private System.Windows.Forms.Button bttnAddTheatre;
         private System.Windows.Forms.Label lblMaxNumberValidation;
+        private System.Windows.Forms.Button bttnPrevFromTime;
     }
 }

@@ -113,6 +113,7 @@ namespace project
             this.btn_Login.TabIndex = 5;
             this.btn_Login.Text = "Log in";
             this.btn_Login.UseVisualStyleBackColor = false;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // txt_Password
             // 
