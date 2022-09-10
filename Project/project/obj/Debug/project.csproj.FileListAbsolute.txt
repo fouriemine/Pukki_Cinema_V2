@@ -126,3 +126,19 @@ C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.c
 C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.exe
 C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.pdb
 C:\Users\asvat\Downloads\Project (2)\Project\Project\project\obj\Debug\project.frmLogin.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe.config
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\bin\Debug\project.pdb
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\Genre.frmGenre.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmLogin.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.Menu.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.exe
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.pdb
