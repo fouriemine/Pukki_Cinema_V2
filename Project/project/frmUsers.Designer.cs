@@ -29,6 +29,9 @@ namespace project
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btn_previousFilms = new System.Windows.Forms.Button();
@@ -43,6 +46,8 @@ namespace project
             this.lblAdd_Users = new System.Windows.Forms.Label();
             this.lblUpdate_Users = new System.Windows.Forms.Label();
             this.gbx_users = new System.Windows.Forms.GroupBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblSearchUser = new System.Windows.Forms.Label();
             this.lbl_PasswordDisp = new System.Windows.Forms.Label();
             this.HelpFunctionPicture = new System.Windows.Forms.PictureBox();
             this.pnl_Admin = new System.Windows.Forms.Panel();
@@ -76,7 +81,7 @@ namespace project
             this.panel3.Controls.Add(this.lbl_films);
             this.panel3.Location = new System.Drawing.Point(-392, -2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1934, 156);
+            this.panel3.Size = new System.Drawing.Size(2106, 156);
             this.panel3.TabIndex = 9;
             // 
             // panel5
@@ -157,7 +162,7 @@ namespace project
             this.panel1.Controls.Add(this.lblUpdate_Users);
             this.panel1.Location = new System.Drawing.Point(1, 153);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(203, 791);
+            this.panel1.Size = new System.Drawing.Size(203, 803);
             this.panel1.TabIndex = 10;
             // 
             // btnclose_help
@@ -165,7 +170,7 @@ namespace project
             this.btnclose_help.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnclose_help.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
             this.btnclose_help.ForeColor = System.Drawing.Color.White;
-            this.btnclose_help.Location = new System.Drawing.Point(22, 721);
+            this.btnclose_help.Location = new System.Drawing.Point(22, 719);
             this.btnclose_help.Name = "btnclose_help";
             this.btnclose_help.Size = new System.Drawing.Size(166, 49);
             this.btnclose_help.TabIndex = 12;
@@ -178,7 +183,7 @@ namespace project
             this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(22, 668);
+            this.button2.Location = new System.Drawing.Point(22, 666);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(166, 47);
             this.button2.TabIndex = 11;
@@ -227,6 +232,8 @@ namespace project
             // 
             // gbx_users
             // 
+            this.gbx_users.Controls.Add(this.txtSearch);
+            this.gbx_users.Controls.Add(this.lblSearchUser);
             this.gbx_users.Controls.Add(this.lbl_PasswordDisp);
             this.gbx_users.Controls.Add(this.HelpFunctionPicture);
             this.gbx_users.Controls.Add(this.pnl_Admin);
@@ -251,6 +258,29 @@ namespace project
             this.gbx_users.TabStop = false;
             this.gbx_users.Text = "~";
             this.gbx_users.Enter += new System.EventHandler(this.gbx_users_Enter);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(805, 52);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(439, 48);
+            this.txtSearch.TabIndex = 1001;
+            // 
+            // lblSearchUser
+            // 
+            this.lblSearchUser.AutoSize = true;
+            this.lblSearchUser.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.lblSearchUser.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchUser.ForeColor = System.Drawing.Color.White;
+            this.lblSearchUser.Location = new System.Drawing.Point(576, 52);
+            this.lblSearchUser.Name = "lblSearchUser";
+            this.lblSearchUser.Size = new System.Drawing.Size(202, 48);
+            this.lblSearchUser.TabIndex = 13;
+            this.lblSearchUser.Text = "Search Users:";
+            this.lblSearchUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSearchUser.Click += new System.EventHandler(this.lblSearchUser_Click);
             // 
             // lbl_PasswordDisp
             // 
@@ -310,7 +340,7 @@ namespace project
             this.btn_Delete.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_Delete.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(1049, 477);
+            this.btn_Delete.Location = new System.Drawing.Point(1058, 544);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(172, 49);
             this.btn_Delete.TabIndex = 999;
@@ -323,7 +353,7 @@ namespace project
             this.btn_Update.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_Update.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Update.ForeColor = System.Drawing.Color.White;
-            this.btn_Update.Location = new System.Drawing.Point(1049, 477);
+            this.btn_Update.Location = new System.Drawing.Point(1058, 544);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(172, 49);
             this.btn_Update.TabIndex = 999;
@@ -353,11 +383,40 @@ namespace project
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor;
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Purple;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 18F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(561, 45);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 18F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
+            this.dataGridView1.Location = new System.Drawing.Point(575, 119);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 18F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(669, 403);
@@ -430,7 +489,7 @@ namespace project
             this.btn_add.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_add.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(1049, 477);
+            this.btn_add.Location = new System.Drawing.Point(1058, 544);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(172, 49);
             this.btn_add.TabIndex = 999;
@@ -447,6 +506,7 @@ namespace project
             this.Controls.Add(this.gbx_users);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
+            this.MaximumSize = new System.Drawing.Size(1732, 1003);
             this.Name = "frmUsers";
             this.Load += new System.EventHandler(this.frmUsers_Load);
             this.panel3.ResumeLayout(false);
@@ -498,5 +558,7 @@ namespace project
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnclose_help;
         private System.Windows.Forms.Label lbl_PasswordDisp;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lblSearchUser;
     }
 }

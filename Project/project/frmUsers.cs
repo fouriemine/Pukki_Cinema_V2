@@ -108,6 +108,7 @@ namespace project
             btn_Delete.Visible = true;
             btn_add.Visible = true;
             dataGridView1.Visible = true;
+            lbl_PasswordDisp.Visible = true;
             //btn_GetUser.Visible = true;
         }
 
@@ -152,6 +153,7 @@ namespace project
             lbl_password.Visible = false;
             lbl_username.Visible = false;
             btn_add.Visible = false;
+            lbl_PasswordDisp.Visible = false;
             //btn_GetUser.Visible = false;
             btn_Update.Visible = false;
             ClearData();
@@ -296,13 +298,16 @@ namespace project
             lbl_PasswordDisp.Visible = false;
             if (txtBox_UserID.Text != "")
             {
-                conn.Open();
-                com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
-                com.Parameters.AddWithValue("@id",txtBox_UserID.Text);
-                com.ExecuteNonQuery();
-                MessageBox.Show(" record deleted successfully");
-                reLoad();
-                ClearData();
+                if (MessageBox.Show("Are you sure you want to delete the item?", "Deleted Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    conn.Open();
+                    com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
+                    com.Parameters.AddWithValue("@id", txtBox_UserID.Text);
+                    com.ExecuteNonQuery();
+                    MessageBox.Show(" record deleted successfully");
+                    reLoad();
+                    ClearData();
+                }
             }
             else {
                 MessageBox.Show("Please enter the Id number you want to delete");
@@ -357,6 +362,39 @@ namespace project
             }
             
          }
+
+        private void lblSearchUser_Click(object sender, EventArgs e)
+        {
+            //dataGridView1.Visible = false;
+            if (txtSearch.Text != "")
+            {
+                conn = new SqlConnection(conStr);
+                conn.Open();
+                //Populate gridview with Users
+                adap = new SqlDataAdapter();
+                ds = new DataSet();
+                com = new SqlCommand("select * from USERS where Username = @username", conn);
+                com.Parameters.AddWithValue("@username", txtSearch.Text);
+                adap.SelectCommand = com;
+                adap.Fill(ds, "USERS");
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "USERS";
+                conn.Close();
+                dataGridView1.Visible = true;
+               ClearData();
+                if (dataGridView1.RowCount == 1)
+                {
+                    MessageBox.Show("User not found", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter all necessary details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+        }
+
+      
     }
 }
 
