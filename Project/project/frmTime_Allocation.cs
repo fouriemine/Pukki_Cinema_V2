@@ -127,7 +127,7 @@ namespace project
                 conn.Open();  //open connection
 
                 //Display warning
-                lblMaxNumberValidation.Visible = true;
+                lblTimeValidation.Visible = true;
 
                 //Populate Gridview with current theatres
                 sql = "SELECT * FROM TIME_ALLOCATIONS";
@@ -153,6 +153,7 @@ namespace project
             try
             {
                 
+
                 if (tbTimeBracket.Text != " ")
                 {
                     if (DateTime.TryParse(tbTimeBracket.Text, out time))
@@ -195,7 +196,7 @@ namespace project
             cbTimeID.Enabled = true;
 
             //Hide validation label
-            lblMaxNumberValidation.Visible = false;
+            lblTimeValidation.Visible = false;
 
             try
             {
@@ -358,7 +359,7 @@ namespace project
             try
             {
                 //hide validation lale
-                lblMaxNumberValidation.Visible = false;
+                lblTimeValidation.Visible = false;
 
                 gbTime_Allocation.Text = "Delete Time Group";
                 //making all controls visible 
