@@ -37,6 +37,7 @@ namespace project
             this.lblChangeTimeAllocation = new System.Windows.Forms.Label();
             this.lblDeleteTimeAllocation = new System.Windows.Forms.Label();
             this.gbTime_Allocation = new System.Windows.Forms.GroupBox();
+            this.lblTimeValidation = new System.Windows.Forms.Label();
             this.lblMaxNumberValidation = new System.Windows.Forms.Label();
             this.dgvDisplayTimeAllocvations = new System.Windows.Forms.DataGridView();
             this.bttnDeleteTime = new System.Windows.Forms.Button();
@@ -46,7 +47,7 @@ namespace project
             this.lblTimeBracket = new System.Windows.Forms.Label();
             this.lblTimeID = new System.Windows.Forms.Label();
             this.bttnAddTime = new System.Windows.Forms.Button();
-            this.lblTimeValidation = new System.Windows.Forms.Label();
+            this.bttnPrevFromTime = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbTime_Allocation.SuspendLayout();
@@ -79,6 +80,7 @@ namespace project
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel5.Controls.Add(this.bttnPrevFromTime);
             this.panel5.Controls.Add(this.lblAddTimeAllocation);
             this.panel5.Controls.Add(this.lblChangeTimeAllocation);
             this.panel5.Controls.Add(this.lblDeleteTimeAllocation);
@@ -146,6 +148,17 @@ namespace project
             this.gbTime_Allocation.TabIndex = 7;
             this.gbTime_Allocation.TabStop = false;
             this.gbTime_Allocation.Enter += new System.EventHandler(this.gbTime_Allocation_Enter);
+            // 
+            // lblTimeValidation
+            // 
+            this.lblTimeValidation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTimeValidation.ForeColor = System.Drawing.Color.Black;
+            this.lblTimeValidation.Location = new System.Drawing.Point(370, 249);
+            this.lblTimeValidation.Name = "lblTimeValidation";
+            this.lblTimeValidation.Size = new System.Drawing.Size(328, 156);
+            this.lblTimeValidation.TabIndex = 10;
+            this.lblTimeValidation.Text = resources.GetString("lblTimeValidation.Text");
+            this.lblTimeValidation.Visible = false;
             // 
             // lblMaxNumberValidation
             // 
@@ -236,16 +249,18 @@ namespace project
             this.bttnAddTime.UseVisualStyleBackColor = true;
             this.bttnAddTime.Click += new System.EventHandler(this.bttnAddTheatre_Click);
             // 
-            // lblTimeValidation
+            // bttnPrevFromTime
             // 
-            this.lblTimeValidation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTimeValidation.ForeColor = System.Drawing.Color.Black;
-            this.lblTimeValidation.Location = new System.Drawing.Point(370, 249);
-            this.lblTimeValidation.Name = "lblTimeValidation";
-            this.lblTimeValidation.Size = new System.Drawing.Size(328, 156);
-            this.lblTimeValidation.TabIndex = 10;
-            this.lblTimeValidation.Text = resources.GetString("lblTimeValidation.Text");
-            this.lblTimeValidation.Visible = false;
+            this.bttnPrevFromTime.BackColor = System.Drawing.Color.Purple;
+            this.bttnPrevFromTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnPrevFromTime.Location = new System.Drawing.Point(23, 481);
+            this.bttnPrevFromTime.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnPrevFromTime.Name = "bttnPrevFromTime";
+            this.bttnPrevFromTime.Size = new System.Drawing.Size(120, 41);
+            this.bttnPrevFromTime.TabIndex = 7;
+            this.bttnPrevFromTime.Text = "Previous";
+            this.bttnPrevFromTime.UseVisualStyleBackColor = false;
+            this.bttnPrevFromTime.Click += new System.EventHandler(this.bttnPrevFromTime_Click);
             // 
             // frmTime_Allocation
             // 
@@ -289,5 +304,6 @@ namespace project
         private System.Windows.Forms.Button bttnAddTime;
         private System.Windows.Forms.Label lblMaxNumberValidation;
         private System.Windows.Forms.Label lblTimeValidation;
+        private System.Windows.Forms.Button bttnPrevFromTime;
     }
 }
