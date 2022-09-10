@@ -37,13 +37,10 @@ namespace project
             this.lbl_UpdateFilms = new System.Windows.Forms.Label();
             this.lbl_films = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_GetUser = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.lbl_DeleteUsers = new System.Windows.Forms.Label();
             this.lblAdd_Users = new System.Windows.Forms.Label();
             this.lblUpdate_Users = new System.Windows.Forms.Label();
             this.gbx_users = new System.Windows.Forms.GroupBox();
-            this.btn_GetUser = new System.Windows.Forms.Button();
             this.pnl_Admin = new System.Windows.Forms.Panel();
             this.rdo_AdminNo = new System.Windows.Forms.RadioButton();
             this.rdo_AdminYes = new System.Windows.Forms.RadioButton();
@@ -59,12 +56,16 @@ namespace project
             this.lbl_adminYN = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.HelpFunctionPicture = new System.Windows.Forms.PictureBox();
+            this.btnclose_help = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbx_users.SuspendLayout();
             this.pnl_Admin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -148,40 +149,15 @@ namespace project
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel1.Controls.Add(this.lbl_GetUser);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnclose_help);
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.lbl_DeleteUsers);
             this.panel1.Controls.Add(this.lblAdd_Users);
             this.panel1.Controls.Add(this.lblUpdate_Users);
             this.panel1.Location = new System.Drawing.Point(1, 153);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(203, 602);
+            this.panel1.Size = new System.Drawing.Size(203, 791);
             this.panel1.TabIndex = 10;
-            // 
-            // lbl_GetUser
-            // 
-            this.lbl_GetUser.AutoSize = true;
-            this.lbl_GetUser.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_GetUser.ForeColor = System.Drawing.Color.White;
-            this.lbl_GetUser.Location = new System.Drawing.Point(26, 243);
-            this.lbl_GetUser.Name = "lbl_GetUser";
-            this.lbl_GetUser.Size = new System.Drawing.Size(132, 48);
-            this.lbl_GetUser.TabIndex = 11;
-            this.lbl_GetUser.Text = "Get User";
-            this.lbl_GetUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_GetUser.Click += new System.EventHandler(this.lbl_GetUser_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Purple;
-            this.button1.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(22, 536);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 49);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Previous";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // lbl_DeleteUsers
             // 
@@ -224,7 +200,7 @@ namespace project
             // 
             // gbx_users
             // 
-            this.gbx_users.Controls.Add(this.btn_GetUser);
+            this.gbx_users.Controls.Add(this.HelpFunctionPicture);
             this.gbx_users.Controls.Add(this.pnl_Admin);
             this.gbx_users.Controls.Add(this.btn_Delete);
             this.gbx_users.Controls.Add(this.btn_Update);
@@ -242,25 +218,11 @@ namespace project
             this.gbx_users.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.gbx_users.Location = new System.Drawing.Point(236, 194);
             this.gbx_users.Name = "gbx_users";
-            this.gbx_users.Size = new System.Drawing.Size(1250, 544);
+            this.gbx_users.Size = new System.Drawing.Size(1250, 750);
             this.gbx_users.TabIndex = 11;
             this.gbx_users.TabStop = false;
             this.gbx_users.Text = "~";
             this.gbx_users.Enter += new System.EventHandler(this.gbx_users_Enter);
-            // 
-            // btn_GetUser
-            // 
-            this.btn_GetUser.AllowDrop = true;
-            this.btn_GetUser.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btn_GetUser.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_GetUser.ForeColor = System.Drawing.Color.White;
-            this.btn_GetUser.Location = new System.Drawing.Point(249, 477);
-            this.btn_GetUser.Name = "btn_GetUser";
-            this.btn_GetUser.Size = new System.Drawing.Size(172, 49);
-            this.btn_GetUser.TabIndex = 1000;
-            this.btn_GetUser.Text = "Get User";
-            this.btn_GetUser.UseVisualStyleBackColor = false;
-            this.btn_GetUser.Click += new System.EventHandler(this.btn_GetUSers_Click);
             // 
             // pnl_Admin
             // 
@@ -301,7 +263,7 @@ namespace project
             this.btn_Delete.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_Delete.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(452, 477);
+            this.btn_Delete.Location = new System.Drawing.Point(1049, 477);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(172, 49);
             this.btn_Delete.TabIndex = 999;
@@ -314,7 +276,7 @@ namespace project
             this.btn_Update.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_Update.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Update.ForeColor = System.Drawing.Color.White;
-            this.btn_Update.Location = new System.Drawing.Point(667, 477);
+            this.btn_Update.Location = new System.Drawing.Point(1049, 477);
             this.btn_Update.Name = "btn_Update";
             this.btn_Update.Size = new System.Drawing.Size(172, 49);
             this.btn_Update.TabIndex = 999;
@@ -421,7 +383,7 @@ namespace project
             this.btn_add.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_add.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(871, 477);
+            this.btn_add.Location = new System.Drawing.Point(1049, 477);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(172, 49);
             this.btn_add.TabIndex = 999;
@@ -429,12 +391,49 @@ namespace project
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(22, 668);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 47);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Help Function Open";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // HelpFunctionPicture
+            // 
+            this.HelpFunctionPicture.Image = global::project.Properties.Resources.pukkicinema_Helpfunction;
+            this.HelpFunctionPicture.Location = new System.Drawing.Point(44, 402);
+            this.HelpFunctionPicture.Name = "HelpFunctionPicture";
+            this.HelpFunctionPicture.Size = new System.Drawing.Size(428, 286);
+            this.HelpFunctionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.HelpFunctionPicture.TabIndex = 12;
+            this.HelpFunctionPicture.TabStop = false;
+            this.HelpFunctionPicture.Visible = false;
+            // 
+            // btnclose_help
+            // 
+            this.btnclose_help.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnclose_help.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
+            this.btnclose_help.ForeColor = System.Drawing.Color.White;
+            this.btnclose_help.Location = new System.Drawing.Point(22, 721);
+            this.btnclose_help.Name = "btnclose_help";
+            this.btnclose_help.Size = new System.Drawing.Size(166, 49);
+            this.btnclose_help.TabIndex = 12;
+            this.btnclose_help.Text = "Help Close";
+            this.btnclose_help.UseVisualStyleBackColor = false;
+            this.btnclose_help.Click += new System.EventHandler(this.btnclose_help_Click);
+            // 
             // frmUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1697, 753);
+            this.ClientSize = new System.Drawing.Size(1714, 956);
             this.Controls.Add(this.gbx_users);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -451,6 +450,7 @@ namespace project
             this.pnl_Admin.ResumeLayout(false);
             this.pnl_Admin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -465,7 +465,6 @@ namespace project
         private System.Windows.Forms.Label lbl_UpdateFilms;
         private System.Windows.Forms.Label lbl_films;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbl_DeleteUsers;
         private System.Windows.Forms.Label lblAdd_Users;
         private System.Windows.Forms.Label lblUpdate_Users;
@@ -485,7 +484,8 @@ namespace project
         private System.Windows.Forms.Panel pnl_Admin;
         private System.Windows.Forms.RadioButton rdo_AdminNo;
         private System.Windows.Forms.RadioButton rdo_AdminYes;
-        private System.Windows.Forms.Label lbl_GetUser;
-        private System.Windows.Forms.Button btn_GetUser;
+        private System.Windows.Forms.PictureBox HelpFunctionPicture;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnclose_help;
     }
 }

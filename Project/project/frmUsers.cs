@@ -31,6 +31,7 @@ namespace project
         private void frmUsers_Load(object sender, EventArgs e)
         {//set the group box to be invisible when loading
             gbx_users.Visible = false;
+            
             try
             {
                 conn = new SqlConnection(conStr);
@@ -104,7 +105,7 @@ namespace project
             btn_Delete.Visible = true;
             btn_add.Visible = true;
             dataGridView1.Visible = true;
-            btn_GetUser.Visible = true;
+            //btn_GetUser.Visible = true;
         }
 
         private void lblAdd_Users_Click(object sender, EventArgs e)
@@ -116,7 +117,7 @@ namespace project
             txtBox_UserID.Visible = false;
             btn_Update.Visible = false;
             btn_Delete.Visible = false;
-            btn_GetUser.Visible = false;
+           // btn_GetUser.Visible = false;
             ClearData();
             reLoad();
         }
@@ -127,7 +128,7 @@ namespace project
             gbx_users.Text = "Update Users";
             dispAll();
             btn_add.Visible = false;
-            btn_GetUser.Visible = false;
+            //btn_GetUser.Visible = false;
             btn_Delete.Visible = false;
             ClearData();
             reLoad();
@@ -145,12 +146,12 @@ namespace project
             lbl_password.Visible = false;
             lbl_username.Visible = false;
             btn_add.Visible = false;
-            btn_GetUser.Visible = false;
+            //btn_GetUser.Visible = false;
             btn_Update.Visible = false;
             ClearData();
             reLoad();
         }
-        private void lbl_GetUser_Click(object sender, EventArgs e)
+        /*private void lbl_GetUser_Click(object sender, EventArgs e)
         {
             //setting controls when the delete label is clicked
             gbx_users.Text = "Get Users";
@@ -166,7 +167,7 @@ namespace project
             dataGridView1.Visible = false;
             btn_Delete.Visible = false;
             ClearData();
-        }
+        }*/
         //ADD DATA
         private void btn_add_Click(object sender, EventArgs e)
         {
@@ -241,7 +242,7 @@ namespace project
 
         }
 
-        private void btn_GetUSers_Click(object sender, EventArgs e)
+        /*private void btn_GetUSers_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = false;
             if(textbx_Username.Text != "")
@@ -269,7 +270,7 @@ namespace project
             {
                 MessageBox.Show("Enter all necessary details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
         //DELETE USERS DETAILS
         private void btn_Delete_Click(object sender, EventArgs e)
         {
@@ -279,7 +280,7 @@ namespace project
                 com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
                 com.Parameters.AddWithValue("@id",txtBox_UserID.Text);
                 com.ExecuteNonQuery();
-                MessageBox.Show("Added the record removed successfully");
+                MessageBox.Show(" record deleted successfully");
                 reLoad();
                 ClearData();
             }
@@ -293,6 +294,47 @@ namespace project
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        { //displays help function
+            HelpFunctionPicture.Visible = true;
+        }
+
+        private void btnclose_help_Click(object sender, EventArgs e)
+        {
+            HelpFunctionPicture.Visible = false;
+        }
+
+       private void txt_password_TextChanged(object sender, EventArgs e)
+         { //Minimum of 8 characters and maximum of 14 characters
+             if (txt_password.TextLength < 8 || txt_password.TextLength > 14)
+             {
+                MessageBox.Show("Password should be a minimum of 8 characters and a maximum of 14 letters");
+             }
+             /*
+             //password should contain one upper case
+             else if ( txt_password >= 'a' && txt_password <= 'z')
+                MessageBox.Show("Password should contain one upper case");
+
+            //Password should contain one lower case
+            else if (!txt_password.Any(char.IsLower))
+                MessageBox.Show("Password should contain one lower case");
+
+            //Password should not have any white spaces
+            else if (txt_password.Contains(" "))
+                MessageBox.Show("Password should not contain any white spaces");
+
+            //checks if password has any special characters
+            string specialCh = @"%!@#$%^&*()?/>.<,:;'\|}]{[_~`+=-" + "\"";
+             char[] specialCh = specialCh.ToCharArray();
+             foreach (char ch in specialChArray)
+             {
+                 if (txt_password.Contains(ch))
+                    MessageBox.Show("Strong Password, you may continue");
+            }*/
+
+
+
+         }
     }
 }
 
