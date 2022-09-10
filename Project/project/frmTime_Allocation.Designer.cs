@@ -65,12 +65,12 @@ namespace project
             // lblTimeAllocation
             // 
             this.lblTimeAllocation.AutoSize = true;
-            this.lblTimeAllocation.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeAllocation.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 64F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeAllocation.ForeColor = System.Drawing.Color.White;
-            this.lblTimeAllocation.Location = new System.Drawing.Point(223, 85);
+            this.lblTimeAllocation.Location = new System.Drawing.Point(132, 44);
             this.lblTimeAllocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTimeAllocation.Name = "lblTimeAllocation";
-            this.lblTimeAllocation.Size = new System.Drawing.Size(377, 52);
+            this.lblTimeAllocation.Size = new System.Drawing.Size(771, 103);
             this.lblTimeAllocation.TabIndex = 3;
             this.lblTimeAllocation.Text = "Maintain Time Allocation";
             // 
@@ -146,6 +146,7 @@ namespace project
             // 
             // lblMaxNumberValidation
             // 
+            this.lblMaxNumberValidation.ForeColor = System.Drawing.Color.Black;
             this.lblMaxNumberValidation.Location = new System.Drawing.Point(637, 120);
             this.lblMaxNumberValidation.Name = "lblMaxNumberValidation";
             this.lblMaxNumberValidation.Size = new System.Drawing.Size(257, 66);
@@ -197,24 +198,28 @@ namespace project
             this.tbTimeBracket.Name = "tbTimeBracket";
             this.tbTimeBracket.Size = new System.Drawing.Size(148, 30);
             this.tbTimeBracket.TabIndex = 4;
+            this.tbTimeBracket.TextChanged += new System.EventHandler(this.tbTimeBracket_TextChanged);
             // 
             // lblTimeBracket
             // 
             this.lblTimeBracket.AutoSize = true;
-            this.lblTimeBracket.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeBracket.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeBracket.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lblTimeBracket.Location = new System.Drawing.Point(68, 136);
             this.lblTimeBracket.Name = "lblTimeBracket";
-            this.lblTimeBracket.Size = new System.Drawing.Size(93, 23);
+            this.lblTimeBracket.Size = new System.Drawing.Size(131, 33);
             this.lblTimeBracket.TabIndex = 3;
             this.lblTimeBracket.Text = "Time Bracket";
             // 
             // lblTimeID
             // 
             this.lblTimeID.AutoSize = true;
-            this.lblTimeID.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeID.BackColor = System.Drawing.Color.White;
+            this.lblTimeID.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeID.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lblTimeID.Location = new System.Drawing.Point(68, 71);
             this.lblTimeID.Name = "lblTimeID";
-            this.lblTimeID.Size = new System.Drawing.Size(56, 23);
+            this.lblTimeID.Size = new System.Drawing.Size(79, 33);
             this.lblTimeID.TabIndex = 2;
             this.lblTimeID.Text = "Time ID";
             // 
@@ -232,6 +237,7 @@ namespace project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1324, 749);
             this.Controls.Add(this.gbTime_Allocation);
             this.Controls.Add(this.panel5);

@@ -403,5 +403,10 @@ namespace project
                 MessageBox.Show(err.Message);
             }
         }
+
+        private void tbTimeBracket_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
