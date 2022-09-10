@@ -33,6 +33,7 @@ namespace project
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTimeAllocation = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.bttnPrevFromTime = new System.Windows.Forms.Button();
             this.lblAddTimeAllocation = new System.Windows.Forms.Label();
             this.lblChangeTimeAllocation = new System.Windows.Forms.Label();
             this.lblDeleteTimeAllocation = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@ namespace project
             this.lblTimeBracket = new System.Windows.Forms.Label();
             this.lblTimeID = new System.Windows.Forms.Label();
             this.bttnAddTime = new System.Windows.Forms.Button();
-            this.bttnPrevFromTime = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbTime_Allocation.SuspendLayout();
@@ -89,6 +89,19 @@ namespace project
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(201, 551);
             this.panel5.TabIndex = 5;
+            // 
+            // bttnPrevFromTime
+            // 
+            this.bttnPrevFromTime.BackColor = System.Drawing.Color.Purple;
+            this.bttnPrevFromTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnPrevFromTime.Location = new System.Drawing.Point(24, 473);
+            this.bttnPrevFromTime.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnPrevFromTime.Name = "bttnPrevFromTime";
+            this.bttnPrevFromTime.Size = new System.Drawing.Size(131, 48);
+            this.bttnPrevFromTime.TabIndex = 7;
+            this.bttnPrevFromTime.Text = "Previous";
+            this.bttnPrevFromTime.UseVisualStyleBackColor = false;
+            this.bttnPrevFromTime.Click += new System.EventHandler(this.bttnPrevFromTime_Click);
             // 
             // lblAddTimeAllocation
             // 
@@ -181,22 +194,28 @@ namespace project
             // 
             // bttnDeleteTime
             // 
+            this.bttnDeleteTime.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bttnDeleteTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnDeleteTime.ForeColor = System.Drawing.Color.White;
             this.bttnDeleteTime.Location = new System.Drawing.Point(731, 432);
             this.bttnDeleteTime.Name = "bttnDeleteTime";
             this.bttnDeleteTime.Size = new System.Drawing.Size(166, 50);
             this.bttnDeleteTime.TabIndex = 7;
             this.bttnDeleteTime.Text = "Delete Time";
-            this.bttnDeleteTime.UseVisualStyleBackColor = true;
+            this.bttnDeleteTime.UseVisualStyleBackColor = false;
             this.bttnDeleteTime.Click += new System.EventHandler(this.bttnDeleteTheatre_Click);
             // 
             // bttnUpdateTime
             // 
+            this.bttnUpdateTime.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bttnUpdateTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnUpdateTime.ForeColor = System.Drawing.Color.White;
             this.bttnUpdateTime.Location = new System.Drawing.Point(731, 346);
             this.bttnUpdateTime.Name = "bttnUpdateTime";
             this.bttnUpdateTime.Size = new System.Drawing.Size(166, 50);
             this.bttnUpdateTime.TabIndex = 6;
             this.bttnUpdateTime.Text = "Update Time";
-            this.bttnUpdateTime.UseVisualStyleBackColor = true;
+            this.bttnUpdateTime.UseVisualStyleBackColor = false;
             this.bttnUpdateTime.Click += new System.EventHandler(this.bttnUpdateTheatre_Click);
             // 
             // cbTimeID
@@ -241,26 +260,16 @@ namespace project
             // 
             // bttnAddTime
             // 
+            this.bttnAddTime.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bttnAddTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnAddTime.ForeColor = System.Drawing.Color.White;
             this.bttnAddTime.Location = new System.Drawing.Point(728, 265);
             this.bttnAddTime.Name = "bttnAddTime";
             this.bttnAddTime.Size = new System.Drawing.Size(166, 50);
             this.bttnAddTime.TabIndex = 1;
             this.bttnAddTime.Text = "Add Time";
-            this.bttnAddTime.UseVisualStyleBackColor = true;
+            this.bttnAddTime.UseVisualStyleBackColor = false;
             this.bttnAddTime.Click += new System.EventHandler(this.bttnAddTheatre_Click);
-            // 
-            // bttnPrevFromTime
-            // 
-            this.bttnPrevFromTime.BackColor = System.Drawing.Color.Purple;
-            this.bttnPrevFromTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnPrevFromTime.Location = new System.Drawing.Point(23, 481);
-            this.bttnPrevFromTime.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnPrevFromTime.Name = "bttnPrevFromTime";
-            this.bttnPrevFromTime.Size = new System.Drawing.Size(120, 41);
-            this.bttnPrevFromTime.TabIndex = 7;
-            this.bttnPrevFromTime.Text = "Previous";
-            this.bttnPrevFromTime.UseVisualStyleBackColor = false;
-            this.bttnPrevFromTime.Click += new System.EventHandler(this.bttnPrevFromTime_Click);
             // 
             // frmTime_Allocation
             // 

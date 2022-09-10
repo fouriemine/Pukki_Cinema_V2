@@ -289,53 +289,64 @@ namespace project
         {
             try
             {
-                if (!tbTimeBracket.Enabled)
+                string message = "Do you want to delete this record?";
+                String title = "Delete record";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
                 {
-
-                    if (cbTimeID.SelectedIndex != -1)
+                    if (!tbTimeBracket.Enabled)
                     {
-                        deleteID = int.Parse(cbTimeID.SelectedValue.ToString());
-                        conn = new SqlConnection(connStr);
-                        conn.Open();
-                        sql = $"DELETE FROM TIME_ALLOCATIONS WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
-                        adapt = new SqlDataAdapter();
-                        ds = new DataSet();
-                        comm = new SqlCommand(sql, conn);
-                        // comm.Parameters.AddWithValue("@id", deleteID);
-                        adapt.DeleteCommand = comm;
-                        adapt.DeleteCommand.ExecuteNonQuery();
 
-                        //Update user
-                        MessageBox.Show("Deleted successfully");
+                        if (cbTimeID.SelectedIndex != -1)
+                        {
+                            deleteID = int.Parse(cbTimeID.SelectedValue.ToString());
+                            conn = new SqlConnection(connStr);
+                            conn.Open();
+                            sql = $"DELETE FROM TIME_ALLOCATIONS WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
+                            adapt = new SqlDataAdapter();
+                            ds = new DataSet();
+                            comm = new SqlCommand(sql, conn);
+                            // comm.Parameters.AddWithValue("@id", deleteID);
+                            adapt.DeleteCommand = comm;
+                            adapt.DeleteCommand.ExecuteNonQuery();
 
-                        //re-populaate combobox
-                        sql = "SELECT Time_ID FROM TIME_ALLOCATIONS";
-                        adapt = new SqlDataAdapter();
-                        ds = new DataSet();
-                        comm = new SqlCommand(sql, conn);
-                        adapt.SelectCommand = comm;
-                        adapt.Fill(ds, "TIME_ALLOCATIONS");
+                            //Update user
+                            MessageBox.Show("Deleted successfully");
+
+                            //re-populaate combobox
+                            sql = "SELECT Time_ID FROM TIME_ALLOCATIONS";
+                            adapt = new SqlDataAdapter();
+                            ds = new DataSet();
+                            comm = new SqlCommand(sql, conn);
+                            adapt.SelectCommand = comm;
+                            adapt.Fill(ds, "TIME_ALLOCATIONS");
 
 
-                        //populating combobox with theatres Id available
-                        cbTimeID.DataSource = ds.Tables["TIME_ALLOCATIONS"];
-                        cbTimeID.DisplayMember = "Time_ID";
-                        cbTimeID.ValueMember = "Time_ID";
-                        conn.Close();
-                        conn.Dispose();
+                            //populating combobox with theatres Id available
+                            cbTimeID.DataSource = ds.Tables["TIME_ALLOCATIONS"];
+                            cbTimeID.DisplayMember = "Time_ID";
+                            cbTimeID.ValueMember = "Time_ID";
+                            conn.Close();
+                            conn.Dispose();
 
-                        //reload griview
-                        reLoad();
+                            //reload griview
+                            reLoad();
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                        tbTimeBracket.Enabled = false;
                     }
                 }
                 else
                 {
-                    tbTimeBracket.Enabled = false;
+                    return;
                 }
             }
             catch (Exception err)

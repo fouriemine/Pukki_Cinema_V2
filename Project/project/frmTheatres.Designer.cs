@@ -33,6 +33,7 @@ namespace project
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTheatreHeading = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.bttnPrevFromTime = new System.Windows.Forms.Button();
             this.lblAddTheatre = new System.Windows.Forms.Label();
             this.lblChangeTheatre = new System.Windows.Forms.Label();
             this.lblDeleteTheatre = new System.Windows.Forms.Label();
@@ -46,7 +47,6 @@ namespace project
             this.lblAddTheatreCapacity = new System.Windows.Forms.Label();
             this.lblTheatreID = new System.Windows.Forms.Label();
             this.bttnAddTheatre = new System.Windows.Forms.Button();
-            this.bttnPrevFromTime = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbTheatre.SuspendLayout();
@@ -87,6 +87,19 @@ namespace project
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(201, 551);
             this.panel5.TabIndex = 5;
+            // 
+            // bttnPrevFromTime
+            // 
+            this.bttnPrevFromTime.BackColor = System.Drawing.Color.Purple;
+            this.bttnPrevFromTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnPrevFromTime.Location = new System.Drawing.Point(32, 478);
+            this.bttnPrevFromTime.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnPrevFromTime.Name = "bttnPrevFromTime";
+            this.bttnPrevFromTime.Size = new System.Drawing.Size(120, 48);
+            this.bttnPrevFromTime.TabIndex = 8;
+            this.bttnPrevFromTime.Text = "Previous";
+            this.bttnPrevFromTime.UseVisualStyleBackColor = false;
+            this.bttnPrevFromTime.Click += new System.EventHandler(this.bttnPrevFromTime_Click);
             // 
             // lblAddTheatre
             // 
@@ -243,19 +256,6 @@ namespace project
             this.bttnAddTheatre.Text = "Add Theatre";
             this.bttnAddTheatre.UseVisualStyleBackColor = false;
             this.bttnAddTheatre.Click += new System.EventHandler(this.bttnAddTheatre_Click);
-            // 
-            // bttnPrevFromTime
-            // 
-            this.bttnPrevFromTime.BackColor = System.Drawing.Color.Purple;
-            this.bttnPrevFromTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bttnPrevFromTime.Location = new System.Drawing.Point(32, 485);
-            this.bttnPrevFromTime.Margin = new System.Windows.Forms.Padding(2);
-            this.bttnPrevFromTime.Name = "bttnPrevFromTime";
-            this.bttnPrevFromTime.Size = new System.Drawing.Size(120, 41);
-            this.bttnPrevFromTime.TabIndex = 8;
-            this.bttnPrevFromTime.Text = "Previous";
-            this.bttnPrevFromTime.UseVisualStyleBackColor = false;
-            this.bttnPrevFromTime.Click += new System.EventHandler(this.bttnPrevFromTime_Click);
             // 
             // frmTheatres
             // 
