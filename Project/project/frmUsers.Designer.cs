@@ -43,6 +43,7 @@ namespace project
             this.lblAdd_Users = new System.Windows.Forms.Label();
             this.lblUpdate_Users = new System.Windows.Forms.Label();
             this.gbx_users = new System.Windows.Forms.GroupBox();
+            this.lbl_PasswordDisp = new System.Windows.Forms.Label();
             this.HelpFunctionPicture = new System.Windows.Forms.PictureBox();
             this.pnl_Admin = new System.Windows.Forms.Panel();
             this.rdo_AdminNo = new System.Windows.Forms.RadioButton();
@@ -59,7 +60,6 @@ namespace project
             this.lbl_adminYN = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
-            this.lbl_PasswordDisp = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -252,6 +252,14 @@ namespace project
             this.gbx_users.Text = "~";
             this.gbx_users.Enter += new System.EventHandler(this.gbx_users_Enter);
             // 
+            // lbl_PasswordDisp
+            // 
+            this.lbl_PasswordDisp.Font = new System.Drawing.Font("Arial", 10F);
+            this.lbl_PasswordDisp.Location = new System.Drawing.Point(213, 235);
+            this.lbl_PasswordDisp.Name = "lbl_PasswordDisp";
+            this.lbl_PasswordDisp.Size = new System.Drawing.Size(243, 127);
+            this.lbl_PasswordDisp.TabIndex = 1000;
+            // 
             // HelpFunctionPicture
             // 
             this.HelpFunctionPicture.Image = global::project.Properties.Resources.pukkicinema_Helpfunction;
@@ -391,7 +399,6 @@ namespace project
             this.txt_password.Location = new System.Drawing.Point(213, 191);
             this.txt_password.Multiline = true;
             this.txt_password.Name = "txt_password";
-            this.txt_password.PasswordChar = '*';
             this.txt_password.Size = new System.Drawing.Size(243, 41);
             this.txt_password.TabIndex = 3;
             this.txt_password.TextChanged += new System.EventHandler(this.txt_password_TextChanged);
@@ -430,14 +437,6 @@ namespace project
             this.btn_add.Text = "Add User";
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // lbl_PasswordDisp
-            // 
-            this.lbl_PasswordDisp.Font = new System.Drawing.Font("Arial", 10F);
-            this.lbl_PasswordDisp.Location = new System.Drawing.Point(213, 235);
-            this.lbl_PasswordDisp.Name = "lbl_PasswordDisp";
-            this.lbl_PasswordDisp.Size = new System.Drawing.Size(243, 127);
-            this.lbl_PasswordDisp.TabIndex = 1000;
             // 
             // frmUsers
             // 
