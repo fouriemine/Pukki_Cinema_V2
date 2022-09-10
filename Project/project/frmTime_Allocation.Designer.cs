@@ -29,6 +29,7 @@ namespace project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTime_Allocation));
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTimeAllocation = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -45,6 +46,7 @@ namespace project
             this.lblTimeBracket = new System.Windows.Forms.Label();
             this.lblTimeID = new System.Windows.Forms.Label();
             this.bttnAddTime = new System.Windows.Forms.Button();
+            this.lblTimeValidation = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.gbTime_Allocation.SuspendLayout();
@@ -127,6 +129,7 @@ namespace project
             // 
             // gbTime_Allocation
             // 
+            this.gbTime_Allocation.Controls.Add(this.lblTimeValidation);
             this.gbTime_Allocation.Controls.Add(this.lblMaxNumberValidation);
             this.gbTime_Allocation.Controls.Add(this.dgvDisplayTimeAllocvations);
             this.gbTime_Allocation.Controls.Add(this.bttnDeleteTime);
@@ -233,6 +236,17 @@ namespace project
             this.bttnAddTime.UseVisualStyleBackColor = true;
             this.bttnAddTime.Click += new System.EventHandler(this.bttnAddTheatre_Click);
             // 
+            // lblTimeValidation
+            // 
+            this.lblTimeValidation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTimeValidation.ForeColor = System.Drawing.Color.Black;
+            this.lblTimeValidation.Location = new System.Drawing.Point(370, 249);
+            this.lblTimeValidation.Name = "lblTimeValidation";
+            this.lblTimeValidation.Size = new System.Drawing.Size(328, 156);
+            this.lblTimeValidation.TabIndex = 10;
+            this.lblTimeValidation.Text = resources.GetString("lblTimeValidation.Text");
+            this.lblTimeValidation.Visible = false;
+            // 
             // frmTime_Allocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,5 +288,6 @@ namespace project
         private System.Windows.Forms.Label lblTimeID;
         private System.Windows.Forms.Button bttnAddTime;
         private System.Windows.Forms.Label lblMaxNumberValidation;
+        private System.Windows.Forms.Label lblTimeValidation;
     }
 }
