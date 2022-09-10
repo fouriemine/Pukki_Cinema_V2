@@ -123,6 +123,9 @@ namespace project
                 conn = new SqlConnection(connStr);
                 conn.Open();  //open connection
 
+                //Display warning
+                lblMaxNumberValidation.Visible = true;
+
                 //Populate Gridview with current theatres
                 sql = "SELECT * FROM THEATRES";
                 adapt = new SqlDataAdapter();
@@ -174,9 +177,10 @@ namespace project
                 else
                     MessageBox.Show("You have to specify the capacity in the provided textbox.");
             }
-            catch
+            catch(Exception wrong)
             {
-                MessageBox.Show("Could not add to theatre table.");
+                MessageBox.Show("Could not add to theatre table." + wrong.Message);
+                this.Close();
             }
         }
 
@@ -184,6 +188,10 @@ namespace project
         {
             gbTheatre.Text = "Update Theatre";
             cbTheatreID.Enabled = true;
+
+            //Hide validation label
+            lblMaxNumberValidation.Visible = false;
+
             try
             {
                 //making all controls visible 
@@ -284,7 +292,22 @@ namespace project
 
                         //Update user
                         MessageBox.Show("Deleted successfully");
-                        
+
+                        //re-populaate combobox
+                        sql = "SELECT Theatre_ID FROM THEATRES";
+                        adapt = new SqlDataAdapter();
+                        ds = new DataSet();
+                        comm = new SqlCommand(sql, conn);
+                        adapt.SelectCommand = comm;
+                        adapt.Fill(ds, "THEATRES");
+
+
+                        //populating combobox with theatres Id available
+                        cbTheatreID.DataSource = ds.Tables["THEATRES"];
+                        cbTheatreID.DisplayMember = "Theatre_ID";
+                        cbTheatreID.ValueMember = "Theatre_ID";
+
+                        //reload griview
                         reLoad();
 
                         conn.Close();
@@ -309,6 +332,9 @@ namespace project
         {
             try
             {
+                //hide validation lale
+                lblMaxNumberValidation.Visible = false; 
+
                 gbTheatre.Text = "Delete Theatre";
                 //making all controls visible 
                 lblTheatreID.Visible = true;
