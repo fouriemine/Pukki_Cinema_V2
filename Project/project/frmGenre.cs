@@ -20,8 +20,7 @@ namespace Genre
         DataSet ds;
         String sql;
         int deleteID = 1, updateID;
-        string message = "Are sure you want to delete this genre?";
-        string title = "Delete Genre";
+       
 
 
 
@@ -84,6 +83,7 @@ namespace Genre
                 btnUpdate.Visible = false;
                 cmbGenreId.Visible = true;
                 txtbGenreId.Visible = false;
+                lblMaxCharactersValidation.Visible = false;
 
                 // clear the tools
                 comboBoxDescription.Items.Clear();
@@ -120,6 +120,9 @@ namespace Genre
         private void frmGenre_Load(object sender, EventArgs e)
         {
 
+            try
+            {
+
             btnAdd.Visible = false;
             btnUpdate.Visible = false;
             btnDelete.Visible = false;
@@ -131,9 +134,6 @@ namespace Genre
             lblMaxCharactersValidation.Visible = false;
 
 
-
-            try
-            {
                 con = new SqlConnection(connStr);
                 con.Open();  //open connection
 
@@ -151,9 +151,9 @@ namespace Genre
                 con.Close(); //close connection
                 MessageBox.Show("Connection Successful");
             }
-            catch
+            catch(Exception error)
             {
-                MessageBox.Show("Connection to database Unsuccessful");
+                MessageBox.Show("Connection to database Unsuccessful" +error.Message);
             }
 
 
@@ -199,9 +199,9 @@ namespace Genre
                 con.Close();
 
             }
-            catch
+            catch (Exception error)
             {
-                MessageBox.Show("Error!");
+                MessageBox.Show(error.Message);
             }
 
 
@@ -213,14 +213,14 @@ namespace Genre
             try
             {
 
-                if (cmbGenreId.SelectedIndex != -1)
+                if (cmbGenreId.SelectedValue != null)
                 {
 
                     if (txtbDescription.Text != "")
                     {
 
                         con.Open(); //Open connection
-                        sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedIndex.ToString())}";
+                        sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedValue.ToString())}";
                         comm = new SqlCommand(sql, con);
                         adapt = new SqlDataAdapter();
                         ds = new DataSet();
@@ -243,9 +243,9 @@ namespace Genre
                     MessageBox.Show("Please make select a Genre Id!! ");
                 }
             }
-            catch(Exception Error)
+            catch (Exception error)
             {
-                MessageBox.Show("Could not update Genre: " + Error.Message);
+                MessageBox.Show("Could not update Genre: " + error.Message);
             }
 
         }
@@ -255,6 +255,8 @@ namespace Genre
         {
             try
             {
+                string message = "Are sure you want to delete Genre" +cmbGenreId.SelectedValue+ "?";
+                string title = "Delete Genre";
                 //verify if the user wants to delete the Genre selected
 
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -262,7 +264,7 @@ namespace Genre
                 if (result == DialogResult.Yes)
                 {
 
-                    if (cmbGenreId.SelectedIndex != -1)
+                    if (cmbGenreId.SelectedValue != null)
                     {
                         deleteID = int.Parse(cmbGenreId.SelectedValue.ToString());
                         con.Open();
@@ -298,7 +300,7 @@ namespace Genre
                     }
                     else
                     {
-                        MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                        MessageBox.Show("Before you delete a Genre, you need to first select a Genre ID from the options provided!! ");
                     }
                 }
 
@@ -310,9 +312,9 @@ namespace Genre
                 }
 
             }
-            catch (Exception err)
+            catch (Exception error)
             {
-                MessageBox.Show("Error: " + err.Message);  //display an exception caught
+                MessageBox.Show("Error: " + error.Message);  //display an exception caught
             }
         }
 
@@ -377,9 +379,9 @@ namespace Genre
                 con.Close();
 
             }
-            catch
+            catch (Exception error)
             {
-                MessageBox.Show("Could update database with new request.");
+                MessageBox.Show("Could update database with new request." + error.Message);
             }
 
         }
