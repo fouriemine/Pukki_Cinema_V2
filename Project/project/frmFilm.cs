@@ -14,7 +14,7 @@ namespace project
     public partial class frmFilm : Form
     {
         //Creating my sql connection string, sql command, connection, dataset and adapter
-        public String conStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        public String conStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -343,7 +343,8 @@ namespace project
 
                                             //Sql query for adding
                                             conn.Open();
-                                            com = new SqlCommand("insert into FILMS(Title, Film_Cost, Selling_Price, Length, Age_Restriction, Genre_ID, Status) values(@title, @filmCost , @sellingprice, @length, @ageRestriction, @genre_Desc, @status)", conn);
+                                            com = new SqlCommand("insert into FILMS(Title, Film_Cost, Selling_Price, Length, Age_Restriction, Genre_ID, Status) values(@title, @filmCost , @sellingprice, @length, " +
+                                                "@ageRestriction, @genre_Desc, @status)", conn);
                                             com.Parameters.AddWithValue("@title", txt_title.Text);
                                             com.Parameters.AddWithValue("@filmCost", txt_filmCost.Text);
                                             com.Parameters.AddWithValue("@sellingprice", txt_sellingPrice.Text);
