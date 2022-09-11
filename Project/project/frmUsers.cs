@@ -316,7 +316,13 @@ namespace project
                 lbl_PasswordDisp.Visible = false;
                 if (txtBox_UserID.Text != "")
                 {
-                    if (MessageBox.Show("Are you sure you want to delete the item?", "Deleted Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    conn = new SqlConnection(conStr);
+                    conn.Open();
+                    com = new SqlCommand("SELECT Username FROM USERS WHERE Users_ID=@userID", conn);
+                    com.Parameters.AddWithValue("@userID", txtBox_UserID.Text);
+                    String name = (String)com.ExecuteScalar();
+                    conn.Close();
+                    if (MessageBox.Show("Are you sure you want to delete " + name + "?", "Deleted Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         conn.Open();
                         com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
