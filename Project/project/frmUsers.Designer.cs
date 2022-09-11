@@ -29,23 +29,11 @@ namespace project
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btn_previousFilms = new System.Windows.Forms.Button();
-            this.lbl_deleteFilms = new System.Windows.Forms.Label();
-            this.lbl_addFilms = new System.Windows.Forms.Label();
-            this.lbl_UpdateFilms = new System.Windows.Forms.Label();
             this.lbl_films = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_previous = new System.Windows.Forms.Button();
-            this.btnclose_help = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lbl_DeleteUsers = new System.Windows.Forms.Label();
-            this.lblAdd_Users = new System.Windows.Forms.Label();
-            this.lblUpdate_Users = new System.Windows.Forms.Label();
             this.gbx_users = new System.Windows.Forms.GroupBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblSearchUser = new System.Windows.Forms.Label();
@@ -66,199 +54,41 @@ namespace project
             this.lbl_adminYN = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
+            this.lblUpdate_Users = new System.Windows.Forms.Label();
+            this.lblAdd_Users = new System.Windows.Forms.Label();
+            this.lbl_DeleteUsers = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnclose_help = new System.Windows.Forms.Button();
+            this.btn_previous = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.gbx_users.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).BeginInit();
             this.pnl_Admin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Purple;
-            this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.lbl_films);
-            this.panel3.Location = new System.Drawing.Point(-294, -2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Location = new System.Drawing.Point(-392, -1);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1732, 1003);
+            this.panel3.Size = new System.Drawing.Size(2107, 203);
             this.panel3.TabIndex = 9;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel5.Controls.Add(this.btn_previousFilms);
-            this.panel5.Controls.Add(this.lbl_deleteFilms);
-            this.panel5.Controls.Add(this.lbl_addFilms);
-            this.panel5.Controls.Add(this.lbl_UpdateFilms);
-            this.panel5.Location = new System.Drawing.Point(303, 126);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(152, 478);
-            this.panel5.TabIndex = 10;
-            // 
-            // btn_previousFilms
-            // 
-            this.btn_previousFilms.BackColor = System.Drawing.Color.Purple;
-            this.btn_previousFilms.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_previousFilms.ForeColor = System.Drawing.Color.White;
-            this.btn_previousFilms.Location = new System.Drawing.Point(49, 436);
-            this.btn_previousFilms.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_previousFilms.Name = "btn_previousFilms";
-            this.btn_previousFilms.Size = new System.Drawing.Size(95, 40);
-            this.btn_previousFilms.TabIndex = 10;
-            this.btn_previousFilms.Text = "Previous";
-            this.btn_previousFilms.UseVisualStyleBackColor = false;
-            // 
-            // lbl_deleteFilms
-            // 
-            this.lbl_deleteFilms.AutoSize = true;
-            this.lbl_deleteFilms.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_deleteFilms.ForeColor = System.Drawing.Color.White;
-            this.lbl_deleteFilms.Location = new System.Drawing.Point(11, 142);
-            this.lbl_deleteFilms.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_deleteFilms.Name = "lbl_deleteFilms";
-            this.lbl_deleteFilms.Size = new System.Drawing.Size(136, 39);
-            this.lbl_deleteFilms.TabIndex = 6;
-            this.lbl_deleteFilms.Text = "Delete Film";
-            // 
-            // lbl_addFilms
-            // 
-            this.lbl_addFilms.AutoSize = true;
-            this.lbl_addFilms.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_addFilms.ForeColor = System.Drawing.Color.White;
-            this.lbl_addFilms.Location = new System.Drawing.Point(11, 33);
-            this.lbl_addFilms.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_addFilms.Name = "lbl_addFilms";
-            this.lbl_addFilms.Size = new System.Drawing.Size(108, 39);
-            this.lbl_addFilms.TabIndex = 4;
-            this.lbl_addFilms.Text = "Add Film";
-            // 
-            // lbl_UpdateFilms
-            // 
-            this.lbl_UpdateFilms.AutoSize = true;
-            this.lbl_UpdateFilms.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_UpdateFilms.ForeColor = System.Drawing.Color.White;
-            this.lbl_UpdateFilms.Location = new System.Drawing.Point(11, 87);
-            this.lbl_UpdateFilms.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_UpdateFilms.Name = "lbl_UpdateFilms";
-            this.lbl_UpdateFilms.Size = new System.Drawing.Size(141, 39);
-            this.lbl_UpdateFilms.TabIndex = 5;
-            this.lbl_UpdateFilms.Text = "Update Film";
             // 
             // lbl_films
             // 
             this.lbl_films.AutoSize = true;
             this.lbl_films.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 64F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_films.ForeColor = System.Drawing.Color.White;
-            this.lbl_films.Location = new System.Drawing.Point(394, 9);
-            this.lbl_films.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_films.Location = new System.Drawing.Point(525, 11);
             this.lbl_films.Name = "lbl_films";
-            this.lbl_films.Size = new System.Drawing.Size(202, 103);
+            this.lbl_films.Size = new System.Drawing.Size(251, 128);
             this.lbl_films.TabIndex = 3;
             this.lbl_films.Text = "Users";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel1.Controls.Add(this.btn_previous);
-            this.panel1.Controls.Add(this.btnclose_help);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.lbl_DeleteUsers);
-            this.panel1.Controls.Add(this.lblAdd_Users);
-            this.panel1.Controls.Add(this.lblUpdate_Users);
-            this.panel1.Location = new System.Drawing.Point(1, 124);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(152, 652);
-            this.panel1.TabIndex = 10;
-            // 
-            // btn_previous
-            // 
-            this.btn_previous.BackColor = System.Drawing.Color.Purple;
-            this.btn_previous.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_previous.ForeColor = System.Drawing.Color.White;
-            this.btn_previous.Location = new System.Drawing.Point(16, 538);
-            this.btn_previous.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btn_previous.Name = "btn_previous";
-            this.btn_previous.Size = new System.Drawing.Size(124, 41);
-            this.btn_previous.TabIndex = 13;
-            this.btn_previous.Text = "Previous";
-            this.btn_previous.UseVisualStyleBackColor = false;
-            this.btn_previous.Click += new System.EventHandler(this.btn_previous_Click);
-            // 
-            // btnclose_help
-            // 
-            this.btnclose_help.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnclose_help.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
-            this.btnclose_help.ForeColor = System.Drawing.Color.White;
-            this.btnclose_help.Location = new System.Drawing.Point(16, 584);
-            this.btnclose_help.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnclose_help.Name = "btnclose_help";
-            this.btnclose_help.Size = new System.Drawing.Size(124, 40);
-            this.btnclose_help.TabIndex = 12;
-            this.btnclose_help.Text = "Help Close";
-            this.btnclose_help.UseVisualStyleBackColor = false;
-            this.btnclose_help.Visible = false;
-            this.btnclose_help.Click += new System.EventHandler(this.btnclose_help_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.button2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(16, 585);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 38);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Help Function Open";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // lbl_DeleteUsers
-            // 
-            this.lbl_DeleteUsers.AutoSize = true;
-            this.lbl_DeleteUsers.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_DeleteUsers.ForeColor = System.Drawing.Color.White;
-            this.lbl_DeleteUsers.Location = new System.Drawing.Point(4, 142);
-            this.lbl_DeleteUsers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_DeleteUsers.Name = "lbl_DeleteUsers";
-            this.lbl_DeleteUsers.Size = new System.Drawing.Size(151, 39);
-            this.lbl_DeleteUsers.TabIndex = 6;
-            this.lbl_DeleteUsers.Text = "Delete Users";
-            this.lbl_DeleteUsers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_DeleteUsers.Click += new System.EventHandler(this.lbl_DeleteUsers_Click);
-            // 
-            // lblAdd_Users
-            // 
-            this.lblAdd_Users.AutoSize = true;
-            this.lblAdd_Users.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdd_Users.ForeColor = System.Drawing.Color.White;
-            this.lblAdd_Users.Location = new System.Drawing.Point(10, 33);
-            this.lblAdd_Users.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAdd_Users.Name = "lblAdd_Users";
-            this.lblAdd_Users.Size = new System.Drawing.Size(123, 39);
-            this.lblAdd_Users.TabIndex = 4;
-            this.lblAdd_Users.Text = "Add Users";
-            this.lblAdd_Users.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblAdd_Users.Click += new System.EventHandler(this.lblAdd_Users_Click);
-            // 
-            // lblUpdate_Users
-            // 
-            this.lblUpdate_Users.AutoSize = true;
-            this.lblUpdate_Users.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUpdate_Users.ForeColor = System.Drawing.Color.White;
-            this.lblUpdate_Users.Location = new System.Drawing.Point(6, 87);
-            this.lblUpdate_Users.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUpdate_Users.Name = "lblUpdate_Users";
-            this.lblUpdate_Users.Size = new System.Drawing.Size(156, 39);
-            this.lblUpdate_Users.TabIndex = 5;
-            this.lblUpdate_Users.Text = "Update Users";
-            this.lblUpdate_Users.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblUpdate_Users.Click += new System.EventHandler(this.lblUpdate_Users_Click);
             // 
             // gbx_users
             // 
@@ -281,11 +111,11 @@ namespace project
             this.gbx_users.Controls.Add(this.btn_add);
             this.gbx_users.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbx_users.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.gbx_users.Location = new System.Drawing.Point(177, 158);
-            this.gbx_users.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbx_users.Location = new System.Drawing.Point(236, 220);
+            this.gbx_users.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbx_users.Name = "gbx_users";
-            this.gbx_users.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.gbx_users.Size = new System.Drawing.Size(938, 609);
+            this.gbx_users.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbx_users.Size = new System.Drawing.Size(1304, 724);
             this.gbx_users.TabIndex = 11;
             this.gbx_users.TabStop = false;
             this.gbx_users.Text = "~";
@@ -294,11 +124,11 @@ namespace project
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Arial Narrow", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(604, 42);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSearch.Location = new System.Drawing.Point(805, 52);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(330, 40);
+            this.txtSearch.Size = new System.Drawing.Size(439, 48);
             this.txtSearch.TabIndex = 1001;
             // 
             // lblSearchUser
@@ -307,10 +137,9 @@ namespace project
             this.lblSearchUser.BackColor = System.Drawing.Color.CornflowerBlue;
             this.lblSearchUser.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearchUser.ForeColor = System.Drawing.Color.White;
-            this.lblSearchUser.Location = new System.Drawing.Point(432, 42);
-            this.lblSearchUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSearchUser.Location = new System.Drawing.Point(576, 52);
             this.lblSearchUser.Name = "lblSearchUser";
-            this.lblSearchUser.Size = new System.Drawing.Size(163, 39);
+            this.lblSearchUser.Size = new System.Drawing.Size(202, 48);
             this.lblSearchUser.TabIndex = 13;
             this.lblSearchUser.Text = "Search Users:";
             this.lblSearchUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -319,19 +148,18 @@ namespace project
             // lbl_PasswordDisp
             // 
             this.lbl_PasswordDisp.Font = new System.Drawing.Font("Arial", 10F);
-            this.lbl_PasswordDisp.Location = new System.Drawing.Point(160, 191);
-            this.lbl_PasswordDisp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_PasswordDisp.Location = new System.Drawing.Point(213, 235);
             this.lbl_PasswordDisp.Name = "lbl_PasswordDisp";
-            this.lbl_PasswordDisp.Size = new System.Drawing.Size(182, 103);
+            this.lbl_PasswordDisp.Size = new System.Drawing.Size(243, 127);
             this.lbl_PasswordDisp.TabIndex = 1000;
             // 
             // HelpFunctionPicture
             // 
             this.HelpFunctionPicture.Image = global::project.Properties.Resources.pukkicinema_Helpfunction;
-            this.HelpFunctionPicture.Location = new System.Drawing.Point(26, 372);
-            this.HelpFunctionPicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HelpFunctionPicture.Location = new System.Drawing.Point(35, 458);
+            this.HelpFunctionPicture.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HelpFunctionPicture.Name = "HelpFunctionPicture";
-            this.HelpFunctionPicture.Size = new System.Drawing.Size(321, 232);
+            this.HelpFunctionPicture.Size = new System.Drawing.Size(428, 286);
             this.HelpFunctionPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.HelpFunctionPicture.TabIndex = 12;
             this.HelpFunctionPicture.TabStop = false;
@@ -342,20 +170,20 @@ namespace project
             this.pnl_Admin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_Admin.Controls.Add(this.rdo_AdminNo);
             this.pnl_Admin.Controls.Add(this.rdo_AdminYes);
-            this.pnl_Admin.Location = new System.Drawing.Point(160, 297);
-            this.pnl_Admin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnl_Admin.Location = new System.Drawing.Point(213, 366);
+            this.pnl_Admin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnl_Admin.Name = "pnl_Admin";
-            this.pnl_Admin.Size = new System.Drawing.Size(183, 71);
+            this.pnl_Admin.Size = new System.Drawing.Size(243, 87);
             this.pnl_Admin.TabIndex = 34;
             // 
             // rdo_AdminNo
             // 
             this.rdo_AdminNo.AutoSize = true;
             this.rdo_AdminNo.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_AdminNo.Location = new System.Drawing.Point(105, 20);
-            this.rdo_AdminNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdo_AdminNo.Location = new System.Drawing.Point(140, 25);
+            this.rdo_AdminNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdo_AdminNo.Name = "rdo_AdminNo";
-            this.rdo_AdminNo.Size = new System.Drawing.Size(55, 37);
+            this.rdo_AdminNo.Size = new System.Drawing.Size(66, 44);
             this.rdo_AdminNo.TabIndex = 5;
             this.rdo_AdminNo.TabStop = true;
             this.rdo_AdminNo.Text = "No";
@@ -365,10 +193,10 @@ namespace project
             // 
             this.rdo_AdminYes.AutoSize = true;
             this.rdo_AdminYes.Font = new System.Drawing.Font("Bahnschrift Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_AdminYes.Location = new System.Drawing.Point(26, 20);
-            this.rdo_AdminYes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdo_AdminYes.Location = new System.Drawing.Point(35, 25);
+            this.rdo_AdminYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdo_AdminYes.Name = "rdo_AdminYes";
-            this.rdo_AdminYes.Size = new System.Drawing.Size(62, 37);
+            this.rdo_AdminYes.Size = new System.Drawing.Size(74, 44);
             this.rdo_AdminYes.TabIndex = 4;
             this.rdo_AdminYes.TabStop = true;
             this.rdo_AdminYes.Text = "Yes";
@@ -379,10 +207,10 @@ namespace project
             this.btn_Delete.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_Delete.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(804, 552);
-            this.btn_Delete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Delete.Location = new System.Drawing.Point(1072, 679);
+            this.btn_Delete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(129, 40);
+            this.btn_Delete.Size = new System.Drawing.Size(172, 49);
             this.btn_Delete.TabIndex = 999;
             this.btn_Delete.Text = "Delete User";
             this.btn_Delete.UseVisualStyleBackColor = false;
@@ -393,10 +221,10 @@ namespace project
             this.btn_Update.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_Update.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Update.ForeColor = System.Drawing.Color.White;
-            this.btn_Update.Location = new System.Drawing.Point(804, 550);
-            this.btn_Update.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Update.Location = new System.Drawing.Point(1072, 677);
+            this.btn_Update.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Update.Name = "btn_Update";
-            this.btn_Update.Size = new System.Drawing.Size(129, 40);
+            this.btn_Update.Size = new System.Drawing.Size(172, 49);
             this.btn_Update.TabIndex = 999;
             this.btn_Update.Text = "Update User";
             this.btn_Update.UseVisualStyleBackColor = false;
@@ -405,11 +233,11 @@ namespace project
             // txtBox_UserID
             // 
             this.txtBox_UserID.Font = new System.Drawing.Font("Arial Narrow", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBox_UserID.Location = new System.Drawing.Point(160, 42);
-            this.txtBox_UserID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBox_UserID.Location = new System.Drawing.Point(213, 52);
+            this.txtBox_UserID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtBox_UserID.Multiline = true;
             this.txtBox_UserID.Name = "txtBox_UserID";
-            this.txtBox_UserID.Size = new System.Drawing.Size(183, 34);
+            this.txtBox_UserID.Size = new System.Drawing.Size(243, 41);
             this.txtBox_UserID.TabIndex = 1;
             // 
             // lbl_UserId
@@ -417,10 +245,9 @@ namespace project
             this.lbl_UserId.AutoSize = true;
             this.lbl_UserId.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_UserId.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_UserId.Location = new System.Drawing.Point(21, 42);
-            this.lbl_UserId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_UserId.Location = new System.Drawing.Point(28, 52);
             this.lbl_UserId.Name = "lbl_UserId";
-            this.lbl_UserId.Size = new System.Drawing.Size(77, 33);
+            this.lbl_UserId.Size = new System.Drawing.Size(96, 41);
             this.lbl_UserId.TabIndex = 30;
             this.lbl_UserId.Text = "User ID";
             // 
@@ -434,49 +261,49 @@ namespace project
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(431, 97);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(576, 172);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.CornflowerBlue;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(502, 327);
+            this.dataGridView1.Size = new System.Drawing.Size(722, 439);
             this.dataGridView1.TabIndex = 29;
             // 
             // textbx_Username
             // 
             this.textbx_Username.Font = new System.Drawing.Font("Arial Narrow", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbx_Username.Location = new System.Drawing.Point(160, 97);
-            this.textbx_Username.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textbx_Username.Location = new System.Drawing.Point(213, 119);
+            this.textbx_Username.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textbx_Username.Multiline = true;
             this.textbx_Username.Name = "textbx_Username";
-            this.textbx_Username.Size = new System.Drawing.Size(183, 34);
+            this.textbx_Username.Size = new System.Drawing.Size(243, 41);
             this.textbx_Username.TabIndex = 2;
             // 
             // lbl_username
@@ -484,10 +311,9 @@ namespace project
             this.lbl_username.AutoSize = true;
             this.lbl_username.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_username.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_username.Location = new System.Drawing.Point(21, 97);
-            this.lbl_username.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_username.Location = new System.Drawing.Point(28, 119);
             this.lbl_username.Name = "lbl_username";
-            this.lbl_username.Size = new System.Drawing.Size(105, 33);
+            this.lbl_username.Size = new System.Drawing.Size(130, 41);
             this.lbl_username.TabIndex = 26;
             this.lbl_username.Text = "Username";
             // 
@@ -496,20 +322,19 @@ namespace project
             this.lbl_status.AutoSize = true;
             this.lbl_status.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_status.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_status.Location = new System.Drawing.Point(16, 186);
-            this.lbl_status.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_status.Location = new System.Drawing.Point(21, 229);
             this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(0, 33);
+            this.lbl_status.Size = new System.Drawing.Size(0, 41);
             this.lbl_status.TabIndex = 24;
             // 
             // txt_password
             // 
             this.txt_password.Font = new System.Drawing.Font("Arial Narrow", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_password.Location = new System.Drawing.Point(160, 155);
-            this.txt_password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_password.Location = new System.Drawing.Point(213, 191);
+            this.txt_password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_password.Multiline = true;
             this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(183, 34);
+            this.txt_password.Size = new System.Drawing.Size(243, 41);
             this.txt_password.TabIndex = 3;
             this.txt_password.TextChanged += new System.EventHandler(this.txt_password_TextChanged);
             // 
@@ -518,10 +343,9 @@ namespace project
             this.lbl_adminYN.AutoSize = true;
             this.lbl_adminYN.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_adminYN.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_adminYN.Location = new System.Drawing.Point(21, 317);
-            this.lbl_adminYN.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_adminYN.Location = new System.Drawing.Point(28, 390);
             this.lbl_adminYN.Name = "lbl_adminYN";
-            this.lbl_adminYN.Size = new System.Drawing.Size(71, 33);
+            this.lbl_adminYN.Size = new System.Drawing.Size(89, 41);
             this.lbl_adminYN.TabIndex = 12;
             this.lbl_adminYN.Text = "Admin";
             // 
@@ -530,10 +354,9 @@ namespace project
             this.lbl_password.AutoSize = true;
             this.lbl_password.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_password.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lbl_password.Location = new System.Drawing.Point(21, 155);
-            this.lbl_password.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_password.Location = new System.Drawing.Point(28, 191);
             this.lbl_password.Name = "lbl_password";
-            this.lbl_password.Size = new System.Drawing.Size(101, 33);
+            this.lbl_password.Size = new System.Drawing.Size(127, 41);
             this.lbl_password.TabIndex = 11;
             this.lbl_password.Text = "Password";
             // 
@@ -542,42 +365,137 @@ namespace project
             this.btn_add.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btn_add.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.Color.White;
-            this.btn_add.Location = new System.Drawing.Point(804, 552);
-            this.btn_add.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_add.Location = new System.Drawing.Point(1072, 679);
+            this.btn_add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(129, 40);
+            this.btn_add.Size = new System.Drawing.Size(172, 49);
             this.btn_add.TabIndex = 999;
             this.btn_add.Text = "Add User";
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // lblUpdate_Users
+            // 
+            this.lblUpdate_Users.AutoSize = true;
+            this.lblUpdate_Users.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpdate_Users.ForeColor = System.Drawing.Color.White;
+            this.lblUpdate_Users.Location = new System.Drawing.Point(8, 107);
+            this.lblUpdate_Users.Name = "lblUpdate_Users";
+            this.lblUpdate_Users.Size = new System.Drawing.Size(192, 48);
+            this.lblUpdate_Users.TabIndex = 5;
+            this.lblUpdate_Users.Text = "Update Users";
+            this.lblUpdate_Users.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUpdate_Users.Click += new System.EventHandler(this.lblUpdate_Users_Click);
+            // 
+            // lblAdd_Users
+            // 
+            this.lblAdd_Users.AutoSize = true;
+            this.lblAdd_Users.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdd_Users.ForeColor = System.Drawing.Color.White;
+            this.lblAdd_Users.Location = new System.Drawing.Point(13, 41);
+            this.lblAdd_Users.Name = "lblAdd_Users";
+            this.lblAdd_Users.Size = new System.Drawing.Size(151, 48);
+            this.lblAdd_Users.TabIndex = 4;
+            this.lblAdd_Users.Text = "Add Users";
+            this.lblAdd_Users.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAdd_Users.Click += new System.EventHandler(this.lblAdd_Users_Click);
+            // 
+            // lbl_DeleteUsers
+            // 
+            this.lbl_DeleteUsers.AutoSize = true;
+            this.lbl_DeleteUsers.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_DeleteUsers.ForeColor = System.Drawing.Color.White;
+            this.lbl_DeleteUsers.Location = new System.Drawing.Point(5, 175);
+            this.lbl_DeleteUsers.Name = "lbl_DeleteUsers";
+            this.lbl_DeleteUsers.Size = new System.Drawing.Size(186, 48);
+            this.lbl_DeleteUsers.TabIndex = 6;
+            this.lbl_DeleteUsers.Text = "Delete Users";
+            this.lbl_DeleteUsers.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_DeleteUsers.Click += new System.EventHandler(this.lbl_DeleteUsers_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button2.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(21, 720);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(165, 47);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Help Function Open";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnclose_help
+            // 
+            this.btnclose_help.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnclose_help.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F);
+            this.btnclose_help.ForeColor = System.Drawing.Color.White;
+            this.btnclose_help.Location = new System.Drawing.Point(21, 719);
+            this.btnclose_help.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnclose_help.Name = "btnclose_help";
+            this.btnclose_help.Size = new System.Drawing.Size(165, 49);
+            this.btnclose_help.TabIndex = 12;
+            this.btnclose_help.Text = "Help Close";
+            this.btnclose_help.UseVisualStyleBackColor = false;
+            this.btnclose_help.Visible = false;
+            this.btnclose_help.Click += new System.EventHandler(this.btnclose_help_Click);
+            // 
+            // btn_previous
+            // 
+            this.btn_previous.BackColor = System.Drawing.Color.Purple;
+            this.btn_previous.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_previous.ForeColor = System.Drawing.Color.White;
+            this.btn_previous.Location = new System.Drawing.Point(21, 662);
+            this.btn_previous.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_previous.Name = "btn_previous";
+            this.btn_previous.Size = new System.Drawing.Size(165, 50);
+            this.btn_previous.TabIndex = 13;
+            this.btn_previous.Text = "Previous";
+            this.btn_previous.UseVisualStyleBackColor = false;
+            this.btn_previous.Click += new System.EventHandler(this.btn_previous_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.btn_previous);
+            this.panel1.Controls.Add(this.btnclose_help);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.lbl_DeleteUsers);
+            this.panel1.Controls.Add(this.lblAdd_Users);
+            this.panel1.Controls.Add(this.lblUpdate_Users);
+            this.panel1.Location = new System.Drawing.Point(0, 197);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(203, 770);
+            this.panel1.TabIndex = 10;
+            // 
             // frmUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1086, 624);
+            this.ClientSize = new System.Drawing.Size(1713, 954);
             this.Controls.Add(this.gbx_users);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximumSize = new System.Drawing.Size(1303, 822);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(1731, 1001);
             this.Name = "frmUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmUsers_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.gbx_users.ResumeLayout(false);
             this.gbx_users.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HelpFunctionPicture)).EndInit();
             this.pnl_Admin.ResumeLayout(false);
             this.pnl_Admin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -585,16 +503,7 @@ namespace project
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btn_previousFilms;
-        private System.Windows.Forms.Label lbl_deleteFilms;
-        private System.Windows.Forms.Label lbl_addFilms;
-        private System.Windows.Forms.Label lbl_UpdateFilms;
         private System.Windows.Forms.Label lbl_films;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lbl_DeleteUsers;
-        private System.Windows.Forms.Label lblAdd_Users;
-        private System.Windows.Forms.Label lblUpdate_Users;
         private System.Windows.Forms.GroupBox gbx_users;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textbx_Username;
@@ -612,11 +521,15 @@ namespace project
         private System.Windows.Forms.RadioButton rdo_AdminNo;
         private System.Windows.Forms.RadioButton rdo_AdminYes;
         private System.Windows.Forms.PictureBox HelpFunctionPicture;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnclose_help;
         private System.Windows.Forms.Label lbl_PasswordDisp;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblSearchUser;
+        private System.Windows.Forms.Label lblUpdate_Users;
+        private System.Windows.Forms.Label lblAdd_Users;
+        private System.Windows.Forms.Label lbl_DeleteUsers;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnclose_help;
         private System.Windows.Forms.Button btn_previous;
+        private System.Windows.Forms.Panel panel1;
     }
 }
