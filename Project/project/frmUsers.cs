@@ -322,11 +322,16 @@ namespace project
         private void button2_Click(object sender, EventArgs e)
         { //displays help function
             HelpFunctionPicture.Visible = true;
+            button2.Visible = false;
+            btnclose_help.Visible = true;
         }
 
         private void btnclose_help_Click(object sender, EventArgs e)
         {
             HelpFunctionPicture.Visible = false;
+            button2.Visible = true;
+            btnclose_help.Visible = false;
+            
         }
 
        private void txt_password_TextChanged(object sender, EventArgs e)
