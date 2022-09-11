@@ -20,7 +20,7 @@ namespace project
         public SqlConnection connection;
         public SqlDataAdapter adapter;
         public String sql;
-        public String connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        public String connectionString = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
         public int tickets;
         public int schedule_ID;
         public frmSellTickets()
@@ -28,7 +28,7 @@ namespace project
             InitializeComponent();
         }
 
-        private String sqlCon = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        private String sqlCon = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
 
         private void frmSellTickets_Load(object sender, EventArgs e) //initializing variable and controls
         {
@@ -80,13 +80,13 @@ namespace project
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }          
+            }
         }
 
         public void ClearAll() //method to clear all input and reset variables
-        {          
+        {
             sellTicket_btn.Visible = false;
-            tickets_txt.Text="";
+            tickets_txt.Text = "";
             scheduleID_cbx.Text = "";
             paymentMade_cbx.Checked = false;
             tickets_txt.Enabled = true;
@@ -108,8 +108,8 @@ namespace project
                 MessageBox.Show("Please select a Schedule.");
                 scheduleID_cbx.Focus();
             }
-            
-            if (scheduleID_cbx.Text !="" && tickets_txt.Text != "0")//tesing user input
+
+            if (scheduleID_cbx.Text != "" && tickets_txt.Text != "0")//tesing user input
             {
                 try
                 {
@@ -130,7 +130,7 @@ namespace project
                     SqlCommand calculationCMD = new SqlCommand($"Select F.Selling_Price FROM Films F, SCHEDULES S WHERE S.Film_ID=F.Film_ID AND S.Schedule_ID = '{schedule_ID}'", connection);
                     decimal sellingPrice = (decimal)calculationCMD.ExecuteScalar();
                     connection.Close();
-                    
+
                     if (tickets <= (capacity - currentCounter))//testing if tickets to be sold does not exceed availible tickets for the theatre and dislaying the price of the tickets if valid
                     {
                         paymentMade_cbx.Visible = true;
@@ -139,9 +139,9 @@ namespace project
 
                     }
                     else //displaying a message box when number tickets to be sold is greater availible tickets
-                    {                       
-                        DialogResult result = MessageBox.Show("There are not enough availible tickets","Caution",MessageBoxButtons.OK);
-                        if(result == DialogResult.OK)
+                    {
+                        DialogResult result = MessageBox.Show("There are not enough availible tickets", "Caution", MessageBoxButtons.OK);
+                        if (result == DialogResult.OK)
                         {
                             tickets_txt.Text = "";
                             tickets_txt.Focus();
@@ -165,18 +165,18 @@ namespace project
         private void tickets_txt_TextChanged(object sender, EventArgs e)
         {
             //testing if a number is entered 
-            if(tickets_txt.Text == "")
+            if (tickets_txt.Text == "")
             {
                 paymentMade_cbx.Visible = false;
             }
-            else if (tickets_txt.Text!="0")
+            else if (tickets_txt.Text != "0")
             {
                 try
                 {
                     //assigning the tickets to a variable and calling CalcAmount method
-                    tickets = int.Parse(tickets_txt.Text); 
+                    tickets = int.Parse(tickets_txt.Text);
                     CalcAmount();
-                   
+
                 }
                 catch
                 {
@@ -204,7 +204,7 @@ namespace project
         }
 
         private void sellTicket_btn_Click(object sender, EventArgs e)
-        {             
+        {
             try
             {
                 //udating the data base with the new ticket counter and resetting all values and controls
@@ -217,18 +217,18 @@ namespace project
                 string QUERY = $"Update SCHEDULES SET Ticket_Counter = {updatedCounter} WHERE Schedule_ID = {schedule_ID}";
                 SqlCommand CMD = new SqlCommand(QUERY, connection);
                 CMD.ExecuteNonQuery();
-                MessageBox.Show("Sale Information:\n"+tickets + " tickets sold for Schedule ID " + schedule_ID);
+                MessageBox.Show("Sale Information:\n" + tickets + " tickets sold for Schedule ID " + schedule_ID);
                 connection.Close();
                 connection.Open();
                 ClearAll();
                 GetSellingData();
-                connection.Close();              
+                connection.Close();
             }
             catch
             {
                 MessageBox.Show("Please enter a valid amount of tickets");
                 tickets_txt.Focus();
-            }          
+            }
         }
 
         private void clear_btn_Click(object sender, EventArgs e)
@@ -253,7 +253,7 @@ namespace project
                 SqlCommand CMD = new SqlCommand(QueryAlert, connection);
                 CMD.ExecuteReader();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -262,7 +262,7 @@ namespace project
         private void paymentMade_cbx_CheckedChanged(object sender, EventArgs e)
         {
             //testing user input to allow the sale to go through
-            if (tickets_txt.Text!="" && tickets_txt.Text!="0")
+            if (tickets_txt.Text != "" && tickets_txt.Text != "0")
             {
                 paymentMade_cbx.Checked = true;
                 tickets_txt.Enabled = false;
@@ -289,11 +289,11 @@ namespace project
 
         private void closeHelp_btn_Click(object sender, EventArgs e)
         {
-            help_picbox.Visible=false;
-            closeHelp_btn.Visible=false;
+            help_picbox.Visible = false;
+            closeHelp_btn.Visible = false;
             help_btn.Visible = true;
         }
 
-   
+
     }
 }

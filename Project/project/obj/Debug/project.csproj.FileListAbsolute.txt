@@ -160,3 +160,4 @@ C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\bin\Debug
 C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\bin\Debug\project.pdb
 C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
 C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmSellTickets.resources

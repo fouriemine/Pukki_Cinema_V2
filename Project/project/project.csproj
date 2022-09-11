@@ -70,6 +70,12 @@
     <Compile Include="frmSchedule.Designer.cs">
       <DependentUpon>frmSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSellTickets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSellTickets.Designer.cs">
+      <DependentUpon>frmSellTickets.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTheatres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSchedule.resx">
       <DependentUpon>frmSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSellTickets.resx">
+      <DependentUpon>frmSellTickets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTheatres.resx">
       <DependentUpon>frmTheatres.cs</DependentUpon>

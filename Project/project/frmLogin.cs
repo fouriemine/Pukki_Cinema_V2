@@ -13,11 +13,11 @@ namespace project
 {
     public partial class frmLogin : Form
     {
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
         public String connStr = ("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-=======
-        public String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog = Pukki_Cinema; Integrated Security = True";
->>>>>>> Stashed changes
+//=======
+        //public String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog = Pukki_Cinema; Integrated Security = True";
+//>>>>>>> Stashed changes
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -49,11 +49,11 @@ namespace project
         {
             try
             {
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
                 SqlConnection conn = new SqlConnection("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-=======
-                SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog = Pukki_Cinema; Integrated Security = True");
->>>>>>> Stashed changes
+//=======
+                //SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog = Pukki_Cinema; Integrated Security = True");
+//>>>>>>> Stashed changes
                 SqlDataAdapter adap = new SqlDataAdapter("select Admin from Login_new where Username= '" + txt_Username.Text + "'and Password= '" + txt_Password.Text + "'", conn);
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
@@ -103,8 +103,8 @@ namespace project
             btn_HidePassword.Visible = false;
             txt_Password.UseSystemPasswordChar = true;
         }
-<<<<<<< Updated upstream
-=======
+//<<<<<<< Updated upstream
+//=======
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
@@ -147,7 +147,7 @@ namespace project
                 MessageBox.Show("Error");
             }
         }
->>>>>>> Stashed changes
+//>>>>>>> Stashed changes
     }
     }
 

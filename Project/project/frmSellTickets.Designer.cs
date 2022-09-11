@@ -54,7 +54,7 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.Purple;
             this.panel3.Controls.Add(this.sellTickets_lbl);
@@ -66,7 +66,7 @@
             // 
             // sellTickets_lbl
             // 
-            this.sellTickets_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.sellTickets_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sellTickets_lbl.AutoSize = true;
             this.sellTickets_lbl.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 64F);
@@ -79,8 +79,8 @@
             // 
             // paymentMade_cbx
             // 
-            this.paymentMade_cbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.paymentMade_cbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.paymentMade_cbx.AutoSize = true;
             this.paymentMade_cbx.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -94,8 +94,8 @@
             // 
             // amount_lbl
             // 
-            this.amount_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.amount_lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.amount_lbl.AutoSize = true;
             this.amount_lbl.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -126,7 +126,7 @@
             // 
             // filmFilter_gbx
             // 
-            this.filmFilter_gbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.filmFilter_gbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.filmFilter_gbx.Controls.Add(this.schedule_lbl);
             this.filmFilter_gbx.Controls.Add(this.scheduleID_cbx);
@@ -176,7 +176,7 @@
             // 
             // sellTicket_btn
             // 
-            this.sellTicket_btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.sellTicket_btn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sellTicket_btn.BackColor = System.Drawing.Color.CornflowerBlue;
             this.sellTicket_btn.ForeColor = System.Drawing.SystemColors.Window;
@@ -190,8 +190,8 @@
             // 
             // datagrid_gbx
             // 
-            this.datagrid_gbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.datagrid_gbx.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.datagrid_gbx.Controls.Add(this.help_picbox);
             this.datagrid_gbx.Controls.Add(this.selling_dgv);
@@ -205,7 +205,7 @@
             // 
             // help_picbox
             // 
-            this.help_picbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.help_picbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.help_picbox.BackColor = System.Drawing.SystemColors.Control;
             this.help_picbox.Image = ((System.Drawing.Image)(resources.GetObject("help_picbox.Image")));
@@ -221,8 +221,8 @@
             this.selling_dgv.AllowUserToAddRows = false;
             this.selling_dgv.AllowUserToDeleteRows = false;
             this.selling_dgv.AllowUserToOrderColumns = true;
-            this.selling_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.selling_dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.selling_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.selling_dgv.BackgroundColor = System.Drawing.SystemColors.Control;
