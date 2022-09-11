@@ -174,3 +174,5 @@ C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\P
 C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe.config
 C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe
 C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\project.pdb
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmSellTickets.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
