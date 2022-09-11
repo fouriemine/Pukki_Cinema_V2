@@ -236,6 +236,7 @@
             this.selling_dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.selling_dgv.Size = new System.Drawing.Size(1013, 422);
             this.selling_dgv.TabIndex = 0;
+            this.selling_dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selling_dgv_CellContentClick);
             // 
             // help_btn
             // 

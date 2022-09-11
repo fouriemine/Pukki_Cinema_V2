@@ -294,6 +294,9 @@ namespace project
             help_btn.Visible = true;
         }
 
+        private void selling_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }
