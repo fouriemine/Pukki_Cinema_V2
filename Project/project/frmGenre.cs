@@ -43,6 +43,7 @@ namespace Genre
                 btnUpdate.Visible = false;
                 btnAdd.Visible = true;
                 txtbGenreId.Visible = true;
+                lblMaxCharactersValidation.Visible = true; // show the help fuction
 
 
                 // clear the tools
@@ -127,6 +128,7 @@ namespace Genre
             cmbGenreId.Visible = false;
             txtbDescription.Visible = false;
             txtbGenreId.Visible = false;
+            lblMaxCharactersValidation.Visible = false;
 
 
 
@@ -169,6 +171,8 @@ namespace Genre
                 btnUpdate.Visible = true;
                 txtbGenreId.Visible = false;
                 cmbGenreId.Visible = true;
+                lblMaxCharactersValidation.Visible = false;
+
 
                 // clear the tools
                 comboBoxDescription.Items.Clear();

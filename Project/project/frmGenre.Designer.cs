@@ -29,6 +29,7 @@ namespace Genre
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenre));
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@ namespace Genre
             this.lblDeleteGenre = new System.Windows.Forms.Label();
             this.lblAddGenre = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.lblMaxCharactersValidation = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDisplay)).BeginInit();
@@ -100,6 +102,7 @@ namespace Genre
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblMaxCharactersValidation);
             this.groupBox1.Controls.Add(this.txtbGenreId);
             this.groupBox1.Controls.Add(this.cmbGenreId);
             this.groupBox1.Controls.Add(this.btnAdd);
@@ -287,6 +290,15 @@ namespace Genre
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // lblMaxCharactersValidation
+            // 
+            this.lblMaxCharactersValidation.Location = new System.Drawing.Point(339, 199);
+            this.lblMaxCharactersValidation.Name = "lblMaxCharactersValidation";
+            this.lblMaxCharactersValidation.Size = new System.Drawing.Size(317, 183);
+            this.lblMaxCharactersValidation.TabIndex = 14;
+            this.lblMaxCharactersValidation.Text = resources.GetString("lblMaxCharactersValidation.Text");
+            this.lblMaxCharactersValidation.Visible = false;
+            // 
             // frmGenre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,5 +343,6 @@ namespace Genre
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.ComboBox cmbGenreId;
         private System.Windows.Forms.TextBox txtbGenreId;
+        private System.Windows.Forms.Label lblMaxCharactersValidation;
     }
 }
