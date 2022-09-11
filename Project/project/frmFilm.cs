@@ -14,7 +14,7 @@ namespace project
     public partial class frmFilm : Form
     {
         //Creating my sql connection string, sql command, connection, dataset and adapter
-        public String conStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public String conStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;

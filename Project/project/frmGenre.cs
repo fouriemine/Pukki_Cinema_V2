@@ -25,7 +25,7 @@ namespace Genre
 
 
 
-        String connStr = @"Data Source=IPS;Initial Catalog = Pukki_Cinema; Integrated Security = True";
+        String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
         public frmGenre()
         {
             InitializeComponent();
