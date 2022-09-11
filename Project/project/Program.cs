@@ -19,7 +19,7 @@ namespace project
 //<<<<<<< Updated upstream
             //Application.Run(new frmUsers());
 //=======
-            Application.Run(new frmTheatres());
+            Application.Run(new Menu());
 //>>>>>>> Stashed changes
         }
     }
