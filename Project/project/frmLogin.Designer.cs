@@ -40,13 +40,13 @@ namespace project
             this.lbl_Username = new System.Windows.Forms.Label();
             this.lbl_Password = new System.Windows.Forms.Label();
             this.gbox_Menu = new System.Windows.Forms.GroupBox();
-            this.lbl_Tickets = new System.Windows.Forms.Label();
             this.lbl_Reports = new System.Windows.Forms.Label();
             this.lbl_Schedule = new System.Windows.Forms.Label();
             this.lbl_Theatres = new System.Windows.Forms.Label();
             this.lbl_Genres = new System.Windows.Forms.Label();
             this.lbl_Films = new System.Windows.Forms.Label();
             this.lbl_Users = new System.Windows.Forms.Label();
+            this.lbl_Tickets = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picbox_Login)).BeginInit();
             this.gbox_Login.SuspendLayout();
             this.gbox_Menu.SuspendLayout();
@@ -71,9 +71,9 @@ namespace project
             this.gbox_Login.Controls.Add(this.lbl_Password);
             this.gbox_Login.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbox_Login.ForeColor = System.Drawing.Color.White;
-            this.gbox_Login.Location = new System.Drawing.Point(66, 60);
+            this.gbox_Login.Location = new System.Drawing.Point(642, 12);
             this.gbox_Login.Name = "gbox_Login";
-            this.gbox_Login.Size = new System.Drawing.Size(597, 323);
+            this.gbox_Login.Size = new System.Drawing.Size(597, 275);
             this.gbox_Login.TabIndex = 3;
             this.gbox_Login.TabStop = false;
             this.gbox_Login.Text = "Pukkie Cinema";
@@ -107,7 +107,7 @@ namespace project
             // btn_Login
             // 
             this.btn_Login.BackColor = System.Drawing.Color.Purple;
-            this.btn_Login.Location = new System.Drawing.Point(315, 241);
+            this.btn_Login.Location = new System.Drawing.Point(270, 217);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(99, 46);
             this.btn_Login.TabIndex = 5;
@@ -153,7 +153,6 @@ namespace project
             // gbox_Menu
             // 
             this.gbox_Menu.BackColor = System.Drawing.Color.Purple;
-            this.gbox_Menu.Controls.Add(this.gbox_Login);
             this.gbox_Menu.Controls.Add(this.lbl_Reports);
             this.gbox_Menu.Controls.Add(this.lbl_Schedule);
             this.gbox_Menu.Controls.Add(this.lbl_Theatres);
@@ -163,25 +162,13 @@ namespace project
             this.gbox_Menu.Controls.Add(this.lbl_Tickets);
             this.gbox_Menu.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbox_Menu.ForeColor = System.Drawing.Color.White;
-            this.gbox_Menu.Location = new System.Drawing.Point(582, 192);
+            this.gbox_Menu.Location = new System.Drawing.Point(603, 293);
             this.gbox_Menu.Name = "gbox_Menu";
             this.gbox_Menu.Size = new System.Drawing.Size(679, 396);
             this.gbox_Menu.TabIndex = 5;
             this.gbox_Menu.TabStop = false;
             this.gbox_Menu.Text = "Menu";
             this.gbox_Menu.Visible = false;
-            // 
-            // lbl_Tickets
-            // 
-            this.lbl_Tickets.AutoSize = true;
-            this.lbl_Tickets.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Tickets.ForeColor = System.Drawing.Color.White;
-            this.lbl_Tickets.Location = new System.Drawing.Point(289, 301);
-            this.lbl_Tickets.Name = "lbl_Tickets";
-            this.lbl_Tickets.Size = new System.Drawing.Size(130, 33);
-            this.lbl_Tickets.TabIndex = 6;
-            this.lbl_Tickets.Text = "Sell Tickets";
-            this.lbl_Tickets.Click += new System.EventHandler(this.lbl_Tickets_Click);
             // 
             // lbl_Reports
             // 
@@ -255,6 +242,18 @@ namespace project
             this.lbl_Users.Text = "Users";
             this.lbl_Users.Click += new System.EventHandler(this.lbl_Users_Click);
             // 
+            // lbl_Tickets
+            // 
+            this.lbl_Tickets.AutoSize = true;
+            this.lbl_Tickets.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Tickets.ForeColor = System.Drawing.Color.White;
+            this.lbl_Tickets.Location = new System.Drawing.Point(289, 301);
+            this.lbl_Tickets.Name = "lbl_Tickets";
+            this.lbl_Tickets.Size = new System.Drawing.Size(130, 33);
+            this.lbl_Tickets.TabIndex = 6;
+            this.lbl_Tickets.Text = "Sell Tickets";
+            this.lbl_Tickets.Click += new System.EventHandler(this.lbl_Tickets_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 23F);
@@ -262,6 +261,7 @@ namespace project
             this.BackColor = System.Drawing.Color.Purple;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1324, 761);
+            this.Controls.Add(this.gbox_Login);
             this.Controls.Add(this.picbox_Login);
             this.Controls.Add(this.gbox_Menu);
             this.DoubleBuffered = true;
