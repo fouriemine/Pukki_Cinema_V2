@@ -13,27 +13,12 @@ namespace project
 {
     public partial class frmLogin : Form
     {
-        /*public String connStr = ("@Data Source=DESKTOP-0B9U4DP;Initial Catalog=LoginTry();Integrated Security=True");
-        public SqlCommand com;
-        public SqlConnection conn;
-        public DataSet ds;
-        public SqlDataAdapter adap;*/
+        private bool stayLogged = false;
 
 
         public frmLogin()
         {
             InitializeComponent();
-           /* try
-            {
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                MessageBox.Show("Connection Successfull");
-                conn.Close();
-            }
-            catch
-            {
-                MessageBox.Show("Could not connect to db");
-            }*/
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -43,7 +28,16 @@ namespace project
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
+            if(stayLogged)
+            {
+                gbox_Login.Visible = false;
+                gbox_Menu.Visible = true;
+            }
+            else
+            {
+                gbox_Login.Visible = true;
+                gbox_Menu.Visible = false;
+            }
         }
 
         private void btn_ShowPassword_Click(object sender, EventArgs e)
@@ -88,8 +82,7 @@ namespace project
                             MessageBox.Show("Please enter correct details");
                             break;
                     }
-                    /*gbox_Login.Visible = false;
-                    gbox_Menu.Visible = true;*/
+                    stayLogged = true;
                 }
                 else
                 {
@@ -106,6 +99,41 @@ namespace project
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lbl_Users_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Films_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Genres_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Theatres_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Schedule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Tickets_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Reports_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
