@@ -22,8 +22,7 @@ namespace project
         String sql;
         int deleteID = 1, updateID;
 
-        String connStr = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
-
+        String connStr = @"Data Source=IPS;Initial Catalog = Pukki_Cinema; Integrated Security = True";
         public frmTheatres()
         {
             InitializeComponent();

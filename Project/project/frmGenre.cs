@@ -20,10 +20,7 @@ namespace Genre
         DataSet ds;
         String sql;
         int deleteID = 1, updateID;
-        string message = "Are sure you want to delete this genre?";
-        string title = "Delete Genre";
-
-
+        
 
         String connStr = @"Data Source=IPS;Initial Catalog = Pukki_Cinema; Integrated Security = True";
         public frmGenre()
@@ -210,14 +207,14 @@ namespace Genre
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (cmbGenreId.SelectedIndex != -1)
+            if (cmbGenreId.SelectedValue != null)
             {
 
                 if (txtbDescription.Text != "")
                 {
 
                     con.Open(); //Open connection
-                    sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedIndex.ToString())}";
+                    sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedValue.ToString())}";
                     comm = new SqlCommand(sql, con);
                     adapt = new SqlDataAdapter();
                     ds = new DataSet();
@@ -249,6 +246,8 @@ namespace Genre
             try
             {
 
+                string message = "Are sure you want to delete Genre "   +cmbGenreId.SelectedValue+ "?";
+                string title = "Delete Genre";
 
                 //verify if the user wants to delete the Genre selected
 
@@ -293,7 +292,7 @@ namespace Genre
                     }
                     else
                     {
-                        MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                        MessageBox.Show("Before you delete a Genre, you need to first select a Genre ID from the options provided!! ");
                     }
                 }
 
