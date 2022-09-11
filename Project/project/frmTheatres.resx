@@ -120,7 +120,7 @@
   <data name="lblMaxNumberValidation.Text" xml:space="preserve">
     <value>The maximum number of theatres allowed is 3.
 If you try to add more than 3 theatres, you will recieve the following error:
-"The transaction ended in the trigger. Tha batch has been aborted."  and the 
+"The transaction ended in the trigger. The batch has been aborted."  and the 
 form will close.</value>
   </data>
 </root>

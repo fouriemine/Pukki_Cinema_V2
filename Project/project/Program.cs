@@ -16,7 +16,11 @@ namespace project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmFilm());
+<<<<<<< Updated upstream
+            Application.Run(new frmUsers());
+=======
+            Application.Run(new frmLogin());
+>>>>>>> Stashed changes
         }
     }
 }
