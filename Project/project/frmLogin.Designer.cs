@@ -32,6 +32,7 @@ namespace project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.picbox_Login = new System.Windows.Forms.PictureBox();
             this.gbox_Login = new System.Windows.Forms.GroupBox();
+            this.btn_HidePassword = new System.Windows.Forms.Button();
             this.btn_ShowPassword = new System.Windows.Forms.Button();
             this.btn_Login = new System.Windows.Forms.Button();
             this.txt_Password = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@ namespace project
             this.lbl_Genres = new System.Windows.Forms.Label();
             this.lbl_Films = new System.Windows.Forms.Label();
             this.lbl_Users = new System.Windows.Forms.Label();
-            this.btn_HidePassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbox_Login)).BeginInit();
             this.gbox_Login.SuspendLayout();
             this.gbox_Menu.SuspendLayout();
@@ -71,12 +71,25 @@ namespace project
             this.gbox_Login.Controls.Add(this.lbl_Password);
             this.gbox_Login.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbox_Login.ForeColor = System.Drawing.Color.White;
-            this.gbox_Login.Location = new System.Drawing.Point(643, 243);
+            this.gbox_Login.Location = new System.Drawing.Point(66, 60);
             this.gbox_Login.Name = "gbox_Login";
             this.gbox_Login.Size = new System.Drawing.Size(597, 323);
             this.gbox_Login.TabIndex = 3;
             this.gbox_Login.TabStop = false;
             this.gbox_Login.Text = "Pukkie Cinema";
+            // 
+            // btn_HidePassword
+            // 
+            this.btn_HidePassword.BackColor = System.Drawing.Color.White;
+            this.btn_HidePassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HidePassword.BackgroundImage")));
+            this.btn_HidePassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_HidePassword.Location = new System.Drawing.Point(419, 155);
+            this.btn_HidePassword.Name = "btn_HidePassword";
+            this.btn_HidePassword.Size = new System.Drawing.Size(34, 40);
+            this.btn_HidePassword.TabIndex = 7;
+            this.btn_HidePassword.UseVisualStyleBackColor = false;
+            this.btn_HidePassword.Visible = false;
+            this.btn_HidePassword.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_ShowPassword
             // 
@@ -100,6 +113,7 @@ namespace project
             this.btn_Login.TabIndex = 5;
             this.btn_Login.Text = "Log in";
             this.btn_Login.UseVisualStyleBackColor = false;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // txt_Password
             // 
@@ -139,16 +153,17 @@ namespace project
             // gbox_Menu
             // 
             this.gbox_Menu.BackColor = System.Drawing.Color.Purple;
-            this.gbox_Menu.Controls.Add(this.lbl_Tickets);
+            this.gbox_Menu.Controls.Add(this.gbox_Login);
             this.gbox_Menu.Controls.Add(this.lbl_Reports);
             this.gbox_Menu.Controls.Add(this.lbl_Schedule);
             this.gbox_Menu.Controls.Add(this.lbl_Theatres);
             this.gbox_Menu.Controls.Add(this.lbl_Genres);
             this.gbox_Menu.Controls.Add(this.lbl_Films);
             this.gbox_Menu.Controls.Add(this.lbl_Users);
+            this.gbox_Menu.Controls.Add(this.lbl_Tickets);
             this.gbox_Menu.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbox_Menu.ForeColor = System.Drawing.Color.White;
-            this.gbox_Menu.Location = new System.Drawing.Point(575, 182);
+            this.gbox_Menu.Location = new System.Drawing.Point(582, 192);
             this.gbox_Menu.Name = "gbox_Menu";
             this.gbox_Menu.Size = new System.Drawing.Size(679, 396);
             this.gbox_Menu.TabIndex = 5;
@@ -161,22 +176,24 @@ namespace project
             this.lbl_Tickets.AutoSize = true;
             this.lbl_Tickets.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Tickets.ForeColor = System.Drawing.Color.White;
-            this.lbl_Tickets.Location = new System.Drawing.Point(289, 351);
+            this.lbl_Tickets.Location = new System.Drawing.Point(289, 301);
             this.lbl_Tickets.Name = "lbl_Tickets";
             this.lbl_Tickets.Size = new System.Drawing.Size(130, 33);
             this.lbl_Tickets.TabIndex = 6;
             this.lbl_Tickets.Text = "Sell Tickets";
+            this.lbl_Tickets.Click += new System.EventHandler(this.lbl_Tickets_Click);
             // 
             // lbl_Reports
             // 
             this.lbl_Reports.AutoSize = true;
             this.lbl_Reports.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Reports.ForeColor = System.Drawing.Color.White;
-            this.lbl_Reports.Location = new System.Drawing.Point(289, 306);
+            this.lbl_Reports.Location = new System.Drawing.Point(289, 350);
             this.lbl_Reports.Name = "lbl_Reports";
             this.lbl_Reports.Size = new System.Drawing.Size(90, 33);
             this.lbl_Reports.TabIndex = 5;
             this.lbl_Reports.Text = "Reports";
+            this.lbl_Reports.Click += new System.EventHandler(this.lbl_Reports_Click);
             // 
             // lbl_Schedule
             // 
@@ -188,6 +205,7 @@ namespace project
             this.lbl_Schedule.Size = new System.Drawing.Size(106, 33);
             this.lbl_Schedule.TabIndex = 4;
             this.lbl_Schedule.Text = "Schedule";
+            this.lbl_Schedule.Click += new System.EventHandler(this.lbl_Schedule_Click);
             // 
             // lbl_Theatres
             // 
@@ -199,6 +217,7 @@ namespace project
             this.lbl_Theatres.Size = new System.Drawing.Size(101, 33);
             this.lbl_Theatres.TabIndex = 3;
             this.lbl_Theatres.Text = "Theatres";
+            this.lbl_Theatres.Click += new System.EventHandler(this.lbl_Theatres_Click);
             // 
             // lbl_Genres
             // 
@@ -210,6 +229,7 @@ namespace project
             this.lbl_Genres.Size = new System.Drawing.Size(84, 33);
             this.lbl_Genres.TabIndex = 2;
             this.lbl_Genres.Text = "Genres";
+            this.lbl_Genres.Click += new System.EventHandler(this.lbl_Genres_Click);
             // 
             // lbl_Films
             // 
@@ -221,6 +241,7 @@ namespace project
             this.lbl_Films.Size = new System.Drawing.Size(68, 33);
             this.lbl_Films.TabIndex = 1;
             this.lbl_Films.Text = "Films";
+            this.lbl_Films.Click += new System.EventHandler(this.lbl_Films_Click);
             // 
             // lbl_Users
             // 
@@ -232,19 +253,7 @@ namespace project
             this.lbl_Users.Size = new System.Drawing.Size(70, 33);
             this.lbl_Users.TabIndex = 0;
             this.lbl_Users.Text = "Users";
-            // 
-            // btn_HidePassword
-            // 
-            this.btn_HidePassword.BackColor = System.Drawing.Color.White;
-            this.btn_HidePassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HidePassword.BackgroundImage")));
-            this.btn_HidePassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HidePassword.Location = new System.Drawing.Point(419, 155);
-            this.btn_HidePassword.Name = "btn_HidePassword";
-            this.btn_HidePassword.Size = new System.Drawing.Size(34, 40);
-            this.btn_HidePassword.TabIndex = 7;
-            this.btn_HidePassword.UseVisualStyleBackColor = false;
-            this.btn_HidePassword.Visible = false;
-            this.btn_HidePassword.Click += new System.EventHandler(this.button1_Click);
+            this.lbl_Users.Click += new System.EventHandler(this.lbl_Users_Click);
             // 
             // frmLogin
             // 
@@ -254,7 +263,6 @@ namespace project
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1324, 761);
             this.Controls.Add(this.picbox_Login);
-            this.Controls.Add(this.gbox_Login);
             this.Controls.Add(this.gbox_Menu);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -291,9 +299,9 @@ namespace project
         private System.Windows.Forms.Label lbl_Theatres;
         private System.Windows.Forms.Label lbl_Genres;
         private System.Windows.Forms.Label lbl_Films;
-        private System.Windows.Forms.Label lbl_Users;
         private System.Windows.Forms.Button btn_ShowPassword;
         private System.Windows.Forms.Button btn_HidePassword;
+        private System.Windows.Forms.Label lbl_Users;
     }
 }
 

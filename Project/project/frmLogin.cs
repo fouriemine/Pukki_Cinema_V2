@@ -13,27 +13,12 @@ namespace project
 {
     public partial class frmLogin : Form
     {
-        public String connStr = ("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-        public SqlCommand com;
-        public SqlConnection conn;
-        public DataSet ds;
-        public SqlDataAdapter adap;
+        private bool stayLogged = false;
 
 
         public frmLogin()
         {
             InitializeComponent();
-            try
-            {
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                MessageBox.Show("Connection Successfull");
-                conn.Close();
-            }
-            catch
-            {
-                MessageBox.Show("Could not connect to db");
-            }
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -43,43 +28,15 @@ namespace project
 
         private void Login_Load(object sender, EventArgs e)
         {
-            try
+            if(stayLogged)
             {
-                SqlConnection conn = new SqlConnection("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-                SqlDataAdapter adap = new SqlDataAdapter("select Admin from Login_new where Username= '" + txt_Username.Text + "'and Password= '" + txt_Password.Text + "'", conn);
-                DataTable dt = new DataTable();
-                adap.Fill(dt);
-                if (dt.Rows.Count == 1)
-                {
-                    switch (dt.Rows[0]["Admin"].ToString())
-                    {
-                        case "Yes":
-                            gbox_Login.Visible = false;
-                            gbox_Menu.Visible = true;
-                            break;
-
-                        case "No":
-                            MessageBox.Show("Can only sell tickets");
-                            break;
-
-                        default:
-                            MessageBox.Show("Please enter correct details");
-                            break;
-                    }
-                    /*gbox_Login.Visible = false;
-                    gbox_Menu.Visible = true;*/
-                }
-                else
-                {
-                    MessageBox.Show("Incorrect details");
-                    txt_Username.Clear();
-                    txt_Password.Clear();
-                }
-
+                gbox_Login.Visible = false;
+                gbox_Menu.Visible = true;
             }
-            catch
+            else
             {
-                MessageBox.Show("Error");
+                gbox_Login.Visible = true;
+                gbox_Menu.Visible = false;
             }
         }
 
@@ -94,6 +51,91 @@ namespace project
             btn_ShowPassword.Visible = true;
             btn_HidePassword.Visible = false;
             txt_Password.UseSystemPasswordChar = true;
+        }
+
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP - 0B9U4DP; Initial Catalog = LoginTry(); Integrated Security = True");
+                SqlCommand sqlCMD = new SqlCommand("select Admin from Login_new where Username=@username AND Password=@password;", conn);
+                sqlCMD.Parameters.AddWithValue("@username", txt_Username.Text);
+                sqlCMD.Parameters.AddWithValue("@password", txt_Password.Text);
+
+                SqlDataAdapter adap = new SqlDataAdapter(sqlCMD);
+                DataTable dt = new DataTable();
+                adap.Fill(dt);
+                if (dt.Rows.Count != 0)
+                {
+                    switch (dt.Rows[0]["Admin"].ToString())
+                    {
+                        case "Admin":
+                            gbox_Login.Visible = false;
+                            gbox_Menu.Visible = true;
+                            break;
+
+                        case "User":
+                            MessageBox.Show("Can only sell tickets");
+                            break;
+
+                        default:
+                            MessageBox.Show("Please enter correct details");
+                            break;
+                    }
+                    stayLogged = true;
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect details");
+                    txt_Username.Clear();
+                    txt_Password.Clear();
+                }
+
+                
+                sqlCMD.Parameters.Clear();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void lbl_Users_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Films_Click(object sender, EventArgs e)
+        {
+            frmFilm Films = new frmFilm();
+            Films.ShowDialog();
+            this.Close();
+        }
+
+        private void lbl_Genres_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Theatres_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Schedule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Tickets_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Reports_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

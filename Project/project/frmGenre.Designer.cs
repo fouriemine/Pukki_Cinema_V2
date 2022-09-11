@@ -29,16 +29,19 @@ namespace Genre
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenre));
             this.panel2 = new System.Windows.Forms.Panel();
             this.LblTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblMaxCharactersValidation = new System.Windows.Forms.Label();
+            this.txtbGenreId = new System.Windows.Forms.TextBox();
+            this.cmbGenreId = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtbDescription = new System.Windows.Forms.TextBox();
-            this.txtbGenreId = new System.Windows.Forms.TextBox();
             this.comboBoxDescription = new System.Windows.Forms.ComboBox();
             this.dtgDisplay = new System.Windows.Forms.DataGridView();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -58,14 +61,14 @@ namespace Genre
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.Purple;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.panel2.Controls.Add(this.LblTitle);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(-145, -10);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1330, 217);
+            this.panel2.Size = new System.Drawing.Size(1469, 217);
             this.panel2.TabIndex = 4;
             // 
             // LblTitle
@@ -99,11 +102,13 @@ namespace Genre
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblMaxCharactersValidation);
+            this.groupBox1.Controls.Add(this.txtbGenreId);
+            this.groupBox1.Controls.Add(this.cmbGenreId);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnUpdate);
             this.groupBox1.Controls.Add(this.txtbDescription);
-            this.groupBox1.Controls.Add(this.txtbGenreId);
             this.groupBox1.Controls.Add(this.comboBoxDescription);
             this.groupBox1.Controls.Add(this.dtgDisplay);
             this.groupBox1.Controls.Add(this.lblDescription);
@@ -117,24 +122,49 @@ namespace Genre
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Genre";
             // 
+            // lblMaxCharactersValidation
+            // 
+            this.lblMaxCharactersValidation.Location = new System.Drawing.Point(328, 175);
+            this.lblMaxCharactersValidation.Name = "lblMaxCharactersValidation";
+            this.lblMaxCharactersValidation.Size = new System.Drawing.Size(312, 196);
+            this.lblMaxCharactersValidation.TabIndex = 14;
+            this.lblMaxCharactersValidation.Text = resources.GetString("lblMaxCharactersValidation.Text");
+            this.lblMaxCharactersValidation.Visible = false;
+            // 
+            // txtbGenreId
+            // 
+            this.txtbGenreId.Location = new System.Drawing.Point(153, 53);
+            this.txtbGenreId.Name = "txtbGenreId";
+            this.txtbGenreId.Size = new System.Drawing.Size(211, 33);
+            this.txtbGenreId.TabIndex = 13;
+            // 
+            // cmbGenreId
+            // 
+            this.cmbGenreId.FormattingEnabled = true;
+            this.cmbGenreId.Location = new System.Drawing.Point(153, 53);
+            this.cmbGenreId.Name = "cmbGenreId";
+            this.cmbGenreId.Size = new System.Drawing.Size(211, 33);
+            this.cmbGenreId.TabIndex = 12;
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnAdd.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(646, 368);
+            this.btnAdd.Location = new System.Drawing.Point(501, 385);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(139, 52);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnDelete.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(646, 368);
+            this.btnDelete.Location = new System.Drawing.Point(501, 385);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(139, 52);
             this.btnDelete.TabIndex = 10;
@@ -147,7 +177,7 @@ namespace Genre
             this.btnUpdate.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnUpdate.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(646, 368);
+            this.btnUpdate.Location = new System.Drawing.Point(501, 385);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(139, 52);
             this.btnUpdate.TabIndex = 11;
@@ -157,17 +187,10 @@ namespace Genre
             // 
             // txtbDescription
             // 
-            this.txtbDescription.Location = new System.Drawing.Point(153, 116);
+            this.txtbDescription.Location = new System.Drawing.Point(153, 113);
             this.txtbDescription.Name = "txtbDescription";
             this.txtbDescription.Size = new System.Drawing.Size(211, 33);
             this.txtbDescription.TabIndex = 8;
-            // 
-            // txtbGenreId
-            // 
-            this.txtbGenreId.Location = new System.Drawing.Point(153, 46);
-            this.txtbGenreId.Name = "txtbGenreId";
-            this.txtbGenreId.Size = new System.Drawing.Size(211, 33);
-            this.txtbGenreId.TabIndex = 7;
             // 
             // comboBoxDescription
             // 
@@ -182,7 +205,7 @@ namespace Genre
             this.dtgDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDisplay.Location = new System.Drawing.Point(34, 168);
             this.dtgDisplay.Name = "dtgDisplay";
-            this.dtgDisplay.Size = new System.Drawing.Size(596, 185);
+            this.dtgDisplay.Size = new System.Drawing.Size(282, 269);
             this.dtgDisplay.TabIndex = 4;
             // 
             // lblDescription
@@ -222,12 +245,13 @@ namespace Genre
             this.btnPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnPrevious.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Location = new System.Drawing.Point(28, 378);
+            this.btnPrevious.Location = new System.Drawing.Point(28, 404);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(139, 52);
             this.btnPrevious.TabIndex = 8;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = false;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // lblUpdateGenre
             // 
@@ -303,7 +327,6 @@ namespace Genre
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtbGenreId;
         private System.Windows.Forms.ComboBox comboBoxDescription;
         private System.Windows.Forms.DataGridView dtgDisplay;
         private System.Windows.Forms.Label lblDescription;
@@ -318,5 +341,8 @@ namespace Genre
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.ComboBox cmbGenreId;
+        private System.Windows.Forms.TextBox txtbGenreId;
+        private System.Windows.Forms.Label lblMaxCharactersValidation;
     }
 }
