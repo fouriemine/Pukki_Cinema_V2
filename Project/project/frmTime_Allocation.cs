@@ -23,7 +23,7 @@ namespace project
         int deleteID;
         DateTime time;
 
-        String connStr = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
 
         public frmTime_Allocation()
         {

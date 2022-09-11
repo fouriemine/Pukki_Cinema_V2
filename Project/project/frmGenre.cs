@@ -19,8 +19,13 @@ namespace Genre
         SqlDataAdapter adapt;
         DataSet ds;
         String sql;
+        int deleteID = 1, updateID;
+        string message = "Are sure you want to delete this genre?";
+        string title = "Delete Genre";
 
-        String connStr = "Data Source=IPS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+
+        String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
         public frmGenre()
         {
             InitializeComponent();
@@ -31,12 +36,36 @@ namespace Genre
             try
             {
                 comboBoxDescription.Visible = false;
+                txtbDescription.Visible = true;
                 dtgDisplay.Visible = true;
                 groupBox1.Text = "Add Genre";
                 btnDelete.Visible = false;
                 btnUpdate.Visible = false;
+                btnAdd.Visible = true;
+                txtbGenreId.Visible = true;
+                lblMaxCharactersValidation.Visible = true; // show the help fuction
+
+
+                // clear the tools
+                comboBoxDescription.Items.Clear();
+                cmbGenreId.Items.Clear();
+                txtbGenreId.Text = "";
+                txtbDescription.Text = "";
+
+
+                //Populate DataGridview 
+                sql = "SELECT* FROM GENRES";
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+                comm = new SqlCommand(sql, con);
+                adapt.SelectCommand = comm;
+                adapt.Fill(ds, "GENRES");
+                dtgDisplay.DataSource = ds;
+                dtgDisplay.DataMember = "GENRES";
+
+
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Error!");
             }
@@ -44,18 +73,26 @@ namespace Genre
 
         private void lblDeleteGenre_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
-                comboBoxDescription.Visible = true;
+                comboBoxDescription.Visible = false;
                 txtbDescription.Visible = false;
                 dtgDisplay.Visible = true;
                 groupBox1.Text = "Delete Genre";
                 btnDelete.Visible = true;
                 btnAdd.Visible = false;
                 btnUpdate.Visible = false;
+                cmbGenreId.Visible = true;
+                txtbGenreId.Visible = false;
+
+                // clear the tools
+                comboBoxDescription.Items.Clear();
+                cmbGenreId.Items.Clear();
+                txtbGenreId.Text = "";
+                txtbDescription.Text = "";
 
                 con.Open();
-                sql = $"SELECT Desecription FROM GENRES ";
+                sql = $"SELECT Genre_ID FROM GENRES ";
                 adapt = new SqlDataAdapter();
                 ds = new DataSet();
                 comm = new SqlCommand(sql, con);
@@ -63,10 +100,14 @@ namespace Genre
                 adapt.Fill(ds, "GENRES");
 
 
-                //populating genre description combo box
-                comboBoxDescription.DataSource = ds.Tables["GENRES"];
-                comboBoxDescription.DisplayMember = "Description";
-                comboBoxDescription.ValueMember = "Description";
+
+                //populating genre Genre ID combo box
+
+                cmbGenreId.DataSource = ds.Tables["GENRES"];
+                cmbGenreId.DisplayMember = "Genre_ID";
+                cmbGenreId.ValueMember = "Genre_ID";
+
+                con.Close();
 
 
             }
@@ -78,28 +119,43 @@ namespace Genre
 
         private void frmGenre_Load(object sender, EventArgs e)
         {
-            
+
             btnAdd.Visible = false;
             btnUpdate.Visible = false;
             btnDelete.Visible = false;
             groupBox1.Text = " ";
             comboBoxDescription.Enabled = false;
-            
-        
-            con = new SqlConnection(connStr);
-            con.Open();  //open connection
+            cmbGenreId.Visible = false;
+            txtbDescription.Visible = false;
+            txtbGenreId.Visible = false;
+            lblMaxCharactersValidation.Visible = false;
 
-            //Populate DataGridview 
-            sql = "SELECT* FROM GENRES";
-            adapt = new SqlDataAdapter();
-            ds = new DataSet();
-            comm = new SqlCommand(sql, con);
-            adapt.SelectCommand = comm;
-            adapt.Fill(ds, "GENRES");
-            dtgDisplay.DataSource = ds;
-            dtgDisplay.DataMember = "GENRES";
 
-            con.Close(); //close connection
+
+            try
+            {
+                con = new SqlConnection(connStr);
+                con.Open();  //open connection
+
+                //Populate DataGridview 
+                sql = "SELECT* FROM GENRES";
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+                comm = new SqlCommand(sql, con);
+                adapt.SelectCommand = comm;
+                adapt.Fill(ds, "GENRES");
+                dtgDisplay.DataSource = ds;
+                dtgDisplay.DataMember = "GENRES";
+
+
+                con.Close(); //close connection
+                MessageBox.Show("Connection Successful");
+            }
+            catch
+            {
+                MessageBox.Show("Connection to database Unsuccessful");
+            }
+
 
         }
 
@@ -109,48 +165,219 @@ namespace Genre
             {
                 groupBox1.Text = "Update Genre";
                 dtgDisplay.Visible = true;
-                txtbDescription.Visible = false;
+                txtbDescription.Visible = true;
                 btnDelete.Visible = false;
                 btnAdd.Visible = false;
                 btnUpdate.Visible = true;
+                txtbGenreId.Visible = false;
+                cmbGenreId.Visible = true;
+                lblMaxCharactersValidation.Visible = false;
+
+
+                // clear the tools
+                comboBoxDescription.Items.Clear();
+                cmbGenreId.Items.Clear();
+                txtbGenreId.Text = "";
+                txtbDescription.Text = "";
+
+                con.Close();
+                //Populate DataGridview 
+                sql = "SELECT* FROM GENRES";
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+                comm = new SqlCommand(sql, con);
+                adapt.SelectCommand = comm;
+                adapt.Fill(ds, "GENRES");
+                dtgDisplay.DataSource = ds;
+                dtgDisplay.DataMember = "GENRES";
+
+                //populating genre description combo box
+                cmbGenreId.DataSource = ds.Tables["GENRES"];
+                cmbGenreId.DisplayMember = "Genre_ID";
+                cmbGenreId.ValueMember = "Genre_ID";
+                reload();
+                con.Close();
+
             }
             catch
             {
                 MessageBox.Show("Error!");
             }
-           
+
 
 
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (cmbGenreId.SelectedIndex != -1)
+            {
+
+                if (txtbDescription.Text != "")
+                {
+
+                    con.Open(); //Open connection
+                    sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedIndex.ToString())}";
+                    comm = new SqlCommand(sql, con);
+                    adapt = new SqlDataAdapter();
+                    ds = new DataSet();
+                    adapt.UpdateCommand = comm;
+                    adapt.UpdateCommand.ExecuteNonQuery();
+                    reload();
+                    con.Close(); // close connection
+
+
+
+
+                }
+                else
+                {
+                    MessageBox.Show(" Please Provide a new Genre before you update!! ");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please make select a Genre Id!! ");
+            }
+
 
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if(comboBoxDescription.SelectedIndex != -1)
-                {
-                con.Open();
-
-                sql = $"DELETE * FROM GENRES WHERE Description = '{comboBoxDescription.SelectedItem}')";
-                adapt = new SqlDataAdapter();
-                ds = new DataSet();
-                comm = new SqlCommand(sql, con);
-                adapt.DeleteCommand = comm;
-                adapt.DeleteCommand.ExecuteNonQuery();
-                comm.Dispose();
-               
-
-                con.Close();
-            }
-                else
+            try
             {
-                MessageBox.Show("Choose a genre description! ");
+
+
+                //verify if the user wants to delete the Genre selected
+
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
+                {
+
+                    if (cmbGenreId.SelectedIndex != -1)
+                    {
+                        deleteID = int.Parse(cmbGenreId.SelectedValue.ToString());
+                        con.Open();
+                        sql = $"DELETE FROM GENRES WHERE Genre_ID = {int.Parse(cmbGenreId.SelectedValue.ToString())}";
+                        adapt = new SqlDataAdapter();
+                        ds = new DataSet();
+                        comm = new SqlCommand(sql, con);
+                        // comm.Parameters.AddWithValue("@id", deleteID);
+                        adapt.DeleteCommand = comm;
+                        adapt.DeleteCommand.ExecuteNonQuery();
+
+                        //Update user
+                        MessageBox.Show("Deleted successfully");
+
+                        //re-populaate combobox
+                        sql = "SELECT Genre_ID FROM GENRES";
+                        adapt = new SqlDataAdapter();
+                        ds = new DataSet();
+                        comm = new SqlCommand(sql, con);
+                        adapt.SelectCommand = comm;
+                        adapt.Fill(ds, "GENRES");
+
+
+                        //populating combobox with genre Id available
+                        cmbGenreId.DataSource = ds.Tables["GENRES"];
+                        cmbGenreId.DisplayMember = "Genre_ID";
+                        cmbGenreId.ValueMember = "Genre_ID";
+
+                        //reload griview
+                        reload();
+
+                        con.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                    }
+                }
+
+
+
+                else
+                {
+                    this.Close();
+                }
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Error: " + err.Message);  //display an exception caught
             }
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (txtbDescription.Text != "")
+                {
+                    con.Open(); // open connection
+
+
+                    sql = $"INSERT  GENRES (Description) VALUES('{txtbDescription.Text}')";
+                    comm = new SqlCommand(sql, con);
+                    adapt = new SqlDataAdapter();
+                    ds = new DataSet();
+                    adapt.InsertCommand = comm;
+                    adapt.InsertCommand.ExecuteNonQuery();
+                    reload();
+                    con.Close(); //close connection
+                }
+
+                //Display message box 
+                MessageBox.Show("Data Inserted");
+
+            }
+            catch
+            {
+
+                MessageBox.Show("Could not Add Data!");
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            // close this form to go back to the login form
+            this.Close();
+        }
+
+        private void reload()
+
+        {
+
+            try
+            {
+
+
+                //open the connection
+                con = new SqlConnection(connStr);
+                con.Open();  //open connection
+
+                //Populate Gridview with current genres
+                sql = "SELECT * FROM  GENRES";
+                adapt = new SqlDataAdapter();
+                ds = new DataSet();
+                comm = new SqlCommand(sql, con);
+                adapt.SelectCommand = comm;
+                adapt.Fill(ds, "GENRES");
+                dtgDisplay.DataSource = ds;
+                dtgDisplay.DataMember = "GENRES";
+                con.Close();
+
+            }
+            catch
+            {
+                MessageBox.Show("Could update database with new request.");
+            }
+
+        }
     }
-    }
+}
 

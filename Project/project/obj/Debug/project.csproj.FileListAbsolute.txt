@@ -158,6 +158,19 @@ C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\obj\Debug
 C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe.config
 C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe
 C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\bin\Debug\project.pdb
-C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
-C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
-C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmSellTickets.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\Genre.frmGenre.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmLogin.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.Menu.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.exe
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.pdb
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe.config
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\project.exe
+C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\project.pdb
