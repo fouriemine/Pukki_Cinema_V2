@@ -20,8 +20,8 @@ namespace project
         SqlDataAdapter adapt;
         DataSet ds;
         String sql;
-        int deleteID;
         DateTime time;
+        int deleteID;
 
         String connStr = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
 
@@ -289,11 +289,17 @@ namespace project
         {
             try
             {
-                string message = "Do you want to delete this record?";
-                String title = "Delete record";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                string delete = cbTimeID.GetItemText(cbTimeID.SelectedItem);
+                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = @deleteID";
+                comm = new SqlCommand(sql, conn);
+                comm.Parameters.AddWithValue("@deleteID", delete);
+                conn.Close();
+                
+
+                DialogResult res = MessageBox.Show("Do you want to delete the time slot " + delete + "?", "Delete record", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
                 {
                     if (!tbTimeBracket.Enabled)
                     {
@@ -303,6 +309,7 @@ namespace project
                             deleteID = int.Parse(cbTimeID.SelectedValue.ToString());
                             conn = new SqlConnection(connStr);
                             conn.Open();
+
                             sql = $"DELETE FROM TIME_ALLOCATIONS WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
                             adapt = new SqlDataAdapter();
                             ds = new DataSet();

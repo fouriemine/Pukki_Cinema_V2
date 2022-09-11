@@ -20,9 +20,12 @@ namespace Genre
         DataSet ds;
         String sql;
         int deleteID = 1, updateID;
-        
+        string message = "Are sure you want to delete this genre?";
+        string title = "Delete Genre";
 
-        String connStr = @"Data Source=IPS;Initial Catalog = Pukki_Cinema; Integrated Security = True";
+
+
+        String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
         public frmGenre()
         {
             InitializeComponent();
@@ -207,36 +210,43 @@ namespace Genre
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (cmbGenreId.SelectedValue != null)
+            try
             {
 
-                if (txtbDescription.Text != "")
+                if (cmbGenreId.SelectedIndex != -1)
                 {
 
-                    con.Open(); //Open connection
-                    sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedValue.ToString())}";
-                    comm = new SqlCommand(sql, con);
-                    adapt = new SqlDataAdapter();
-                    ds = new DataSet();
-                    adapt.UpdateCommand = comm;
-                    adapt.UpdateCommand.ExecuteNonQuery();
-                    reload();
-                    con.Close(); // close connection
+                    if (txtbDescription.Text != "")
+                    {
+
+                        con.Open(); //Open connection
+                        sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedIndex.ToString())}";
+                        comm = new SqlCommand(sql, con);
+                        adapt = new SqlDataAdapter();
+                        ds = new DataSet();
+                        adapt.UpdateCommand = comm;
+                        adapt.UpdateCommand.ExecuteNonQuery();
+                        reload();
+                        con.Close(); // close connection
 
 
 
 
+                    }
+                    else
+                    {
+                        MessageBox.Show(" Please Provide a new Genre before you update!! ");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(" Please Provide a new Genre before you update!! ");
+                    MessageBox.Show("Please make select a Genre Id!! ");
                 }
             }
-            else
+            catch(Exception Error)
             {
-                MessageBox.Show("Please make select a Genre Id!! ");
+                MessageBox.Show("Could not update Genre: " + Error.Message);
             }
-
 
         }
 
@@ -245,10 +255,6 @@ namespace Genre
         {
             try
             {
-
-                string message = "Are sure you want to delete Genre "   +cmbGenreId.SelectedValue+ "?";
-                string title = "Delete Genre";
-
                 //verify if the user wants to delete the Genre selected
 
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -292,7 +298,7 @@ namespace Genre
                     }
                     else
                     {
-                        MessageBox.Show("Before you delete a Genre, you need to first select a Genre ID from the options provided!! ");
+                        MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
                     }
                 }
 

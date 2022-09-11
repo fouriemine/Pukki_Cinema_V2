@@ -274,10 +274,15 @@ namespace project
         {
             try
             {
-                string message = "Do you want to delete this record?";
-                String title = "Delete record";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                string delete = cbTheatreID.GetItemText(cbTheatreID.SelectedItem);
+                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = @deleteID";
+                comm = new SqlCommand(sql, conn);
+                comm.Parameters.AddWithValue("@deleteID", delete);
+                conn.Close();
+
+                DialogResult result = MessageBox.Show("Do you want to delete the time slot " + delete + "?", "Delete record", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     if (!tbAddTheatreCapacity.Enabled)
