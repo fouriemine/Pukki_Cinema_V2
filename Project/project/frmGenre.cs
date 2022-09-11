@@ -210,36 +210,43 @@ namespace Genre
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (cmbGenreId.SelectedIndex != -1)
+            try
             {
 
-                if (txtbDescription.Text != "")
+                if (cmbGenreId.SelectedIndex != -1)
                 {
 
-                    con.Open(); //Open connection
-                    sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedIndex.ToString())}";
-                    comm = new SqlCommand(sql, con);
-                    adapt = new SqlDataAdapter();
-                    ds = new DataSet();
-                    adapt.UpdateCommand = comm;
-                    adapt.UpdateCommand.ExecuteNonQuery();
-                    reload();
-                    con.Close(); // close connection
+                    if (txtbDescription.Text != "")
+                    {
+
+                        con.Open(); //Open connection
+                        sql = $"Update GENRES SET Description ='{txtbDescription.Text}' WHERE Genre_ID ={int.Parse(cmbGenreId.SelectedIndex.ToString())}";
+                        comm = new SqlCommand(sql, con);
+                        adapt = new SqlDataAdapter();
+                        ds = new DataSet();
+                        adapt.UpdateCommand = comm;
+                        adapt.UpdateCommand.ExecuteNonQuery();
+                        reload();
+                        con.Close(); // close connection
 
 
 
 
+                    }
+                    else
+                    {
+                        MessageBox.Show(" Please Provide a new Genre before you update!! ");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(" Please Provide a new Genre before you update!! ");
+                    MessageBox.Show("Please make select a Genre Id!! ");
                 }
             }
-            else
+            catch(Exception Error)
             {
-                MessageBox.Show("Please make select a Genre Id!! ");
+                MessageBox.Show("Could not update Genre: " + Error.Message);
             }
-
 
         }
 
@@ -248,8 +255,6 @@ namespace Genre
         {
             try
             {
-
-
                 //verify if the user wants to delete the Genre selected
 
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
