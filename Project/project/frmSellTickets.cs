@@ -20,7 +20,7 @@ namespace project
         public SqlConnection connection;
         public SqlDataAdapter adapter;
         public String sql;
-        public String connectionString = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        public String connectionString = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
         public int tickets;
         public int schedule_ID;
         public frmSellTickets()
@@ -28,7 +28,7 @@ namespace project
             InitializeComponent();
         }
 
-        private String sqlCon = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        private String sqlCon = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
 
         private void frmSellTickets_Load(object sender, EventArgs e) //initializing variable and controls
         {

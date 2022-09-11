@@ -19,7 +19,7 @@ namespace project
 //<<<<<<< Updated upstream
             //Application.Run(new frmUsers());
 //=======
-            Application.Run(new frmSellTickets());
+            Application.Run(new frmLogin());
 //>>>>>>> Stashed changes
         }
     }
