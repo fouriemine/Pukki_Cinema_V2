@@ -76,6 +76,12 @@
     <Compile Include="frmTheatres.Designer.cs">
       <DependentUpon>frmTheatres.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTime_Allocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTime_Allocation.Designer.cs">
+      <DependentUpon>frmTime_Allocation.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     <EmbeddedResource Include="frmTheatres.resx">
       <DependentUpon>frmTheatres.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTime_Allocation.resx">
+      <DependentUpon>frmTime_Allocation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -132,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pukkicinema_Helpfunction.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

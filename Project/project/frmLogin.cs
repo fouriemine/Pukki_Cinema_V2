@@ -13,7 +13,7 @@ namespace project
 {
     public partial class frmLogin : Form
     {
-        public String connStr = ("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        public String connStr = (@"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True");
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -45,7 +45,7 @@ namespace project
         {
             try
             {
-                SqlConnection conn = new SqlConnection("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlConnection conn = new SqlConnection(@"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True");
                 SqlDataAdapter adap = new SqlDataAdapter("select Admin from Login_new where Username= '" + txt_Username.Text + "'and Password= '" + txt_Password.Text + "'", conn);
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
@@ -94,6 +94,11 @@ namespace project
             btn_ShowPassword.Visible = true;
             btn_HidePassword.Visible = false;
             txt_Password.UseSystemPasswordChar = true;
+        }
+
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -22,6 +23,8 @@ namespace project
         public SqlDataAdapter adap;
         string sql = " ";
 
+        private String isValidPass;
+
         public frmUsers()
         {
             InitializeComponent();
@@ -31,6 +34,7 @@ namespace project
         private void frmUsers_Load(object sender, EventArgs e)
         {//set the group box to be invisible when loading
             gbx_users.Visible = false;
+            
             try
             {
                 conn = new SqlConnection(conStr);
@@ -104,7 +108,8 @@ namespace project
             btn_Delete.Visible = true;
             btn_add.Visible = true;
             dataGridView1.Visible = true;
-            btn_GetUser.Visible = true;
+            lbl_PasswordDisp.Visible = true;
+            //btn_GetUser.Visible = true;
         }
 
         private void lblAdd_Users_Click(object sender, EventArgs e)
@@ -116,7 +121,10 @@ namespace project
             txtBox_UserID.Visible = false;
             btn_Update.Visible = false;
             btn_Delete.Visible = false;
-            btn_GetUser.Visible = false;
+            // btn_GetUser.Visible = false;
+            { //Minimum of 8 characters and maximum of 14 characters
+
+            }
             ClearData();
             reLoad();
         }
@@ -127,7 +135,7 @@ namespace project
             gbx_users.Text = "Update Users";
             dispAll();
             btn_add.Visible = false;
-            btn_GetUser.Visible = false;
+            //btn_GetUser.Visible = false;
             btn_Delete.Visible = false;
             ClearData();
             reLoad();
@@ -145,12 +153,13 @@ namespace project
             lbl_password.Visible = false;
             lbl_username.Visible = false;
             btn_add.Visible = false;
-            btn_GetUser.Visible = false;
+            lbl_PasswordDisp.Visible = false;
+            //btn_GetUser.Visible = false;
             btn_Update.Visible = false;
             ClearData();
             reLoad();
         }
-        private void lbl_GetUser_Click(object sender, EventArgs e)
+        /*private void lbl_GetUser_Click(object sender, EventArgs e)
         {
             //setting controls when the delete label is clicked
             gbx_users.Text = "Get Users";
@@ -166,7 +175,7 @@ namespace project
             dataGridView1.Visible = false;
             btn_Delete.Visible = false;
             ClearData();
-        }
+        }*/
         //ADD DATA
         private void btn_add_Click(object sender, EventArgs e)
         {
@@ -187,15 +196,23 @@ namespace project
                     isAdmin = "true";
                 }
 
-                conn.Open();
-                com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
-                com.Parameters.AddWithValue("@username", textbx_Username.Text);
-                com.Parameters.AddWithValue("@password", txt_password.Text);
-                com.Parameters.AddWithValue("@IsAdmin", isAdmin);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Added the record successfully");
-                reLoad();
-                ClearData();
+                if(isValidPass != "")
+                {
+                    MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    conn.Open();
+                    com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
+                    com.Parameters.AddWithValue("@username", textbx_Username.Text);
+                    com.Parameters.AddWithValue("@password", txt_password.Text);
+                    com.Parameters.AddWithValue("@IsAdmin", isAdmin);
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Added the record successfully");
+                    reLoad();
+                    ClearData();
+                }
+                
             }
             else
             {
@@ -222,17 +239,22 @@ namespace project
                 {
                     isAdmin = "true";
                 }
-                conn.Open();
-                com = new SqlCommand("update USERS set Username=@username , Password = @password , IsAdmin = @IsAdmin where Users_ID= @id", conn);
-                com.Parameters.AddWithValue("@id", txtBox_UserID.Text);
-                com.Parameters.AddWithValue("@username", textbx_Username.Text);
-                com.Parameters.AddWithValue("@password", txt_password.Text);
-                com.Parameters.AddWithValue("@IsAdmin", isAdmin);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Updated the record successfully");
-                conn.Close();
-                reLoad();
-                ClearData();
+                if (isValidPass != "")
+                {
+                    MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    conn.Open();
+                    com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
+                    com.Parameters.AddWithValue("@username", textbx_Username.Text);
+                    com.Parameters.AddWithValue("@password", txt_password.Text);
+                    com.Parameters.AddWithValue("@IsAdmin", isAdmin);
+                    com.ExecuteNonQuery();
+                    MessageBox.Show("Added the record successfully");
+                    reLoad();
+                    ClearData();
+                }
             }
             else
             {
@@ -241,7 +263,7 @@ namespace project
 
         }
 
-        private void btn_GetUSers_Click(object sender, EventArgs e)
+        /*private void btn_GetUSers_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = false;
             if(textbx_Username.Text != "")
@@ -269,19 +291,23 @@ namespace project
             {
                 MessageBox.Show("Enter all necessary details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
         //DELETE USERS DETAILS
         private void btn_Delete_Click(object sender, EventArgs e)
         {
+            lbl_PasswordDisp.Visible = false;
             if (txtBox_UserID.Text != "")
             {
-                conn.Open();
-                com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
-                com.Parameters.AddWithValue("@id",txtBox_UserID.Text);
-                com.ExecuteNonQuery();
-                MessageBox.Show("Added the record removed successfully");
-                reLoad();
-                ClearData();
+                if (MessageBox.Show("Are you sure you want to delete the item?", "Deleted Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    conn.Open();
+                    com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
+                    com.Parameters.AddWithValue("@id", txtBox_UserID.Text);
+                    com.ExecuteNonQuery();
+                    MessageBox.Show(" record deleted successfully");
+                    reLoad();
+                    ClearData();
+                }
             }
             else {
                 MessageBox.Show("Please enter the Id number you want to delete");
@@ -293,6 +319,90 @@ namespace project
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        { //displays help function
+            HelpFunctionPicture.Visible = true;
+            button2.Visible = false;
+            btnclose_help.Visible = true;
+        }
+
+        private void btnclose_help_Click(object sender, EventArgs e)
+        {
+            HelpFunctionPicture.Visible = false;
+            button2.Visible = true;
+            btnclose_help.Visible = false;
+            
+        }
+
+       private void txt_password_TextChanged(object sender, EventArgs e)
+         { //Minimum of 8 characters and maximum of 14 characters
+
+            String temp = txt_password.Text;
+            lbl_PasswordDisp.Visible = true;
+            string regex = "^(?=.*[a-z])(?=."
+                    + "*[A-Z])(?=.*\\d)"
+                    + "(?=.*[-+_!@#$%^&*., ?]).+$";
+
+            Regex p = new Regex(regex);
+
+            Match m = p.Match(temp);
+            if (!(temp.Length < 8 || temp.Length > 14))
+             {
+                if (!m.Success || temp.Contains(" "))
+                {
+                    isValidPass = "Password should contain upper case, lower case and a special character\n" +
+                        "Passowrd should not contain whitespace.";
+                    lbl_PasswordDisp.Text =isValidPass;
+                }
+                else
+                {
+                    isValidPass = "";
+                    lbl_PasswordDisp.Text = "";
+                }
+            }
+            else
+            {
+                isValidPass = "Password should be a minimum of 8 characters and a maximum of 14 letters";
+                lbl_PasswordDisp.Text = isValidPass;
+            }
+            
+         }
+
+        private void lblSearchUser_Click(object sender, EventArgs e)
+        {
+            //dataGridView1.Visible = false;
+            if (txtSearch.Text != "")
+            {
+                conn = new SqlConnection(conStr);
+                conn.Open();
+                //Populate gridview with Users
+                adap = new SqlDataAdapter();
+                ds = new DataSet();
+                com = new SqlCommand("select * from USERS where Username = @username", conn);
+                com.Parameters.AddWithValue("@username", txtSearch.Text);
+                adap.SelectCommand = com;
+                adap.Fill(ds, "USERS");
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "USERS";
+                conn.Close();
+                dataGridView1.Visible = true;
+               ClearData();
+                if (dataGridView1.RowCount == 1)
+                {
+                    MessageBox.Show("User not found", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter all necessary details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+        }
+
+        private void btn_previous_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
