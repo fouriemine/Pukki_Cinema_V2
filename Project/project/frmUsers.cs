@@ -179,86 +179,102 @@ namespace project
         //ADD DATA
         private void btn_add_Click(object sender, EventArgs e)
         {
-            String isAdmin;
-            bool rdoFlag = false; ;
-            if (rdo_AdminYes.Checked || rdo_AdminNo.Checked)
+            try
             {
-                rdoFlag = true;
-            }
-            if (textbx_Username.Text != "" && txt_password.Text != "" && rdoFlag)
-            {
-                if (rdo_AdminNo.Checked)
-                {
-                    isAdmin = "false";
-                }
-                else
-                {
-                    isAdmin = "true";
-                }
 
-                if(isValidPass != "")
+                String isAdmin;
+                bool rdoFlag = false; ;
+                if (rdo_AdminYes.Checked || rdo_AdminNo.Checked)
                 {
-                    MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    rdoFlag = true;
+                }
+                if (textbx_Username.Text != "" && txt_password.Text != "" && rdoFlag)
+                {
+                    if (rdo_AdminNo.Checked)
+                    {
+                        isAdmin = "false";
+                    }
+                    else
+                    {
+                        isAdmin = "true";
+                    }
+
+                    if (isValidPass != "")
+                    {
+                        MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        conn.Open();
+                        com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
+                        com.Parameters.AddWithValue("@username", textbx_Username.Text);
+                        com.Parameters.AddWithValue("@password", txt_password.Text);
+                        com.Parameters.AddWithValue("@IsAdmin", isAdmin);
+                        com.ExecuteNonQuery();
+                        MessageBox.Show("Added the record successfully");
+                        reLoad();
+                        ClearData();
+                    }
+
                 }
                 else
                 {
-                    conn.Open();
-                    com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
-                    com.Parameters.AddWithValue("@username", textbx_Username.Text);
-                    com.Parameters.AddWithValue("@password", txt_password.Text);
-                    com.Parameters.AddWithValue("@IsAdmin", isAdmin);
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Added the record successfully");
-                    reLoad();
-                    ClearData();
+                    MessageBox.Show("Please enter details to add to the database. ");
                 }
-                
             }
-            else
+            catch(Exception error)
             {
-                MessageBox.Show("Please enter details to add to the database. ");
+                MessageBox.Show("Unable to add new user: " + error.Message);
             }
 
         }
         //UPDATING RECORD DETAILS
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            String isAdmin;
-            bool rdoFlag = false; ;
-            if (rdo_AdminYes.Checked || rdo_AdminNo.Checked)
+            try
             {
-                rdoFlag = true;
-            }
-            if (textbx_Username.Text != "" && txt_password.Text != "" && rdoFlag)
-            {
-                if(rdo_AdminNo.Checked)
+
+                String isAdmin;
+                bool rdoFlag = false; ;
+                if (rdo_AdminYes.Checked || rdo_AdminNo.Checked)
                 {
-                    isAdmin = "false";
+                    rdoFlag = true;
+                }
+                if (textbx_Username.Text != "" && txt_password.Text != "" && rdoFlag)
+                {
+                    if (rdo_AdminNo.Checked)
+                    {
+                        isAdmin = "false";
+                    }
+                    else
+                    {
+                        isAdmin = "true";
+                    }
+                    if (isValidPass != "")
+                    {
+                        MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        conn.Open();
+                        com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
+                        com.Parameters.AddWithValue("@username", textbx_Username.Text);
+                        com.Parameters.AddWithValue("@password", txt_password.Text);
+                        com.Parameters.AddWithValue("@IsAdmin", isAdmin);
+                        com.ExecuteNonQuery();
+                        MessageBox.Show("Added the record successfully");
+                        reLoad();
+                        ClearData();
+                    }
                 }
                 else
                 {
-                    isAdmin = "true";
-                }
-                if (isValidPass != "")
-                {
-                    MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    conn.Open();
-                    com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
-                    com.Parameters.AddWithValue("@username", textbx_Username.Text);
-                    com.Parameters.AddWithValue("@password", txt_password.Text);
-                    com.Parameters.AddWithValue("@IsAdmin", isAdmin);
-                    com.ExecuteNonQuery();
-                    MessageBox.Show("Added the record successfully");
-                    reLoad();
-                    ClearData();
+                    MessageBox.Show("Please select the record you want to update to the database. ");
                 }
             }
-            else
+            catch(Exception error)
             {
-                MessageBox.Show("Please select the record you want to update to the database. ");
+                MessageBox.Show("Could not update user: " + error.Message);
             }
 
         }
@@ -295,22 +311,30 @@ namespace project
         //DELETE USERS DETAILS
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            lbl_PasswordDisp.Visible = false;
-            if (txtBox_UserID.Text != "")
+            try
             {
-                if (MessageBox.Show("Are you sure you want to delete the item?", "Deleted Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                lbl_PasswordDisp.Visible = false;
+                if (txtBox_UserID.Text != "")
                 {
-                    conn.Open();
-                    com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
-                    com.Parameters.AddWithValue("@id", txtBox_UserID.Text);
-                    com.ExecuteNonQuery();
-                    MessageBox.Show(" record deleted successfully");
-                    reLoad();
-                    ClearData();
+                    if (MessageBox.Show("Are you sure you want to delete the item?", "Deleted Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        conn.Open();
+                        com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
+                        com.Parameters.AddWithValue("@id", txtBox_UserID.Text);
+                        com.ExecuteNonQuery();
+                        MessageBox.Show(" record deleted successfully");
+                        reLoad();
+                        ClearData();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter the Id number you want to delete");
                 }
             }
-            else {
-                MessageBox.Show("Please enter the Id number you want to delete");
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
             }
         }
 
