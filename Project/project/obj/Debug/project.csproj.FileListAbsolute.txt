@@ -178,3 +178,5 @@ C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\obj\Debug
 C:\Users\tasmi\Desktop\213&223 project\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
 C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmSellTickets.resources
 C:\Users\joshu\Desktop\Year 1 download folder\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmSellTickets.resources
+C:\Users\DELL\Desktop\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmTime_Allocation.resources
