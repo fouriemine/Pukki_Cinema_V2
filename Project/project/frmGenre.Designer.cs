@@ -35,6 +35,7 @@ namespace Genre
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblMaxCharactersValidation = new System.Windows.Forms.Label();
             this.txtbGenreId = new System.Windows.Forms.TextBox();
             this.cmbGenreId = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@ namespace Genre
             this.lblDeleteGenre = new System.Windows.Forms.Label();
             this.lblAddGenre = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.lblMaxCharactersValidation = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDisplay)).BeginInit();
@@ -121,6 +121,15 @@ namespace Genre
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Genre";
+            // 
+            // lblMaxCharactersValidation
+            // 
+            this.lblMaxCharactersValidation.Location = new System.Drawing.Point(328, 175);
+            this.lblMaxCharactersValidation.Name = "lblMaxCharactersValidation";
+            this.lblMaxCharactersValidation.Size = new System.Drawing.Size(312, 196);
+            this.lblMaxCharactersValidation.TabIndex = 14;
+            this.lblMaxCharactersValidation.Text = resources.GetString("lblMaxCharactersValidation.Text");
+            this.lblMaxCharactersValidation.Visible = false;
             // 
             // txtbGenreId
             // 
@@ -289,15 +298,6 @@ namespace Genre
             this.button3.TabIndex = 4;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // lblMaxCharactersValidation
-            // 
-            this.lblMaxCharactersValidation.Location = new System.Drawing.Point(339, 199);
-            this.lblMaxCharactersValidation.Name = "lblMaxCharactersValidation";
-            this.lblMaxCharactersValidation.Size = new System.Drawing.Size(317, 183);
-            this.lblMaxCharactersValidation.TabIndex = 14;
-            this.lblMaxCharactersValidation.Text = resources.GetString("lblMaxCharactersValidation.Text");
-            this.lblMaxCharactersValidation.Visible = false;
             // 
             // frmGenre
             // 
