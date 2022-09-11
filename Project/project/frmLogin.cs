@@ -13,7 +13,11 @@ namespace project
 {
     public partial class frmLogin : Form
     {
+<<<<<<< Updated upstream
         public String connStr = ("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+=======
+        public String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog = Pukki_Cinema; Integrated Security = True";
+>>>>>>> Stashed changes
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -45,7 +49,11 @@ namespace project
         {
             try
             {
+<<<<<<< Updated upstream
                 SqlConnection conn = new SqlConnection("@Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+=======
+                SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog = Pukki_Cinema; Integrated Security = True");
+>>>>>>> Stashed changes
                 SqlDataAdapter adap = new SqlDataAdapter("select Admin from Login_new where Username= '" + txt_Username.Text + "'and Password= '" + txt_Password.Text + "'", conn);
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
@@ -95,5 +103,51 @@ namespace project
             btn_HidePassword.Visible = false;
             txt_Password.UseSystemPasswordChar = true;
         }
+<<<<<<< Updated upstream
+=======
+
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog = Pukki_Cinema; Integrated Security = True");
+                SqlDataAdapter adap = new SqlDataAdapter("select Admin from Login_new where Username= '" + txt_Username.Text + "'and Password= '" + txt_Password.Text + "'", conn);
+                DataTable dt = new DataTable();
+                adap.Fill(dt);
+                if (dt.Rows.Count == 1)
+                {
+                    switch (dt.Rows[0]["Admin"].ToString())
+                    {
+                        case "Yes":
+                            gbox_Login.Visible = false;
+                            gbox_Menu.Visible = true;
+                            break;
+
+                        case "No":
+                            MessageBox.Show("Can only sell tickets");
+                            break;
+
+                        default:
+                            MessageBox.Show("Please enter correct details");
+                            break;
+                    }
+                    /*gbox_Login.Visible = false;
+                    gbox_Menu.Visible = true;*/
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect details");
+                    txt_Username.Clear();
+                    txt_Password.Clear();
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+        }
+>>>>>>> Stashed changes
     }
-}
+    }
+
