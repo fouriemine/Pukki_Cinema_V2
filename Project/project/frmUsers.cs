@@ -399,7 +399,10 @@ namespace project
            
         }
 
-      
+        private void btn_previous_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
