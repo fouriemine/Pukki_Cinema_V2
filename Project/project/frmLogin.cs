@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace project
 {
@@ -63,12 +63,12 @@ namespace project
         {
             try 
             {
-                MySqlConnection conn = new MySqlConnection(@"Data Source = DESKTOP - 0B9U4DP; Initial Catalog = LoginTry(); Integrated Security = True");
-                MySqlCommand sqlCMD = new MySqlCommand("select Admin from Login_new where Username=@username AND Password=@password;", conn);
+                SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP - 0B9U4DP; Initial Catalog = LoginTry(); Integrated Security = True");
+                SqlCommand sqlCMD = new SqlCommand("select Admin from Login_new where Username=@username AND Password=@password;", conn);
                 sqlCMD.Parameters.AddWithValue("@username", txt_Username.Text);
                 sqlCMD.Parameters.AddWithValue("@password", txt_Password.Text);
 
-                MySqlDataAdapter adap = new MySqlDataAdapter(sqlCMD);
+                SqlDataAdapter adap = new SqlDataAdapter(sqlCMD);
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
                 if (dt.Rows.Count != 0)
