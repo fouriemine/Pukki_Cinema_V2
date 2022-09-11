@@ -275,57 +275,73 @@ namespace project
         {
             try
             {
-                if (!tbAddTheatreCapacity.Enabled)
+                string message = "Do you want to delete this record?";
+                String title = "Delete record";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
                 {
-
-                    if (cbTheatreID.SelectedIndex != -1)
+                    if (!tbAddTheatreCapacity.Enabled)
                     {
-                        deleteID = int.Parse(cbTheatreID.SelectedValue.ToString());
-                        conn.Open();
-                        sql = $"DELETE FROM THEATRES WHERE Theatre_ID = {int.Parse(cbTheatreID.SelectedValue.ToString())} ";
-                        adapt = new SqlDataAdapter();
-                        ds = new DataSet();
-                        comm = new SqlCommand(sql, conn);
-                        // comm.Parameters.AddWithValue("@id", deleteID);
-                        adapt.DeleteCommand = comm;
-                        adapt.DeleteCommand.ExecuteNonQuery();
 
-                        //Update user
-                        MessageBox.Show("Deleted successfully");
+                        if (cbTheatreID.SelectedIndex != -1)
+                        {
+                            deleteID = int.Parse(cbTheatreID.SelectedValue.ToString());
+                            conn.Open();
+                            sql = $"DELETE FROM THEATRES WHERE Theatre_ID = {int.Parse(cbTheatreID.SelectedValue.ToString())} ";
+                            adapt = new SqlDataAdapter();
+                            ds = new DataSet();
+                            comm = new SqlCommand(sql, conn);
+                            // comm.Parameters.AddWithValue("@id", deleteID);
+                            adapt.DeleteCommand = comm;
+                            adapt.DeleteCommand.ExecuteNonQuery();
 
-                        //re-populaate combobox
-                        sql = "SELECT Theatre_ID FROM THEATRES";
-                        adapt = new SqlDataAdapter();
-                        ds = new DataSet();
-                        comm = new SqlCommand(sql, conn);
-                        adapt.SelectCommand = comm;
-                        adapt.Fill(ds, "THEATRES");
+                            //Update user
+                            MessageBox.Show("Deleted successfully");
+
+                            //re-populaate combobox
+                            sql = "SELECT Theatre_ID FROM THEATRES";
+                            adapt = new SqlDataAdapter();
+                            ds = new DataSet();
+                            comm = new SqlCommand(sql, conn);
+                            adapt.SelectCommand = comm;
+                            adapt.Fill(ds, "THEATRES");
 
 
-                        //populating combobox with theatres Id available
-                        cbTheatreID.DataSource = ds.Tables["THEATRES"];
-                        cbTheatreID.DisplayMember = "Theatre_ID";
-                        cbTheatreID.ValueMember = "Theatre_ID";
+                            //populating combobox with theatres Id available
+                            cbTheatreID.DataSource = ds.Tables["THEATRES"];
+                            cbTheatreID.DisplayMember = "Theatre_ID";
+                            cbTheatreID.ValueMember = "Theatre_ID";
 
-                        //reload griview
-                        reLoad();
+                            //reload griview
+                            reLoad();
 
-                        conn.Close();
+                            conn.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                        tbAddTheatreCapacity.Enabled = false;
                     }
                 }
                 else
                 {
-                    tbAddTheatreCapacity.Enabled = false;
+                    return;
                 }
-            }
-            catch(Exception err)
+                }
+            catch (Exception err)
             {
                 MessageBox.Show("Error: " + err.Message);
             }
+        }
+
+        private void bttnPrevFromTime_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void lblDeleteTheatre_Click(object sender, EventArgs e)

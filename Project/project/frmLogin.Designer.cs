@@ -32,6 +32,7 @@ namespace project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.picbox_Login = new System.Windows.Forms.PictureBox();
             this.gbox_Login = new System.Windows.Forms.GroupBox();
+            this.btn_HidePassword = new System.Windows.Forms.Button();
             this.btn_ShowPassword = new System.Windows.Forms.Button();
             this.btn_Login = new System.Windows.Forms.Button();
             this.txt_Password = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@ namespace project
             this.lbl_Genres = new System.Windows.Forms.Label();
             this.lbl_Films = new System.Windows.Forms.Label();
             this.lbl_Users = new System.Windows.Forms.Label();
-            this.btn_HidePassword = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbox_Login)).BeginInit();
             this.gbox_Login.SuspendLayout();
             this.gbox_Menu.SuspendLayout();
@@ -78,6 +78,19 @@ namespace project
             this.gbox_Login.TabStop = false;
             this.gbox_Login.Text = "Pukkie Cinema";
             // 
+            // btn_HidePassword
+            // 
+            this.btn_HidePassword.BackColor = System.Drawing.Color.White;
+            this.btn_HidePassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HidePassword.BackgroundImage")));
+            this.btn_HidePassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_HidePassword.Location = new System.Drawing.Point(419, 155);
+            this.btn_HidePassword.Name = "btn_HidePassword";
+            this.btn_HidePassword.Size = new System.Drawing.Size(34, 40);
+            this.btn_HidePassword.TabIndex = 7;
+            this.btn_HidePassword.UseVisualStyleBackColor = false;
+            this.btn_HidePassword.Visible = false;
+            this.btn_HidePassword.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btn_ShowPassword
             // 
             this.btn_ShowPassword.BackColor = System.Drawing.Color.White;
@@ -100,6 +113,7 @@ namespace project
             this.btn_Login.TabIndex = 5;
             this.btn_Login.Text = "Log in";
             this.btn_Login.UseVisualStyleBackColor = false;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // txt_Password
             // 
@@ -233,26 +247,13 @@ namespace project
             this.lbl_Users.TabIndex = 0;
             this.lbl_Users.Text = "Users";
             // 
-            // btn_HidePassword
-            // 
-            this.btn_HidePassword.BackColor = System.Drawing.Color.White;
-            this.btn_HidePassword.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_HidePassword.BackgroundImage")));
-            this.btn_HidePassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_HidePassword.Location = new System.Drawing.Point(419, 155);
-            this.btn_HidePassword.Name = "btn_HidePassword";
-            this.btn_HidePassword.Size = new System.Drawing.Size(34, 40);
-            this.btn_HidePassword.TabIndex = 7;
-            this.btn_HidePassword.UseVisualStyleBackColor = false;
-            this.btn_HidePassword.Visible = false;
-            this.btn_HidePassword.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Purple;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1324, 761);
+            this.ClientSize = new System.Drawing.Size(1324, 749);
             this.Controls.Add(this.picbox_Login);
             this.Controls.Add(this.gbox_Login);
             this.Controls.Add(this.gbox_Menu);
