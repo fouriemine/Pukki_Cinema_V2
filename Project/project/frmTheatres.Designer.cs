@@ -29,13 +29,16 @@ namespace project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTheatres));
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblTheatreHeading = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.bttnPrevFromTime = new System.Windows.Forms.Button();
             this.lblAddTheatre = new System.Windows.Forms.Label();
             this.lblChangeTheatre = new System.Windows.Forms.Label();
             this.lblDeleteTheatre = new System.Windows.Forms.Label();
             this.gbTheatre = new System.Windows.Forms.GroupBox();
+            this.lblMaxNumberValidation = new System.Windows.Forms.Label();
             this.dgvDisplayTheatres = new System.Windows.Forms.DataGridView();
             this.bttnDeleteTheatre = new System.Windows.Forms.Button();
             this.bttnUpdateTheatre = new System.Windows.Forms.Button();
@@ -63,18 +66,19 @@ namespace project
             // lblTheatreHeading
             // 
             this.lblTheatreHeading.AutoSize = true;
-            this.lblTheatreHeading.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTheatreHeading.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 64F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTheatreHeading.ForeColor = System.Drawing.Color.White;
-            this.lblTheatreHeading.Location = new System.Drawing.Point(223, 85);
+            this.lblTheatreHeading.Location = new System.Drawing.Point(133, 54);
             this.lblTheatreHeading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTheatreHeading.Name = "lblTheatreHeading";
-            this.lblTheatreHeading.Size = new System.Drawing.Size(281, 52);
+            this.lblTheatreHeading.Size = new System.Drawing.Size(574, 103);
             this.lblTheatreHeading.TabIndex = 3;
             this.lblTheatreHeading.Text = "Maintain Theatres";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel5.Controls.Add(this.bttnPrevFromTime);
             this.panel5.Controls.Add(this.lblAddTheatre);
             this.panel5.Controls.Add(this.lblChangeTheatre);
             this.panel5.Controls.Add(this.lblDeleteTheatre);
@@ -83,6 +87,19 @@ namespace project
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(201, 551);
             this.panel5.TabIndex = 5;
+            // 
+            // bttnPrevFromTime
+            // 
+            this.bttnPrevFromTime.BackColor = System.Drawing.Color.Purple;
+            this.bttnPrevFromTime.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnPrevFromTime.Location = new System.Drawing.Point(32, 478);
+            this.bttnPrevFromTime.Margin = new System.Windows.Forms.Padding(2);
+            this.bttnPrevFromTime.Name = "bttnPrevFromTime";
+            this.bttnPrevFromTime.Size = new System.Drawing.Size(120, 48);
+            this.bttnPrevFromTime.TabIndex = 8;
+            this.bttnPrevFromTime.Text = "Previous";
+            this.bttnPrevFromTime.UseVisualStyleBackColor = false;
+            this.bttnPrevFromTime.Click += new System.EventHandler(this.bttnPrevFromTime_Click);
             // 
             // lblAddTheatre
             // 
@@ -108,6 +125,7 @@ namespace project
             this.lblChangeTheatre.Size = new System.Drawing.Size(182, 39);
             this.lblChangeTheatre.TabIndex = 5;
             this.lblChangeTheatre.Text = "Change Theatre";
+            this.lblChangeTheatre.Click += new System.EventHandler(this.lblChangeTheatre_Click);
             // 
             // lblDeleteTheatre
             // 
@@ -120,9 +138,11 @@ namespace project
             this.lblDeleteTheatre.Size = new System.Drawing.Size(172, 39);
             this.lblDeleteTheatre.TabIndex = 6;
             this.lblDeleteTheatre.Text = "Delete Theatre";
+            this.lblDeleteTheatre.Click += new System.EventHandler(this.lblDeleteTheatre_Click);
             // 
             // gbTheatre
             // 
+            this.gbTheatre.Controls.Add(this.lblMaxNumberValidation);
             this.gbTheatre.Controls.Add(this.dgvDisplayTheatres);
             this.gbTheatre.Controls.Add(this.bttnDeleteTheatre);
             this.gbTheatre.Controls.Add(this.bttnUpdateTheatre);
@@ -132,6 +152,7 @@ namespace project
             this.gbTheatre.Controls.Add(this.lblTheatreID);
             this.gbTheatre.Controls.Add(this.bttnAddTheatre);
             this.gbTheatre.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbTheatre.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.gbTheatre.Location = new System.Drawing.Point(306, 226);
             this.gbTheatre.Name = "gbTheatre";
             this.gbTheatre.Size = new System.Drawing.Size(910, 524);
@@ -139,45 +160,64 @@ namespace project
             this.gbTheatre.TabStop = false;
             this.gbTheatre.Text = "Add Theartre";
             // 
+            // lblMaxNumberValidation
+            // 
+            this.lblMaxNumberValidation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblMaxNumberValidation.ForeColor = System.Drawing.Color.Black;
+            this.lblMaxNumberValidation.Location = new System.Drawing.Point(370, 249);
+            this.lblMaxNumberValidation.Name = "lblMaxNumberValidation";
+            this.lblMaxNumberValidation.Size = new System.Drawing.Size(317, 183);
+            this.lblMaxNumberValidation.TabIndex = 9;
+            this.lblMaxNumberValidation.Text = resources.GetString("lblMaxNumberValidation.Text");
+            this.lblMaxNumberValidation.Visible = false;
+            // 
             // dgvDisplayTheatres
             // 
             this.dgvDisplayTheatres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDisplayTheatres.Location = new System.Drawing.Point(35, 249);
             this.dgvDisplayTheatres.Name = "dgvDisplayTheatres";
             this.dgvDisplayTheatres.RowHeadersWidth = 51;
-            this.dgvDisplayTheatres.Size = new System.Drawing.Size(640, 233);
+            this.dgvDisplayTheatres.Size = new System.Drawing.Size(329, 183);
             this.dgvDisplayTheatres.TabIndex = 8;
             // 
             // bttnDeleteTheatre
             // 
+            this.bttnDeleteTheatre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bttnDeleteTheatre.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnDeleteTheatre.ForeColor = System.Drawing.Color.White;
             this.bttnDeleteTheatre.Location = new System.Drawing.Point(731, 432);
             this.bttnDeleteTheatre.Name = "bttnDeleteTheatre";
             this.bttnDeleteTheatre.Size = new System.Drawing.Size(166, 50);
             this.bttnDeleteTheatre.TabIndex = 7;
             this.bttnDeleteTheatre.Text = "Delete Theatre";
-            this.bttnDeleteTheatre.UseVisualStyleBackColor = true;
+            this.bttnDeleteTheatre.UseVisualStyleBackColor = false;
+            this.bttnDeleteTheatre.Click += new System.EventHandler(this.bttnDeleteTheatre_Click);
             // 
             // bttnUpdateTheatre
             // 
+            this.bttnUpdateTheatre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bttnUpdateTheatre.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnUpdateTheatre.ForeColor = System.Drawing.Color.White;
             this.bttnUpdateTheatre.Location = new System.Drawing.Point(731, 346);
             this.bttnUpdateTheatre.Name = "bttnUpdateTheatre";
             this.bttnUpdateTheatre.Size = new System.Drawing.Size(166, 50);
             this.bttnUpdateTheatre.TabIndex = 6;
             this.bttnUpdateTheatre.Text = "Update Theatre";
-            this.bttnUpdateTheatre.UseVisualStyleBackColor = true;
+            this.bttnUpdateTheatre.UseVisualStyleBackColor = false;
+            this.bttnUpdateTheatre.Click += new System.EventHandler(this.bttnUpdateTheatre_Click);
             // 
             // cbTheatreID
             // 
             this.cbTheatreID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTheatreID.FormattingEnabled = true;
-            this.cbTheatreID.Location = new System.Drawing.Point(478, 63);
+            this.cbTheatreID.Location = new System.Drawing.Point(450, 63);
             this.cbTheatreID.Name = "cbTheatreID";
             this.cbTheatreID.Size = new System.Drawing.Size(148, 31);
             this.cbTheatreID.TabIndex = 5;
             // 
             // tbAddTheatreCapacity
             // 
-            this.tbAddTheatreCapacity.Location = new System.Drawing.Point(478, 129);
+            this.tbAddTheatreCapacity.Location = new System.Drawing.Point(450, 136);
             this.tbAddTheatreCapacity.Name = "tbAddTheatreCapacity";
             this.tbAddTheatreCapacity.Size = new System.Drawing.Size(148, 30);
             this.tbAddTheatreCapacity.TabIndex = 4;
@@ -185,40 +225,48 @@ namespace project
             // lblAddTheatreCapacity
             // 
             this.lblAddTheatreCapacity.AutoSize = true;
-            this.lblAddTheatreCapacity.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddTheatreCapacity.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddTheatreCapacity.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lblAddTheatreCapacity.Location = new System.Drawing.Point(68, 136);
             this.lblAddTheatreCapacity.Name = "lblAddTheatreCapacity";
-            this.lblAddTheatreCapacity.Size = new System.Drawing.Size(117, 23);
+            this.lblAddTheatreCapacity.Size = new System.Drawing.Size(164, 33);
             this.lblAddTheatreCapacity.TabIndex = 3;
             this.lblAddTheatreCapacity.Text = "Theatre Capacity";
             // 
             // lblTheatreID
             // 
             this.lblTheatreID.AutoSize = true;
-            this.lblTheatreID.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTheatreID.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTheatreID.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lblTheatreID.Location = new System.Drawing.Point(68, 71);
             this.lblTheatreID.Name = "lblTheatreID";
-            this.lblTheatreID.Size = new System.Drawing.Size(74, 23);
+            this.lblTheatreID.Size = new System.Drawing.Size(105, 33);
             this.lblTheatreID.TabIndex = 2;
             this.lblTheatreID.Text = "Theatre ID";
             // 
             // bttnAddTheatre
             // 
+            this.bttnAddTheatre.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.bttnAddTheatre.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bttnAddTheatre.ForeColor = System.Drawing.Color.White;
             this.bttnAddTheatre.Location = new System.Drawing.Point(728, 265);
             this.bttnAddTheatre.Name = "bttnAddTheatre";
             this.bttnAddTheatre.Size = new System.Drawing.Size(166, 50);
             this.bttnAddTheatre.TabIndex = 1;
             this.bttnAddTheatre.Text = "Add Theatre";
-            this.bttnAddTheatre.UseVisualStyleBackColor = true;
+            this.bttnAddTheatre.UseVisualStyleBackColor = false;
+            this.bttnAddTheatre.Click += new System.EventHandler(this.bttnAddTheatre_Click);
             // 
             // frmTheatres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1324, 749);
             this.Controls.Add(this.gbTheatre);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
+            this.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.Name = "frmTheatres";
             this.Text = "frmTheatres";
             this.Load += new System.EventHandler(this.frmTheatres_Load);
@@ -250,5 +298,7 @@ namespace project
         private System.Windows.Forms.Label lblAddTheatreCapacity;
         private System.Windows.Forms.Label lblTheatreID;
         private System.Windows.Forms.Button bttnAddTheatre;
+        private System.Windows.Forms.Label lblMaxNumberValidation;
+        private System.Windows.Forms.Button bttnPrevFromTime;
     }
 }
