@@ -347,6 +347,7 @@ namespace project
         private void bttnPrevFromTime_Click(object sender, EventArgs e)
         {
             this.Close();
+            //Random comment
         }
 
         private void lblDeleteTheatre_Click(object sender, EventArgs e)
