@@ -10,7 +10,8 @@ Film_Cost	money,
 Selling_Price	smallmoney,
 Length		int,
 Age_Restriction int,
-Genre_ID	int	FOREIGN KEY REFERENCES GENRE(Genre_ID)
+Genre_ID	int,	FOREIGN KEY REFERENCES GENRE(Genre_ID)
+Starus          bit,
 );
 
 
