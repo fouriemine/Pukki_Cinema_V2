@@ -68,7 +68,7 @@ namespace Genre
             this.panel2.Location = new System.Drawing.Point(-145, -10);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1330, 217);
+            this.panel2.Size = new System.Drawing.Size(1469, 217);
             this.panel2.TabIndex = 4;
             // 
             // LblTitle

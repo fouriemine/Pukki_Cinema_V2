@@ -108,7 +108,9 @@ namespace project
 
         private void lbl_Films_Click(object sender, EventArgs e)
         {
-
+            frmFilm Films = new frmFilm();
+            Films.ShowDialog();
+            this.Close();
         }
 
         private void lbl_Genres_Click(object sender, EventArgs e)

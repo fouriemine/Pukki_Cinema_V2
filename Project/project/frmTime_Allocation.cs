@@ -19,11 +19,13 @@ namespace project
         SqlConnection conn;
         SqlDataAdapter adapt;
         DataSet ds;
-        String sql;
-        int deleteID;
+        String sql, addValue, prevAddValue;
         DateTime time;
+        int deleteID;
+        bool timeSpan = false;
+        DateTime maxValue, prevMaxValue;
 
-        String connStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        String connStr = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
 
         public frmTime_Allocation()
         {
@@ -152,10 +154,35 @@ namespace project
         {
             try
             {
-                
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                sql = "SELECT MAX(Time_ID) FROM TIME_ALLOCATIONS";
+                comm = new SqlCommand(sql, conn);
+                int maxID = (int)comm.ExecuteScalar();
+                conn.Close();
 
-                if (tbTimeBracket.Text != " ")
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                DateTime maxValue;
+               
+                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = {maxID}";
+                comm = new SqlCommand(sql, conn);
+
+                maxValue = DateTime.Parse(comm.ExecuteScalar().ToString());
+                addValue = maxValue.ToString("HH:mm:ss");
+                conn.Close();
+
+          
+                if (DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), maxValue) > 0)
                 {
+                    timeSpan = true;
+                }
+                else
+                    timeSpan = false;
+
+                if (tbTimeBracket.Text != " " && timeSpan)
+                {
+                    MessageBox.Show("Works");
                     if (DateTime.TryParse(tbTimeBracket.Text, out time))
                     {
                         conn = new SqlConnection(connStr);
@@ -181,7 +208,7 @@ namespace project
                     }
                 }
                 else
-                    MessageBox.Show("You have to specify the time in the provided textbox.");
+                    MessageBox.Show("You have to specify the time in the provided textbox, and ensure that the time entered is numerically bigger than the latest time in the schedule.");
             }
             catch (Exception wrong)
             {
@@ -248,36 +275,195 @@ namespace project
         {
             try
             {
-                if (cbTimeID.SelectedIndex != -1)
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                sql = "SELECT * FROM TIME_ALLOCATIONS";
+                comm = new SqlCommand(sql, conn);
+                adapt = new SqlDataAdapter(comm);
+                DataTable dt = new DataTable();
+                adapt.Fill(dt);
+                bool flag = true;
+
+
+                int changing = int.Parse(cbTimeID.Text);
+                DateTime changeTime = DateTime.Parse(tbTimeBracket.Text);
+
+                for(int i = 0; i < dt.Rows.Count; i++)
                 {
-                    if (tbTimeBracket.Text != " " && DateTime.TryParse(tbTimeBracket.Text, out time))
+                    if(changing == int.Parse(dt.Rows[0][0].ToString()))
                     {
-                        conn = new SqlConnection(connStr);
-                        conn.Open();
-                        sql = $"UPDATE TIME_ALLOCATIONS SET Time = '{time}' WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
-                        adapt = new SqlDataAdapter();
-                        ds = new DataSet();
-                        comm = new SqlCommand(sql, conn);
-                        adapt.UpdateCommand = comm;
-                        adapt.UpdateCommand.ExecuteNonQuery();
-                        conn.Close();
-                        conn.Dispose();
-
-                        //update user
-                        MessageBox.Show("Updated successfully");
-
-                        reLoad();
-
-                       
+                        if (i < dt.Rows.Count-1)
+                        {
+                            if (changeTime > DateTime.Parse(((DateTime.Parse(dt.Rows[i+1][1].ToString())).ToString("HH:mm:ss"))))
+                            {
+                                MessageBox.Show("Time is later than the next time slot", "Error");
+                                flag = false;
+                                break;
+                            }
+                        }
+                    }
+                    else if(changing == int.Parse(dt.Rows[dt.Rows.Count-1][0].ToString()))
+                    {
+                        if (changeTime < DateTime.Parse(((DateTime.Parse(dt.Rows[i][1].ToString())).ToString("HH:mm:ss"))))
+                        {
+                            MessageBox.Show("Time is earlier than the previous time slot", "Error");
+                            flag = false;
+                            break;
+                        }
                     }
                     else
-                        MessageBox.Show("Before you update a time group, you need to provide a new time group in the correct format!!");
+                    {
+                        if (i < dt.Rows.Count - 1)
+                        {
+                            int counter = cbTimeID.SelectedIndex;
+                            if (changeTime >= DateTime.Parse(((DateTime.Parse(dt.Rows[counter+1][1].ToString())).ToString("HH:mm:ss"))))
+                            {
+                                MessageBox.Show("Time later than next time slot", "Error");
+                                flag = false;
+                                break;
+                            }
+                        }
+                        else if (i > 0)
+                        {
+                            int counter = cbTimeID.SelectedIndex;
+                            if (changeTime <= DateTime.Parse(((DateTime.Parse(dt.Rows[counter-1][1].ToString())).ToString("HH:mm:ss"))))
+                            {
+                                MessageBox.Show("Time is earlier than previous time slot", "Error");
+                                flag = false;
+                                break;
+
+                            }
+                        }
+                    }
+                }
+
+                
+                if (flag)
+                {
+                    sql = "UPDATE TIME_ALLOCATIONS SET Time=@time WHERE Time_ID = @timeId";
+                    
+                    comm = new SqlCommand(sql, conn);
+                    comm.Parameters.AddWithValue("timeId", (int)cbTimeID.SelectedValue);
+                    comm.Parameters.AddWithValue("time", DateTime.Parse((DateTime.Parse(tbTimeBracket.Text)).ToString("HH:mm:ss")));
+                    if (MessageBox.Show("Are you sure you wish to update " + cbTimeID.SelectedValue.ToString() + "?", "Caution", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        comm.ExecuteNonQuery();
+                        reLoad();
+                        MessageBox.Show("Updated Successfully");
+                    }
+                    
                 }
                 else
                 {
-                    MessageBox.Show("Before you update a time group, you need to first select the time ID from the options provided!!");
+                    MessageBox.Show("Could not update");
                 }
 
+                
+                /*
+                sql = "SELECT MAX(Time_ID) FROM TIME_ALLOCATIONS";
+                comm = new SqlCommand(sql, conn);
+                int maxID = (int)comm.ExecuteScalar();
+                int prevMax = maxID - 1;
+                conn.Close();
+
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = {maxID}";
+                comm = new SqlCommand(sql, conn);
+                maxValue = DateTime.Parse(comm.ExecuteScalar().ToString());
+                addValue = maxValue.ToString("HH:mm:ss");
+                conn.Close();
+
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                MessageBox.Show(prevMax.ToString());
+                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = {prevMax}";
+                comm = new SqlCommand(sql, conn);
+                prevMaxValue = DateTime.Parse(comm.ExecuteScalar().ToString());
+                prevAddValue = maxValue.ToString("HH:mm:ss");
+                conn.Close();
+
+
+                if ((int.Parse(cbTimeID.GetItemText(cbTimeID.SelectedItem))) < maxID)
+                {
+                    if (DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), maxValue) < 0)
+                    {
+                        timeSpan = true;
+                    }
+                    else
+                        timeSpan = false;
+
+                    if (cbTimeID.SelectedIndex != -1)
+                    {
+                         if (tbTimeBracket.Text != " " && timeSpan && DateTime.TryParse(tbTimeBracket.Text, out time))
+                        {
+                            conn = new SqlConnection(connStr);
+                            conn.Open();
+                            sql = $"UPDATE TIME_ALLOCATIONS SET Time = '{time}' WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
+                            adapt = new SqlDataAdapter();
+                            ds = new DataSet();
+                            comm = new SqlCommand(sql, conn);
+                            adapt.UpdateCommand = comm;
+                            adapt.UpdateCommand.ExecuteNonQuery();
+                            conn.Close();
+                            conn.Dispose();
+
+                            //update user
+                            MessageBox.Show("Updated successfully");
+
+                            reLoad();
+
+
+                        }
+                        else
+                            MessageBox.Show("Before you update a time group, you need to provide a new time group in the correct format!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Before you update a time group, you need to first select the time ID from the options provided!!");
+                    }
+                }
+                else
+                {
+                    if (DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), maxValue) > 0 || DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), maxValue) < 0  && DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), prevMaxValue) < 0)
+                    {
+                        timeSpan = true;
+                    }
+                    else
+                        timeSpan = false;
+
+                    if (cbTimeID.SelectedIndex != -1)
+                    {
+                        if (tbTimeBracket.Text != " " && timeSpan && DateTime.TryParse(tbTimeBracket.Text, out time))
+                        {
+                            conn = new SqlConnection(connStr);
+                            conn.Open();
+                            sql = $"UPDATE TIME_ALLOCATIONS SET Time = '{time}' WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
+                            adapt = new SqlDataAdapter();
+                            ds = new DataSet();
+                            comm = new SqlCommand(sql, conn);
+                            adapt.UpdateCommand = comm;
+                            adapt.UpdateCommand.ExecuteNonQuery();
+                            conn.Close();
+                            conn.Dispose();
+
+                            //update user
+                            MessageBox.Show("Updated successfully");
+
+                            reLoad();
+
+
+                        }
+                        else
+                            MessageBox.Show("Before you update a time group, you need to provide a new time group in the correct format!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Before you update a time group, you need to first select the time ID from the options provided!!");
+                    }
+                    
+                }
+                */
             }
             catch (Exception error)
             {
@@ -289,11 +475,17 @@ namespace project
         {
             try
             {
-                string message = "Do you want to delete this record?";
-                String title = "Delete record";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                string delete = cbTimeID.GetItemText(cbTimeID.SelectedItem);
+                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = @deleteID";
+                comm = new SqlCommand(sql, conn);
+                comm.Parameters.AddWithValue("@deleteID", delete);
+                conn.Close();
+                
+
+                DialogResult res = MessageBox.Show("Do you want to delete the time slot " + delete + "?", "Delete record", MessageBoxButtons.YesNo);
+                if (res == DialogResult.Yes)
                 {
                     if (!tbTimeBracket.Enabled)
                     {
@@ -303,6 +495,7 @@ namespace project
                             deleteID = int.Parse(cbTimeID.SelectedValue.ToString());
                             conn = new SqlConnection(connStr);
                             conn.Open();
+
                             sql = $"DELETE FROM TIME_ALLOCATIONS WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
                             adapt = new SqlDataAdapter();
                             ds = new DataSet();

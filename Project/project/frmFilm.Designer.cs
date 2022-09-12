@@ -244,7 +244,7 @@ namespace project
             // lv_genre
             // 
             this.lv_genre.HideSelection = false;
-            this.lv_genre.Location = new System.Drawing.Point(252, 191);
+            this.lv_genre.Location = new System.Drawing.Point(249, 191);
             this.lv_genre.Name = "lv_genre";
             this.lv_genre.Size = new System.Drawing.Size(234, 48);
             this.lv_genre.TabIndex = 2;
@@ -255,7 +255,7 @@ namespace project
             this.lv_title.HideSelection = false;
             this.lv_title.Location = new System.Drawing.Point(252, 126);
             this.lv_title.Name = "lv_title";
-            this.lv_title.Size = new System.Drawing.Size(234, 48);
+            this.lv_title.Size = new System.Drawing.Size(234, 49);
             this.lv_title.TabIndex = 1;
             this.lv_title.UseCompatibleStateImageBehavior = false;
             // 
@@ -317,7 +317,6 @@ namespace project
             // 
             // cbx_title
             // 
-            this.cbx_title.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx_title.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_title.FormattingEnabled = true;
             this.cbx_title.Location = new System.Drawing.Point(252, 127);

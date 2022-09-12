@@ -22,8 +22,7 @@ namespace project
         String sql;
         int deleteID = 1, updateID;
 
-        String connStr = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
-
+        String connStr = @"Data Source=IPS;Initial Catalog = Pukki_Cinema; Integrated Security = True";
         public frmTheatres()
         {
             InitializeComponent();
@@ -275,10 +274,15 @@ namespace project
         {
             try
             {
-                string message = "Do you want to delete this record?";
-                String title = "Delete record";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
+                conn = new SqlConnection(connStr);
+                conn.Open();
+                string delete = cbTheatreID.GetItemText(cbTheatreID.SelectedItem);
+                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = @deleteID";
+                comm = new SqlCommand(sql, conn);
+                comm.Parameters.AddWithValue("@deleteID", delete);
+                conn.Close();
+
+                DialogResult result = MessageBox.Show("Do you want to delete the time slot " + delete + "?", "Delete record", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     if (!tbAddTheatreCapacity.Enabled)
@@ -342,6 +346,7 @@ namespace project
         private void bttnPrevFromTime_Click(object sender, EventArgs e)
         {
             this.Close();
+            //Random comment
         }
 
         private void lblDeleteTheatre_Click(object sender, EventArgs e)

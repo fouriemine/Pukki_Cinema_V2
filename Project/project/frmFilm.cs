@@ -14,7 +14,7 @@ namespace project
     public partial class frmFilm : Form
     {
         //Creating my sql connection string, sql command, connection, dataset and adapter
-        public String conStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        public String conStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -79,6 +79,11 @@ namespace project
             lv_title.Visible = false;
             txt_film_ID.Visible = false;
 
+            pcb_help.Visible = false;
+
+            btn_help.Enabled = true;
+            btn_helpClose.Enabled = false;
+
             cbx_title.Visible = false;
             cbx_filmID.Visible = false;
 
@@ -111,6 +116,13 @@ namespace project
             txt_film_ID.Visible = true;
             txt_film_ID.Enabled = false;
 
+            cbx_title.DropDownStyle = ComboBoxStyle.DropDown;
+
+            pcb_help.Visible = false;
+
+            btn_help.Enabled = true;
+            btn_helpClose.Enabled = false;
+
             cbx_filmID.Visible = false;
             lv_filmID.Visible = true;
 
@@ -135,6 +147,12 @@ namespace project
             btn_add.Visible = false;
             btn_update.Visible = false;
             txt_film_ID.Visible = true;
+
+           btn_help.Enabled = true;
+           btn_helpClose.Enabled = false;
+
+            cbx_title.DropDownStyle = ComboBoxStyle.DropDownList;
+            pcb_help.Visible = false;
             gbx_films.Text = "Delete Film";
 
 
@@ -343,7 +361,8 @@ namespace project
 
                                             //Sql query for adding
                                             conn.Open();
-                                            com = new SqlCommand("insert into FILMS(Title, Film_Cost, Selling_Price, Length, Age_Restriction, Genre_ID, Status) values(@title, @filmCost , @sellingprice, @length, @ageRestriction, @genre_Desc, @status)", conn);
+                                            com = new SqlCommand("insert into FILMS(Title, Film_Cost, Selling_Price, Length, Age_Restriction, Genre_ID, Status) values(@title, @filmCost , @sellingprice, @length, " +
+                                                "@ageRestriction, @genre_Desc, @status)", conn);
                                             com.Parameters.AddWithValue("@title", txt_title.Text);
                                             com.Parameters.AddWithValue("@filmCost", txt_filmCost.Text);
                                             com.Parameters.AddWithValue("@sellingprice", txt_sellingPrice.Text);
@@ -751,11 +770,16 @@ namespace project
         private void btn_help_Click(object sender, EventArgs e)
         {
             pcb_help.Visible = true;
+            btn_help.Enabled = false;
+            btn_helpClose.Enabled = true;
         }
         //creating help close button for films to close the help image
         private void btn_helpClose_Click(object sender, EventArgs e)
         {
             pcb_help.Visible = false;
+
+            btn_helpClose.Enabled = false;
+            btn_help.Enabled = true;
         }
         //Craeting button to go back to previous aintain film
         private void btn_previous_Click(object sender, EventArgs e)
