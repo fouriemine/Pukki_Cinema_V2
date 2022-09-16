@@ -22,7 +22,7 @@ namespace project
         String sql;
         int deleteID = 1, updateID;
 
-        String connStr = @"Data Source=IPS;Initial Catalog = Pukki_Cinema; Integrated Security = True";
+        String connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public frmTheatres()
         {
             InitializeComponent();
@@ -52,6 +52,7 @@ namespace project
                 dgvDisplayTheatres.DataMember = "THEATRES";
                 conn.Close();
 
+                
             }
             catch
             {
@@ -62,9 +63,13 @@ namespace project
 
         private void frmTheatres_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
+            closeHelp_btn.Visible = false;
+            help_btn.Visible = true;
+            pictureBox2.Visible = false;
             try
             {
-                gbTheatre.Text = " ";
+                gbTheatre.Text = "Current Theatres";
                 //set all controls to invisible
                 lblTheatreID.Visible = false;
                 cbTheatreID.Visible = false;
@@ -106,12 +111,12 @@ namespace project
                 lblAddTheatreCapacity.Visible = true;
                 tbAddTheatreCapacity.Visible = true;
                 bttnAddTheatre.Visible = true;
-                bttnUpdateTheatre.Visible = true;
-                bttnDeleteTheatre.Visible = true;
+                bttnUpdateTheatre.Visible = false;
+                bttnDeleteTheatre.Visible = false;
                 
 
               //Enable the needed controls
-              bttnAddTheatre.Enabled = true;
+                bttnAddTheatre.Enabled = true;
                 tbAddTheatreCapacity.Enabled = true;
                 tbAddTheatreCapacity.Text = " ";
                 cbTheatreID.Enabled = false;
@@ -123,7 +128,6 @@ namespace project
                 conn.Open();  //open connection
 
                 //Display warning
-                lblMaxNumberValidation.Visible = true;
 
                 //Populate Gridview with current theatres
                 sql = "SELECT * FROM THEATRES";
@@ -188,8 +192,7 @@ namespace project
             gbTheatre.Text = "Update Theatre";
             cbTheatreID.Enabled = true;
 
-            //Hide validation label
-            lblMaxNumberValidation.Visible = false;
+            //Hide validation labels
 
             try
             {
@@ -198,9 +201,9 @@ namespace project
                 cbTheatreID.Visible = true;
                 lblAddTheatreCapacity.Visible = true;
                 tbAddTheatreCapacity.Visible = true;
-                bttnAddTheatre.Visible = true;
+                bttnAddTheatre.Visible = false;
                 bttnUpdateTheatre.Visible = true;
-                bttnDeleteTheatre.Visible = true;
+                bttnDeleteTheatre.Visible = false;
 
                 //enabling needed controls
                 bttnAddTheatre.Enabled = false;
@@ -345,8 +348,23 @@ namespace project
 
         private void bttnPrevFromTime_Click(object sender, EventArgs e)
         {
-            this.Close();
-            //Random comment
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void help_btn_Click(object sender, EventArgs e)
+        {
+
+            closeHelp_btn.Visible = true;
+            help_btn.Visible = false;
+            pictureBox2.Visible = true;
+        }
+
+        private void closeHelp_btn_Click(object sender, EventArgs e)
+        {
+
+            closeHelp_btn.Visible = false;
+            help_btn.Visible = true;
+            pictureBox2.Visible = false;
         }
 
         private void lblDeleteTheatre_Click(object sender, EventArgs e)
@@ -354,7 +372,7 @@ namespace project
             try
             {
                 //hide validation lale
-                lblMaxNumberValidation.Visible = false; 
+                //lblMaxNumberValidation.Visible = false; 
 
                 gbTheatre.Text = "Delete Theatre";
                 //making all controls visible 
@@ -362,8 +380,8 @@ namespace project
                 cbTheatreID.Visible = true;
                 lblAddTheatreCapacity.Visible = true;
                 tbAddTheatreCapacity.Visible = true;
-                bttnAddTheatre.Visible = true;
-                bttnUpdateTheatre.Visible = true;
+                bttnAddTheatre.Visible = false;
+                bttnUpdateTheatre.Visible = false;
                 bttnDeleteTheatre.Visible = true;
 
                 //enabling the combobox and disabling the textbox, add and update buttons

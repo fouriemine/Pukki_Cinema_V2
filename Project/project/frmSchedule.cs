@@ -13,7 +13,7 @@ namespace project
 {
     public partial class frmSchedule : Form
     {
-        public String conStr = @"Data Source=DESKTOP-PJ8SEPG;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public String conStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -119,6 +119,7 @@ namespace project
 
         private void frmSchedule_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
             try
             {
                 //reset();
@@ -315,8 +316,7 @@ namespace project
 
         private void btnPreviousSchedule_Click(object sender, EventArgs e)
         {
-            //frmLogin.Show();
-            this.Close();
+            this.DialogResult = DialogResult.OK;
         }
 
         private void gbxDeleteSchedule_VisibleChanged_1(object sender, EventArgs e)
@@ -497,6 +497,8 @@ namespace project
         private void btnScheduleHelp_Click(object sender, EventArgs e)
         {
             pbHelp.Visible = true;
+            pbHelp.BringToFront();
+            pbHelp.BringToFront();
             btnScheduleHelp.Visible = false;
             btnCloseScheduleHelp.Visible = true;
         }

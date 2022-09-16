@@ -164,6 +164,7 @@ namespace project
         private void frmFilm_Load(object sender, EventArgs e)
         {
             //Loading form
+            WindowState = FormWindowState.Maximized;
             reLoad();
             ClearData();
 
@@ -308,7 +309,7 @@ namespace project
                 conn.Open();
                 DataTable ds = new DataTable();
                 //Populate gridview with Users
-                sql = "SELECT F.Film_ID, F.Title, F.Film_Cost, F.Selling_Price, F.Length, F.Age_Restriction, G.Description, F.Status FROM FILMS F, GENRES G WHERE F.Genre_ID = G.Genre_ID";
+                sql = "SELECT F.Film_ID, F.Title, FORMAT(F.Film_Cost , 'N2') AS Film_Cost, FORMAT(F.Selling_Price,'N2') AS Selling_Price , F.Length, F.Age_Restriction, G.Description, F.Status FROM FILMS F, GENRES G WHERE F.Genre_ID = G.Genre_ID";
                 com = new SqlCommand(sql, conn);
                 adap = new SqlDataAdapter(com);
                 adap.Fill(ds);
@@ -770,23 +771,21 @@ namespace project
         private void btn_help_Click(object sender, EventArgs e)
         {
             pcb_help.Visible = true;
-            btn_help.Enabled = false;
-            btn_helpClose.Enabled = true;
+            btn_help.Visible = false;
+            btn_helpClose.Visible = true;
         }
         //creating help close button for films to close the help image
         private void btn_helpClose_Click(object sender, EventArgs e)
         {
             pcb_help.Visible = false;
-
-            btn_helpClose.Enabled = false;
-            btn_help.Enabled = true;
+            btn_help.Visible = true;
+            btn_helpClose.Visible = false;
         }
         //Craeting button to go back to previous aintain film
         private void btn_previous_Click(object sender, EventArgs e)
         {
-            frmLogin oldLog = new frmLogin();
-            oldLog.ShowDialog();
-            this.Close();
+            this.DialogResult = DialogResult.OK;
         }
+    
     }
 }

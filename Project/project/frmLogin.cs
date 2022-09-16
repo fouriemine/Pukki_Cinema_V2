@@ -13,22 +13,22 @@ namespace project
 {
     public partial class frmLogin : Form
     {
-        private bool stayLogged = false;
+        public int UserType = 0;
 
 
         public frmLogin()
         {
             InitializeComponent();
+            
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Login_Load(object sender, EventArgs e)
         {
-            if(stayLogged)
+            WindowState = FormWindowState.Maximized;
+            gbox_Login.Visible = true;
+           /* if (stayLogged)
             {
                 gbox_Login.Visible = false;
                 gbox_Menu.Visible = true;
@@ -37,7 +37,7 @@ namespace project
             {
                 gbox_Login.Visible = true;
                 gbox_Menu.Visible = false;
-            }
+            }*/
         }
 
         private void btn_ShowPassword_Click(object sender, EventArgs e)
@@ -57,8 +57,8 @@ namespace project
         {
             try 
             {
-                SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP - 0B9U4DP; Initial Catalog = LoginTry(); Integrated Security = True");
-                SqlCommand sqlCMD = new SqlCommand("select Admin from Login_new where Username=@username AND Password=@password;", conn);
+                SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                SqlCommand sqlCMD = new SqlCommand("SELECT IsAdmin FROM USERS WHERE Username=@username AND Password=@password;", conn);
                 sqlCMD.Parameters.AddWithValue("@username", txt_Username.Text);
                 sqlCMD.Parameters.AddWithValue("@password", txt_Password.Text);
 
@@ -67,22 +67,24 @@ namespace project
                 adap.Fill(dt);
                 if (dt.Rows.Count != 0)
                 {
-                    switch (dt.Rows[0]["Admin"].ToString())
+                    switch (dt.Rows[0]["IsAdmin"].ToString())
                     {
-                        case "Admin":
-                            gbox_Login.Visible = false;
-                            gbox_Menu.Visible = true;
+                        case "True":
+                            UserType = 1;
+                            Close();
+
                             break;
 
-                        case "User":
-                            MessageBox.Show("Can only sell tickets");
+                        case "False":
+                            UserType = 2;
+                            Close();
                             break;
 
                         default:
                             MessageBox.Show("Please enter correct details");
                             break;
                     }
-                    stayLogged = true;
+                   
                 }
                 else
                 {
@@ -99,43 +101,6 @@ namespace project
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void lbl_Users_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_Films_Click(object sender, EventArgs e)
-        {
-            frmFilm Films = new frmFilm();
-            Films.ShowDialog();
-            this.Close();
-        }
-
-        private void lbl_Genres_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_Theatres_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_Schedule_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_Tickets_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_Reports_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

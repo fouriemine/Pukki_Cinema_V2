@@ -16,11 +16,29 @@ namespace project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-//<<<<<<< Updated upstream
+
+            //etsing
+            //Application.Run(new frmGenre()) ;
+
+            frmLogin Login = new frmLogin();
+            Application.Run(Login);
+
+            if (Login.UserType == 1)
+            {
+                Application.Run(new frmMenu());
+            }
+            else if (Login.UserType == 2)
+            {
+                Application.Run(new frmSellTickets());
+            }
+
+
+            //<<<<<<< Updated upstream
             //Application.Run(new frmUsers());
-//=======
-            Application.Run(new frmTime_Allocation());
-//>>>>>>> Stashed changes
+            //=======
+
+            //Application.Run(new frmLogin());
+            //>>>>>>> Stashed changes
         }
     }
 }

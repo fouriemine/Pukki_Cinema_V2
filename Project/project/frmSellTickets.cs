@@ -20,7 +20,7 @@ namespace project
         public SqlConnection connection;
         public SqlDataAdapter adapter;
         public String sql;
-        public String connectionString = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        public String connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public int tickets;
         public int schedule_ID;
         public frmSellTickets()
@@ -28,12 +28,14 @@ namespace project
             InitializeComponent();
         }
 
-        private String sqlCon = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        private String sqlCon = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         private void frmSellTickets_Load(object sender, EventArgs e) //initializing variable and controls
         {
+            WindowState = FormWindowState.Maximized;
             tickets = 0;
             schedule_ID = 0;
+            
             try
             {
                 connection = new SqlConnection(sqlCon);
@@ -48,14 +50,15 @@ namespace project
                 tickets_txt.Text = "";
                 scheduleID_cbx.Text = "";
                 connection.Close();
-                MessageBox.Show("Connection Successfull");
+                
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Could not connect to db");
+                MessageBox.Show(ex.Message);
             }
 
             sellTicket_btn.Visible = false;
+            ClearAll();
         }
 
         public void comboLoad() //load combo box to display valid schedule id's
@@ -95,6 +98,7 @@ namespace project
             amount_lbl.Text = "Amount to be paid: R0.00";
             tickets = 0;
             schedule_ID = 0;
+            scheduleID_cbx.SelectedIndex = -1;
         }
 
         public void CalcAmount()

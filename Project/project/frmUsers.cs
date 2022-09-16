@@ -16,7 +16,7 @@ namespace project
     public partial class frmUsers : Form
     {
         //connecting to database
-        public String conStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        public String conStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -33,18 +33,29 @@ namespace project
 
         private void frmUsers_Load(object sender, EventArgs e)
         {//set the group box to be invisible when loading
-            gbx_users.Visible = false;
-            
+            gbx_users.Visible = true;
+            WindowState = FormWindowState.Maximized;
+            txtBox_UserID.Visible = false;
+            txt_password.Visible = false;
+            pnl_Admin.Visible = false;
+            lbl_adminYN.Visible = false;
+            lbl_password.Visible = false;
+            lbl_UserId.Visible = false;
+            lbl_username.Visible = false;
+            textbx_Username.Visible = false;
+            btn_add.Visible = false;
+            btn_Delete.Visible = false;
+            btn_Update.Visible = false;
             try
             {
                 conn = new SqlConnection(conStr);
                 conn.Open();
-                MessageBox.Show("Connection Successfull");
+                //MessageBox.Show("Connection Successfull");
                 conn.Close();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Could not connect to db");
+                MessageBox.Show(ex.Message);
             }
 
             try
@@ -64,6 +75,9 @@ namespace project
         {
             try
             {
+                HelpFunctionPicture.Visible = false;
+                btnclose_help.Visible = false ;
+                btn_Help.Visible = true;
                 conn = new SqlConnection(conStr);
                 conn.Open();
                 //Populate gridview with Users
@@ -75,7 +89,6 @@ namespace project
                 dataGridView1.DataSource = ds;
                 dataGridView1.DataMember = "USERS";
                 conn.Close();
-
             }
             catch
             {
@@ -90,7 +103,6 @@ namespace project
             rdo_AdminYes.Checked = false;
             rdo_AdminNo.Checked = false;
             txtBox_UserID.Text = "";
-
         }
 
         public void dispAll()
@@ -352,14 +364,14 @@ namespace project
         private void button2_Click(object sender, EventArgs e)
         { //displays help function
             HelpFunctionPicture.Visible = true;
-            button2.Visible = false;
+            btn_Help.Visible = false;
             btnclose_help.Visible = true;
         }
 
         private void btnclose_help_Click(object sender, EventArgs e)
         {
             HelpFunctionPicture.Visible = false;
-            button2.Visible = true;
+            btn_Help.Visible = true;
             btnclose_help.Visible = false;
             
         }
@@ -398,41 +410,12 @@ namespace project
             
          }
 
-        private void lblSearchUser_Click(object sender, EventArgs e)
-        {
-            //dataGridView1.Visible = false;
-            if (txtSearch.Text != "")
-            {
-                conn = new SqlConnection(conStr);
-                conn.Open();
-                //Populate gridview with Users
-                adap = new SqlDataAdapter();
-                ds = new DataSet();
-                com = new SqlCommand("select * from USERS where Username = @username", conn);
-                com.Parameters.AddWithValue("@username", txtSearch.Text);
-                adap.SelectCommand = com;
-                adap.Fill(ds, "USERS");
-                dataGridView1.DataSource = ds;
-                dataGridView1.DataMember = "USERS";
-                conn.Close();
-                dataGridView1.Visible = true;
-               ClearData();
-                if (dataGridView1.RowCount == 1)
-                {
-                    MessageBox.Show("User not found", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Enter all necessary details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           
-        }
-
         private void btn_previous_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.OK;
         }
+
+        
     }
 }
 

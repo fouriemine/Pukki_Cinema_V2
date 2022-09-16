@@ -1,5 +1,5 @@
 ﻿
-namespace Genre
+namespace project
 {
     partial class frmGenre
     {
@@ -31,29 +31,33 @@ namespace Genre
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenre));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LblTitle = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblMaxCharactersValidation = new System.Windows.Forms.Label();
-            this.txtbGenreId = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmbGenreId = new System.Windows.Forms.ComboBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.txtbDescription = new System.Windows.Forms.TextBox();
             this.comboBoxDescription = new System.Windows.Forms.ComboBox();
             this.dtgDisplay = new System.Windows.Forms.DataGridView();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblGenreID = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.closeHelp_btn = new System.Windows.Forms.Button();
+            this.help_btn = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.lblUpdateGenre = new System.Windows.Forms.Label();
             this.lblDeleteGenre = new System.Windows.Forms.Label();
             this.lblAddGenre = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.txtbDescription = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDisplay)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -61,22 +65,33 @@ namespace Genre
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.panel2.BackColor = System.Drawing.Color.Purple;
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.LblTitle);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(-145, -10);
+            this.panel2.Location = new System.Drawing.Point(-145, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1469, 217);
+            this.panel2.Size = new System.Drawing.Size(1211, 165);
             this.panel2.TabIndex = 4;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(165, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(148, 103);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // LblTitle
             // 
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 64F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTitle.ForeColor = System.Drawing.Color.White;
-            this.LblTitle.Location = new System.Drawing.Point(562, 55);
+            this.LblTitle.Location = new System.Drawing.Point(332, 23);
             this.LblTitle.Name = "LblTitle";
             this.LblTitle.Size = new System.Drawing.Size(243, 103);
             this.LblTitle.TabIndex = 2;
@@ -102,8 +117,7 @@ namespace Genre
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblMaxCharactersValidation);
-            this.groupBox1.Controls.Add(this.txtbGenreId);
+            this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.cmbGenreId);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnDelete);
@@ -113,38 +127,34 @@ namespace Genre
             this.groupBox1.Controls.Add(this.dtgDisplay);
             this.groupBox1.Controls.Add(this.lblDescription);
             this.groupBox1.Controls.Add(this.lblGenreID);
-            this.groupBox1.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(253, 226);
+            this.groupBox1.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F);
+            this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox1.Location = new System.Drawing.Point(229, 174);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 460);
+            this.groupBox1.Size = new System.Drawing.Size(800, 475);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Genre";
             // 
-            // lblMaxCharactersValidation
+            // pictureBox2
             // 
-            this.lblMaxCharactersValidation.Location = new System.Drawing.Point(328, 175);
-            this.lblMaxCharactersValidation.Name = "lblMaxCharactersValidation";
-            this.lblMaxCharactersValidation.Size = new System.Drawing.Size(312, 196);
-            this.lblMaxCharactersValidation.TabIndex = 14;
-            this.lblMaxCharactersValidation.Text = resources.GetString("lblMaxCharactersValidation.Text");
-            this.lblMaxCharactersValidation.Visible = false;
-            // 
-            // txtbGenreId
-            // 
-            this.txtbGenreId.Location = new System.Drawing.Point(153, 53);
-            this.txtbGenreId.Name = "txtbGenreId";
-            this.txtbGenreId.Size = new System.Drawing.Size(211, 33);
-            this.txtbGenreId.TabIndex = 13;
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(265, 45);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(396, 368);
+            this.pictureBox2.TabIndex = 14;
+            this.pictureBox2.TabStop = false;
             // 
             // cmbGenreId
             // 
+            this.cmbGenreId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGenreId.FormattingEnabled = true;
-            this.cmbGenreId.Location = new System.Drawing.Point(153, 53);
+            this.cmbGenreId.Location = new System.Drawing.Point(174, 52);
             this.cmbGenreId.Name = "cmbGenreId";
-            this.cmbGenreId.Size = new System.Drawing.Size(211, 33);
+            this.cmbGenreId.Size = new System.Drawing.Size(211, 47);
             this.cmbGenreId.TabIndex = 12;
+            this.cmbGenreId.SelectedIndexChanged += new System.EventHandler(this.cmbGenreID_SelecetedIndexChanged);
             // 
             // btnAdd
             // 
@@ -185,67 +195,91 @@ namespace Genre
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // txtbDescription
-            // 
-            this.txtbDescription.Location = new System.Drawing.Point(153, 113);
-            this.txtbDescription.Name = "txtbDescription";
-            this.txtbDescription.Size = new System.Drawing.Size(211, 33);
-            this.txtbDescription.TabIndex = 8;
-            // 
             // comboBoxDescription
             // 
             this.comboBoxDescription.FormattingEnabled = true;
-            this.comboBoxDescription.Location = new System.Drawing.Point(153, 113);
+            this.comboBoxDescription.Location = new System.Drawing.Point(174, 113);
             this.comboBoxDescription.Name = "comboBoxDescription";
-            this.comboBoxDescription.Size = new System.Drawing.Size(211, 33);
+            this.comboBoxDescription.Size = new System.Drawing.Size(211, 47);
             this.comboBoxDescription.TabIndex = 6;
+            this.comboBoxDescription.SelectedIndexChanged += new System.EventHandler(this.comboBoxDescription_SelectedIndexChanged);
             // 
             // dtgDisplay
             // 
+            this.dtgDisplay.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgDisplay.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDisplay.Location = new System.Drawing.Point(34, 168);
+            this.dtgDisplay.Location = new System.Drawing.Point(34, 191);
             this.dtgDisplay.Name = "dtgDisplay";
-            this.dtgDisplay.Size = new System.Drawing.Size(282, 269);
+            this.dtgDisplay.Size = new System.Drawing.Size(397, 269);
             this.dtgDisplay.TabIndex = 4;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(6, 116);
+            this.lblDescription.Location = new System.Drawing.Point(27, 116);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(97, 27);
+            this.lblDescription.Size = new System.Drawing.Size(141, 39);
             this.lblDescription.TabIndex = 1;
             this.lblDescription.Text = "Description:";
             // 
             // lblGenreID
             // 
             this.lblGenreID.AutoSize = true;
-            this.lblGenreID.Location = new System.Drawing.Point(6, 59);
+            this.lblGenreID.Location = new System.Drawing.Point(27, 55);
             this.lblGenreID.Name = "lblGenreID";
-            this.lblGenreID.Size = new System.Drawing.Size(73, 27);
+            this.lblGenreID.Size = new System.Drawing.Size(106, 39);
             this.lblGenreID.TabIndex = 0;
             this.lblGenreID.Text = "Genre ID";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.closeHelp_btn);
+            this.panel1.Controls.Add(this.help_btn);
             this.panel1.Controls.Add(this.btnPrevious);
             this.panel1.Controls.Add(this.lblUpdateGenre);
             this.panel1.Controls.Add(this.lblDeleteGenre);
             this.panel1.Controls.Add(this.lblAddGenre);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Location = new System.Drawing.Point(2, 207);
+            this.panel1.Location = new System.Drawing.Point(0, 164);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(203, 555);
+            this.panel1.Size = new System.Drawing.Size(185, 499);
             this.panel1.TabIndex = 6;
+            // 
+            // closeHelp_btn
+            // 
+            this.closeHelp_btn.BackColor = System.Drawing.Color.Purple;
+            this.closeHelp_btn.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeHelp_btn.ForeColor = System.Drawing.Color.White;
+            this.closeHelp_btn.Location = new System.Drawing.Point(20, 369);
+            this.closeHelp_btn.Name = "closeHelp_btn";
+            this.closeHelp_btn.Size = new System.Drawing.Size(139, 52);
+            this.closeHelp_btn.TabIndex = 10;
+            this.closeHelp_btn.Text = "Close Help";
+            this.closeHelp_btn.UseVisualStyleBackColor = false;
+            this.closeHelp_btn.Click += new System.EventHandler(this.closeHelp_btn_Click);
+            // 
+            // help_btn
+            // 
+            this.help_btn.BackColor = System.Drawing.Color.Purple;
+            this.help_btn.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.help_btn.ForeColor = System.Drawing.Color.White;
+            this.help_btn.Location = new System.Drawing.Point(20, 369);
+            this.help_btn.Name = "help_btn";
+            this.help_btn.Size = new System.Drawing.Size(139, 52);
+            this.help_btn.TabIndex = 9;
+            this.help_btn.Text = "Help";
+            this.help_btn.UseVisualStyleBackColor = false;
+            this.help_btn.Click += new System.EventHandler(this.help_btn_Click);
             // 
             // btnPrevious
             // 
-            this.btnPrevious.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnPrevious.BackColor = System.Drawing.Color.Purple;
             this.btnPrevious.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrevious.ForeColor = System.Drawing.Color.White;
-            this.btnPrevious.Location = new System.Drawing.Point(28, 404);
+            this.btnPrevious.Location = new System.Drawing.Point(20, 433);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(139, 52);
             this.btnPrevious.TabIndex = 8;
@@ -258,7 +292,7 @@ namespace Genre
             this.lblUpdateGenre.AutoSize = true;
             this.lblUpdateGenre.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUpdateGenre.ForeColor = System.Drawing.Color.White;
-            this.lblUpdateGenre.Location = new System.Drawing.Point(13, 183);
+            this.lblUpdateGenre.Location = new System.Drawing.Point(12, 113);
             this.lblUpdateGenre.Name = "lblUpdateGenre";
             this.lblUpdateGenre.Size = new System.Drawing.Size(165, 39);
             this.lblUpdateGenre.TabIndex = 7;
@@ -270,7 +304,7 @@ namespace Genre
             this.lblDeleteGenre.AutoSize = true;
             this.lblDeleteGenre.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeleteGenre.ForeColor = System.Drawing.Color.White;
-            this.lblDeleteGenre.Location = new System.Drawing.Point(13, 112);
+            this.lblDeleteGenre.Location = new System.Drawing.Point(12, 180);
             this.lblDeleteGenre.Name = "lblDeleteGenre";
             this.lblDeleteGenre.Size = new System.Drawing.Size(154, 39);
             this.lblDeleteGenre.TabIndex = 6;
@@ -299,21 +333,34 @@ namespace Genre
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // txtbDescription
+            // 
+            this.txtbDescription.Font = new System.Drawing.Font("Bahnschrift Light Condensed", 24F);
+            this.txtbDescription.Location = new System.Drawing.Point(174, 114);
+            this.txtbDescription.Name = "txtbDescription";
+            this.txtbDescription.Size = new System.Drawing.Size(211, 46);
+            this.txtbDescription.TabIndex = 8;
+            // 
             // frmGenre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1324, 749);
+            this.ClientSize = new System.Drawing.Size(1066, 661);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1082, 700);
+            this.MinimumSize = new System.Drawing.Size(1082, 700);
             this.Name = "frmGenre";
-            this.Text = "frmGenres";
+            this.Text = "Pukki Cinema";
             this.Load += new System.EventHandler(this.frmGenre_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDisplay)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -327,22 +374,24 @@ namespace Genre
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBoxDescription;
         private System.Windows.Forms.DataGridView dtgDisplay;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label lblGenreID;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Label lblUpdateGenre;
         private System.Windows.Forms.Label lblDeleteGenre;
         private System.Windows.Forms.Label lblAddGenre;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txtbDescription;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button closeHelp_btn;
+        private System.Windows.Forms.Button help_btn;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.ComboBox cmbGenreId;
-        private System.Windows.Forms.TextBox txtbGenreId;
-        private System.Windows.Forms.Label lblMaxCharactersValidation;
+        private System.Windows.Forms.ComboBox comboBoxDescription;
+        private System.Windows.Forms.Label lblGenreID;
+        private System.Windows.Forms.TextBox txtbDescription;
     }
 }

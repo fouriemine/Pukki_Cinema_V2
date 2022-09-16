@@ -25,7 +25,7 @@ namespace project
         bool timeSpan = false;
         DateTime maxValue, prevMaxValue;
 
-        String connStr = @"Data Source=BLESSINGSPC\SQLSERVER;Initial Catalog=Pukki_Cinema;Integrated Security=True";
+        String connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public frmTime_Allocation()
         {
@@ -56,6 +56,7 @@ namespace project
                 dgvDisplayTimeAllocvations.DataMember = "TIME_ALLOCATIONS";
                 conn.Close();
                 conn.Dispose();
+                cbTimeID.SelectedIndex = -1;
 
             }
             catch
@@ -67,9 +68,12 @@ namespace project
 
         private void frmTheatres_Load(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Maximized;
+            closeHelp_btn.Visible = false;
+            help_btn.Visible = true;
+            pictureBox2.Visible = false;
             try
             {
-                gbTime_Allocation.Text = " ";
                 //set all controls to invisible
                 lblTimeID.Visible = false;
                 cbTimeID.Visible = false;
@@ -79,25 +83,11 @@ namespace project
                 bttnUpdateTime.Visible = false;
                 bttnDeleteTime.Visible = false;
 
-                //open the connection
-                conn = new SqlConnection(connStr);
-                conn.Open();  //open connection
-
-                //Populate Gridview with current theatres
-                sql = "SELECT * FROM TIME_ALLOCATION";
-                adapt = new SqlDataAdapter();
-                ds = new DataSet();
-                comm = new SqlCommand(sql, conn);
-                adapt.SelectCommand = comm;
-                adapt.Fill(ds, "TIME_ALLOCATIONS");
-                dgvDisplayTimeAllocvations.DataSource = ds;
-                dgvDisplayTimeAllocvations.DataMember = "TIME_ALLOCATIONS";
-                conn.Close();
-                conn.Dispose();
+                reLoad();
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -112,8 +102,8 @@ namespace project
                 lblTimeBracket.Visible = true;
                 tbTimeBracket.Visible = true;
                 bttnAddTime.Visible = true;
-                bttnUpdateTime.Visible = true;
-                bttnDeleteTime.Visible = true;
+                bttnUpdateTime.Visible = false;
+                bttnDeleteTime.Visible = false;
 
 
                 //Enable the needed controls
@@ -129,7 +119,6 @@ namespace project
                 conn.Open();  //open connection
 
                 //Display warning
-                lblTimeValidation.Visible = true;
 
                 //Populate Gridview with current theatres
                 sql = "SELECT * FROM TIME_ALLOCATIONS";
@@ -223,7 +212,6 @@ namespace project
             cbTimeID.Enabled = true;
 
             //Hide validation label
-            lblTimeValidation.Visible = false;
 
             try
             {
@@ -232,9 +220,9 @@ namespace project
                 cbTimeID.Visible = true;
                 lblTimeBracket.Visible = true;
                 tbTimeBracket.Visible = true;
-                bttnAddTime.Visible = true;
+                bttnAddTime.Visible = false;
                 bttnUpdateTime.Visible = true;
-                bttnDeleteTime.Visible = true;
+                bttnDeleteTime.Visible = false;
 
                 //enabling needed controls
                 bttnAddTime.Enabled = false;
@@ -358,112 +346,6 @@ namespace project
                     MessageBox.Show("Could not update");
                 }
 
-                
-                /*
-                sql = "SELECT MAX(Time_ID) FROM TIME_ALLOCATIONS";
-                comm = new SqlCommand(sql, conn);
-                int maxID = (int)comm.ExecuteScalar();
-                int prevMax = maxID - 1;
-                conn.Close();
-
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = {maxID}";
-                comm = new SqlCommand(sql, conn);
-                maxValue = DateTime.Parse(comm.ExecuteScalar().ToString());
-                addValue = maxValue.ToString("HH:mm:ss");
-                conn.Close();
-
-                conn = new SqlConnection(connStr);
-                conn.Open();
-                MessageBox.Show(prevMax.ToString());
-                sql = $"SELECT Time FROM TIME_ALLOCATIONS WHERE Time_ID = {prevMax}";
-                comm = new SqlCommand(sql, conn);
-                prevMaxValue = DateTime.Parse(comm.ExecuteScalar().ToString());
-                prevAddValue = maxValue.ToString("HH:mm:ss");
-                conn.Close();
-
-
-                if ((int.Parse(cbTimeID.GetItemText(cbTimeID.SelectedItem))) < maxID)
-                {
-                    if (DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), maxValue) < 0)
-                    {
-                        timeSpan = true;
-                    }
-                    else
-                        timeSpan = false;
-
-                    if (cbTimeID.SelectedIndex != -1)
-                    {
-                         if (tbTimeBracket.Text != " " && timeSpan && DateTime.TryParse(tbTimeBracket.Text, out time))
-                        {
-                            conn = new SqlConnection(connStr);
-                            conn.Open();
-                            sql = $"UPDATE TIME_ALLOCATIONS SET Time = '{time}' WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
-                            adapt = new SqlDataAdapter();
-                            ds = new DataSet();
-                            comm = new SqlCommand(sql, conn);
-                            adapt.UpdateCommand = comm;
-                            adapt.UpdateCommand.ExecuteNonQuery();
-                            conn.Close();
-                            conn.Dispose();
-
-                            //update user
-                            MessageBox.Show("Updated successfully");
-
-                            reLoad();
-
-
-                        }
-                        else
-                            MessageBox.Show("Before you update a time group, you need to provide a new time group in the correct format!!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Before you update a time group, you need to first select the time ID from the options provided!!");
-                    }
-                }
-                else
-                {
-                    if (DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), maxValue) > 0 || DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), maxValue) < 0  && DateTime.Compare(DateTime.Parse(tbTimeBracket.Text), prevMaxValue) < 0)
-                    {
-                        timeSpan = true;
-                    }
-                    else
-                        timeSpan = false;
-
-                    if (cbTimeID.SelectedIndex != -1)
-                    {
-                        if (tbTimeBracket.Text != " " && timeSpan && DateTime.TryParse(tbTimeBracket.Text, out time))
-                        {
-                            conn = new SqlConnection(connStr);
-                            conn.Open();
-                            sql = $"UPDATE TIME_ALLOCATIONS SET Time = '{time}' WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
-                            adapt = new SqlDataAdapter();
-                            ds = new DataSet();
-                            comm = new SqlCommand(sql, conn);
-                            adapt.UpdateCommand = comm;
-                            adapt.UpdateCommand.ExecuteNonQuery();
-                            conn.Close();
-                            conn.Dispose();
-
-                            //update user
-                            MessageBox.Show("Updated successfully");
-
-                            reLoad();
-
-
-                        }
-                        else
-                            MessageBox.Show("Before you update a time group, you need to provide a new time group in the correct format!!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Before you update a time group, you need to first select the time ID from the options provided!!");
-                    }
-                    
-                }
-                */
             }
             catch (Exception error)
             {
@@ -496,7 +378,7 @@ namespace project
                             conn = new SqlConnection(connStr);
                             conn.Open();
 
-                            sql = $"DELETE FROM TIME_ALLOCATIONS WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())} ";
+                            sql = $"DELETE FROM TIME_ALLOCATIONS WHERE Time_ID = {int.Parse(cbTimeID.SelectedValue.ToString())}";
                             adapt = new SqlDataAdapter();
                             ds = new DataSet();
                             comm = new SqlCommand(sql, conn);
@@ -558,12 +440,26 @@ namespace project
 
         }
 
+        private void help_btn_Click(object sender, EventArgs e)
+        {
+            closeHelp_btn.Visible = true;
+            help_btn.Visible = false;
+            pictureBox2.Visible = true;
+        }
+
+        private void closeHelp_btn_Click(object sender, EventArgs e)
+        {
+            closeHelp_btn.Visible = false;
+            help_btn.Visible = true;
+            pictureBox2.Visible = false;
+        }
+
         private void lblDeleteTheatre_Click(object sender, EventArgs e)
         {
             try
             {
                 //hide validation lale
-                lblTimeValidation.Visible = false;
+                //lblTimeValidation.Visible = false;
 
                 gbTime_Allocation.Text = "Delete Time Group";
                 //making all controls visible 
@@ -571,8 +467,8 @@ namespace project
                 cbTimeID.Visible = true;
                 lblTimeBracket.Visible = true;
                 tbTimeBracket.Visible = true;
-                bttnAddTime.Visible = true;
-                bttnUpdateTime.Visible = true;
+                bttnAddTime.Visible = false;
+                bttnUpdateTime.Visible = false;
                 bttnDeleteTime.Visible = true;
 
                 //enabling the combobox and disabling the textbox, add and update buttons
@@ -616,7 +512,7 @@ namespace project
 
         private void bttnPrevFromTime_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.DialogResult = DialogResult.OK;
         }
     }
 }
