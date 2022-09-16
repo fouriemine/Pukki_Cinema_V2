@@ -16,7 +16,7 @@ namespace project
     public partial class frmUsers : Form
     {
         //connecting to database
-        public String conStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Pukki_Cinema;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public String conStr = @"Data Source=LAPTOP-H4VOFVUF\MSSQLSERVER1;Initial Catalog=Pukki_Cinema;Integrated Security=True";
         public SqlCommand com;
         public SqlConnection conn;
         public DataSet ds;
@@ -33,29 +33,18 @@ namespace project
 
         private void frmUsers_Load(object sender, EventArgs e)
         {//set the group box to be invisible when loading
-            gbx_users.Visible = true;
-            WindowState = FormWindowState.Maximized;
-            txtBox_UserID.Visible = false;
-            txt_password.Visible = false;
-            pnl_Admin.Visible = false;
-            lbl_adminYN.Visible = false;
-            lbl_password.Visible = false;
-            lbl_UserId.Visible = false;
-            lbl_username.Visible = false;
-            textbx_Username.Visible = false;
-            btn_add.Visible = false;
-            btn_Delete.Visible = false;
-            btn_Update.Visible = false;
+            gbx_users.Visible = false;
+            
             try
             {
                 conn = new SqlConnection(conStr);
                 conn.Open();
-                //MessageBox.Show("Connection Successfull");
+                MessageBox.Show("Connection Successfull");
                 conn.Close();
             }
-            catch(Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Could not connect to db");
             }
 
             try
@@ -75,9 +64,6 @@ namespace project
         {
             try
             {
-                HelpFunctionPicture.Visible = false;
-                btnclose_help.Visible = false ;
-                btn_Help.Visible = true;
                 conn = new SqlConnection(conStr);
                 conn.Open();
                 //Populate gridview with Users
@@ -89,6 +75,7 @@ namespace project
                 dataGridView1.DataSource = ds;
                 dataGridView1.DataMember = "USERS";
                 conn.Close();
+
             }
             catch
             {
@@ -102,14 +89,15 @@ namespace project
             txt_password.Text = "";
             rdo_AdminYes.Checked = false;
             rdo_AdminNo.Checked = false;
-            txtBox_UserID.Text = "";
+            cbUserID.Text = "";
+
         }
 
         public void dispAll()
         {
             gbx_users.Visible = true;
             lbl_UserId.Visible = true;
-            txtBox_UserID.Visible = true;
+            cbUserID.Visible = true;
             txt_password.Visible = true;
             textbx_Username.Visible = true;
             pnl_Admin.Visible = true;
@@ -130,7 +118,7 @@ namespace project
             //setting controls when the Add label is clicked
             lbl_UserId.Visible = false;
             gbx_users.Text = "Add Users";
-            txtBox_UserID.Visible = false;
+            cbUserID.Visible = false;
             btn_Update.Visible = false;
             btn_Delete.Visible = false;
             // btn_GetUser.Visible = false;
@@ -143,6 +131,19 @@ namespace project
 
         private void lblUpdate_Users_Click(object sender, EventArgs e)
         {
+            sql = "SELECT Users_ID FROM USERS";
+            adap = new SqlDataAdapter();
+            ds = new DataSet();
+            com = new SqlCommand(sql, conn);
+            adap.SelectCommand = com;
+            adap.Fill(ds, "USERS");
+
+
+            //populating combobox with theatres Id available
+            cbUserID.DataSource = ds.Tables["USERS"];
+            cbUserID.DisplayMember = "Users_ID";
+            cbUserID.ValueMember = "Users_ID";
+
             //setting controls when the update label is clicked
             gbx_users.Text = "Update Users";
             dispAll();
@@ -266,18 +267,38 @@ namespace project
                     {
                         MessageBox.Show(isValidPass, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else
-                    {
+                    else {
+                        
+                        conn = new SqlConnection(conStr);
                         conn.Open();
-                        com = new SqlCommand("insert into USERS(Username,Password, IsAdmin) values(@username, @password , @IsAdmin)", conn);
+                        com = new SqlCommand("update USERS set Username=@username , Password = @password , IsAdmin = @IsAdmin where Users_ID= @id", conn);
+                        com.Parameters.AddWithValue("@id", cbUserID.SelectedValue);
                         com.Parameters.AddWithValue("@username", textbx_Username.Text);
                         com.Parameters.AddWithValue("@password", txt_password.Text);
                         com.Parameters.AddWithValue("@IsAdmin", isAdmin);
                         com.ExecuteNonQuery();
-                        MessageBox.Show("Added the record successfully");
+                        MessageBox.Show("Updated the record successfully");
+                        conn.Close();
                         reLoad();
                         ClearData();
+
                     }
+                    /*conn = new SqlConnection(conStr);
+                    conn.Open();
+                    com = new SqlCommand("SELECT Username FROM USERS WHERE Users_ID=@userID", conn);
+                    com.Parameters.AddWithValue("@userID", txtBox_UserID.Text);
+                    String name = (String)com.ExecuteScalar();
+                    conn.Close();
+                    if (MessageBox.Show("Are you sure you want to update " + name + "?", "Updated Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        conn.Open();
+                        com = new SqlCommand("update USERS set Username = @username", conn);
+                        com.Parameters.AddWithValue("@username", txtBox_UserID.Text);
+                        com.ExecuteNonQuery();
+                        MessageBox.Show(" record updated successfully");
+                        reLoad();
+                        ClearData();
+                    }*/
                 }
                 else
                 {
@@ -326,19 +347,19 @@ namespace project
             try
             {
                 lbl_PasswordDisp.Visible = false;
-                if (txtBox_UserID.Text != "")
+                if (cbUserID.SelectedValue != "")
                 {
                     conn = new SqlConnection(conStr);
                     conn.Open();
                     com = new SqlCommand("SELECT Username FROM USERS WHERE Users_ID=@userID", conn);
-                    com.Parameters.AddWithValue("@userID", txtBox_UserID.Text);
+                    com.Parameters.AddWithValue("@userID", cbUserID.SelectedValue);
                     String name = (String)com.ExecuteScalar();
                     conn.Close();
                     if (MessageBox.Show("Are you sure you want to delete " + name + "?", "Deleted Item", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         conn.Open();
                         com = new SqlCommand("delete from USERS where Users_ID = @id", conn);
-                        com.Parameters.AddWithValue("@id", txtBox_UserID.Text);
+                        com.Parameters.AddWithValue("@id", cbUserID.SelectedValue);
                         com.ExecuteNonQuery();
                         MessageBox.Show(" record deleted successfully");
                         reLoad();
@@ -364,14 +385,14 @@ namespace project
         private void button2_Click(object sender, EventArgs e)
         { //displays help function
             HelpFunctionPicture.Visible = true;
-            btn_Help.Visible = false;
+            button2.Visible = false;
             btnclose_help.Visible = true;
         }
 
         private void btnclose_help_Click(object sender, EventArgs e)
         {
             HelpFunctionPicture.Visible = false;
-            btn_Help.Visible = true;
+            button2.Visible = true;
             btnclose_help.Visible = false;
             
         }
@@ -410,12 +431,46 @@ namespace project
             
          }
 
-        private void btn_previous_Click(object sender, EventArgs e)
+        private void lblSearchUser_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            //dataGridView1.Visible = false;
+            if (txtSearch.Text != "")
+            {
+                conn = new SqlConnection(conStr);
+                conn.Open();
+                //Populate gridview with Users
+                adap = new SqlDataAdapter();
+                ds = new DataSet();
+                com = new SqlCommand("select * from USERS where Username = @username", conn);
+                com.Parameters.AddWithValue("@username", txtSearch.Text);
+                adap.SelectCommand = com;
+                adap.Fill(ds, "USERS");
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "USERS";
+                conn.Close();
+                dataGridView1.Visible = true;
+               ClearData();
+                if (dataGridView1.RowCount == 1)
+                {
+                    MessageBox.Show("User not found", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter all necessary details", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
-        
+        private void btn_previous_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtBox_UserID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
