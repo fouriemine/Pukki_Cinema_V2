@@ -32,10 +32,11 @@ namespace project
 
         private void frmSellTickets_Load(object sender, EventArgs e) //initializing variable and controls
         {
+            
             WindowState = FormWindowState.Maximized;
             tickets = 0;
             schedule_ID = 0;
-            
+            schedule_errorProvider.SetError(scheduleID_cbx, "");
             try
             {
                 connection = new SqlConnection(sqlCon);
@@ -47,7 +48,7 @@ namespace project
                 amount_lbl.Text = "Amount to be paid: R0.00";
                 GetSellingData();
                 comboLoad();
-                tickets_txt.Text = "";
+                tickets_txt.Value = 0;
                 scheduleID_cbx.Text = "";
                 connection.Close();
                 
@@ -59,10 +60,12 @@ namespace project
 
             sellTicket_btn.Visible = false;
             ClearAll();
+            schedule_errorProvider.SetError(scheduleID_cbx,"");
         }
 
         public void comboLoad() //load combo box to display valid schedule id's
         {
+            schedule_errorProvider.SetError(scheduleID_cbx, "");
             try
             {
                 connection = new SqlConnection(sqlCon);
@@ -89,12 +92,13 @@ namespace project
         public void ClearAll() //method to clear all input and reset variables
         {
             sellTicket_btn.Visible = false;
-            tickets_txt.Text = "";
+            tickets_txt.Value = 0;
             scheduleID_cbx.Text = "";
             paymentMade_cbx.Checked = false;
             tickets_txt.Enabled = true;
             scheduleID_cbx.Enabled = true;
             paymentMade_cbx.Visible = false;
+            paymentMade_cbx.Enabled = true;
             amount_lbl.Text = "Amount to be paid: R0.00";
             tickets = 0;
             schedule_ID = 0;
@@ -109,11 +113,17 @@ namespace project
             }
             catch
             {
-                MessageBox.Show("Please select a Schedule.");
-                scheduleID_cbx.Focus();
+                if(scheduleID_cbx.Text =="")
+                {
+                    schedule_errorProvider.SetError(scheduleID_cbx, "");
+                }
+                schedule_errorProvider.SetError(scheduleID_cbx, "Please select a Schedule.");
+               // MessageBox.Show("Please select a Schedule.");
+                //scheduleID_cbx.Focus();
             }
 
-            if (scheduleID_cbx.Text != "" && tickets_txt.Text != "0")//tesing user input
+
+            if (scheduleID_cbx.Text != "" && tickets_txt.Value != 0)//tesing user input
             {
                 try
                 {
@@ -131,7 +141,7 @@ namespace project
 
                     //selecting selling price from selceted schedule and assigning it to a variable 
                     connection.Open();
-                    SqlCommand calculationCMD = new SqlCommand($"Select F.Selling_Price FROM Films F, SCHEDULES S WHERE S.Film_ID=F.Film_ID AND S.Schedule_ID = '{schedule_ID}'", connection);
+                    SqlCommand calculationCMD = new SqlCommand($"Select F.Selling_Price FROM FILMS F, SCHEDULES S WHERE S.Film_ID=F.Film_ID AND S.Schedule_ID = '{schedule_ID}'", connection);
                     decimal sellingPrice = (decimal)calculationCMD.ExecuteScalar();
                     connection.Close();
 
@@ -144,14 +154,19 @@ namespace project
                     }
                     else //displaying a message box when number tickets to be sold is greater availible tickets
                     {
-                        DialogResult result = MessageBox.Show("There are not enough availible tickets", "Caution", MessageBoxButtons.OK);
+                        tickets_errorProvider.SetError(tickets_txt, "There are not enough availible tickets.");
+                        //tickets_txt.Text = "";
+                        //tickets_txt.Focus();
+                        amount_lbl.Text = "Amount to be paid: R0.00";
+                        paymentMade_cbx.Visible = false;
+                        /*DialogResult result = tickets_errorProvider.SetError(tickets_txt, "Please select a Schedule.");// MessageBox.Show("There are not enough availible tickets", "Caution", MessageBoxButtons.OK);
                         if (result == DialogResult.OK)
                         {
                             tickets_txt.Text = "";
                             tickets_txt.Focus();
                             amount_lbl.Text = "Amount to be paid: R0.00";
                             paymentMade_cbx.Visible = false;
-                        }
+                        }*/
                     }
                 }
                 catch (Exception ex)
@@ -168,22 +183,31 @@ namespace project
 
         private void tickets_txt_TextChanged(object sender, EventArgs e)
         {
+            tickets_errorProvider.SetError(tickets_txt, "");
             //testing if a number is entered 
-            if (tickets_txt.Text == "")
+            if (tickets_txt.Value ==0)
             {
                 paymentMade_cbx.Visible = false;
             }
-            else if (tickets_txt.Text != "0")
+            else if (tickets_txt.Value != 0)
             {
                 try
                 {
                     //assigning the tickets to a variable and calling CalcAmount method
+                    
+
                     tickets = int.Parse(tickets_txt.Text);
                     CalcAmount();
+                    MessageBox.Show("tickets"+tickets);
 
                 }
                 catch
                 {
+                    tickets_errorProvider.SetError(tickets_txt, "Please enter a valid number of tickets.");
+                    //tickets_txt.Text = "";
+                    tickets_txt.Focus();
+                    amount_lbl.Text = "Amount to be paid: R0.00";
+                    paymentMade_cbx.Visible = false;
                     DialogResult result = MessageBox.Show("Please enter a valid number of tickets", "Caution", MessageBoxButtons.OK);
                     if (result == DialogResult.OK)
                     {
@@ -196,6 +220,11 @@ namespace project
             }
             else
             {
+                tickets_errorProvider.SetError(tickets_txt, "Please enter a valid number of tickets.");
+                //tickets_txt.Text = "";
+                tickets_txt.Focus();
+                amount_lbl.Text = "Amount to be paid: R0.00";
+                paymentMade_cbx.Visible = false;
                 DialogResult result = MessageBox.Show("Please enter a valid number of tickets", "Caution", MessageBoxButtons.OK);
                 if (result == DialogResult.OK)
                 {
@@ -230,9 +259,12 @@ namespace project
             }
             catch
             {
-                MessageBox.Show("Please enter a valid amount of tickets");
-                tickets_txt.Focus();
+                tickets_errorProvider.SetError(tickets_txt, "Please enter a valid number of tickets.");
+
+               // MessageBox.Show("Please enter a valid amount of tickets");
+                //tickets_txt.Focus();
             }
+            schedule_errorProvider.SetError(scheduleID_cbx, "");
         }
 
         private void clear_btn_Click(object sender, EventArgs e)
@@ -240,13 +272,17 @@ namespace project
             //calling ClearAll method and resetting all variables and controls
             paymentMade_cbx.Enabled = true;
             ClearAll();
+            tickets_errorProvider.SetError(tickets_txt, "");
+            schedule_errorProvider.SetError(scheduleID_cbx,"");
         }
 
         private void GetSellingData()
         {
+            
             //creating a data table containing selling information and displaying it in a data grid view
             try
             {
+
                 DataTable dt = new DataTable();
                 command = new SqlCommand("SELECT S.Schedule_ID, F.Title, G.Description, F.Age_Restriction, T.Theatre_ID, FORMAT(F.Selling_Price, 'N2') AS Selling_Price, S.Film_Date, TM.Time, F.Length, S.Ticket_Counter  FROM FILMS F, SCHEDULES S, THEATRES T, GENRES G, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID=F.Genre_ID AND T.Theatre_ID=S.Theatre_ID AND TM.Time_ID=S.Time_ID AND F.Status=1", connection);
                 adapter = new SqlDataAdapter(command);
@@ -256,17 +292,18 @@ namespace project
                 string QueryAlert = $"SELECT S.Schedule_ID, F.Title, G.Description, F.Age_Restriction, T.Theatre_ID, FORMAT(F.Selling_Price,'N2') AS Selling_Price, S.Film_Date, TM.Time, F.Length, S.Ticket_Counter FROM FILMS F, SCHEDULES S, THEATRES T, GENRES G, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID=F.Genre_ID AND T.Theatre_ID=S.Theatre_ID AND TM.Time_ID=S.Time_ID AND F.Status=1";
                 SqlCommand CMD = new SqlCommand(QueryAlert, connection);
                 CMD.ExecuteReader();
-            }
+            }  
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            
         }
 
         private void paymentMade_cbx_CheckedChanged(object sender, EventArgs e)
         {
             //testing user input to allow the sale to go through
-            if (tickets_txt.Text != "" && tickets_txt.Text != "0")
+            if (tickets_txt.Value != 0)
             {
                 paymentMade_cbx.Checked = true;
                 tickets_txt.Enabled = false;
@@ -301,6 +338,87 @@ namespace project
         private void selling_dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void tickets_txt_ValueChanged(object sender, EventArgs e)
+        {
+            tickets_errorProvider.SetError(tickets_txt, "");
+            //testing if a number is entered 
+            if (tickets_txt.Value == 0/* || tickets_txt.Text=="" || tickets_txt.Text != "0"*/)
+            {
+                paymentMade_cbx.Visible = false;
+                amount_lbl.Text = "Amount to be paid: R0.00";
+            }
+            else if (tickets_txt.Value > 0 /*|| tickets_txt.Text !=""||tickets_txt.Text !="0"*/)
+            {
+                try
+                {
+                    //assigning the tickets to a variable and calling CalcAmount method
+
+
+                    tickets = (int)tickets_txt.Value;
+                    CalcAmount();
+                    //MessageBox.Show("tickets" + tickets);
+
+                }
+                catch
+                {
+                    tickets_errorProvider.SetError(tickets_txt, "Please enter a valid number of tickets.");
+                    //tickets_txt.Text = "";
+                    tickets_txt.Focus();
+                    amount_lbl.Text = "Amount to be paid: R0.00";
+                    paymentMade_cbx.Visible = false;
+                    /*DialogResult result = MessageBox.Show("Please enter a valid number of tickets", "Caution", MessageBoxButtons.OK);
+                    if (result == DialogResult.OK)
+                    {
+                        tickets_txt.Text = "";
+                        tickets_txt.Focus();
+                        amount_lbl.Text = "Amount to be paid: R0.00";
+                        paymentMade_cbx.Visible = false;
+                    }*/
+                }
+            }
+            else
+            {
+                tickets_errorProvider.SetError(tickets_txt, "Please enter a valid number of tickets.");
+                //tickets_txt.Text = "";
+                tickets_txt.Focus();
+                amount_lbl.Text = "Amount to be paid: R0.00";
+                paymentMade_cbx.Visible = false;
+                /* DialogResult result = MessageBox.Show("Please enter a valid number of tickets", "Caution", MessageBoxButtons.OK);
+                 if (result == DialogResult.OK)
+                 {
+                     tickets_txt.Text = "";
+                     tickets_txt.Focus();
+                     amount_lbl.Text = "Amount to be paid: R0.00";
+                     paymentMade_cbx.Visible = false;
+                 }*/
+            }
+        }
+
+        private void scheduleID_cbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(scheduleID_cbx.Text == "")
+            {
+                schedule_errorProvider.SetError(scheduleID_cbx, "Please select a Schedule.");
+            }
+            else
+            {
+                schedule_errorProvider.SetError(scheduleID_cbx, "");
+            }
+            
+        }
+
+
+        private void search_txt_TextChanged(object sender, EventArgs e)
+        {
+            (selling_dgv.DataSource as DataTable).DefaultView.RowFilter = string.Format("Title LIKE'%{0}%'", search_txt.Text);
+        }
+
+        private void frmSellTickets_Shown(object sender, EventArgs e)
+        {
+            frmLogin login = new frmLogin();
+            login.Close();
         }
     }
 }

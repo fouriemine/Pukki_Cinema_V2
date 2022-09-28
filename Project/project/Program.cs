@@ -16,22 +16,20 @@ namespace project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+          
+            //testing
+            //Application.Run(new frmSellTickets()) ;
+            //Application.Run(new frmLogin()) ;
 
-            //etsing
-            //Application.Run(new frmGenre()) ;
 
             frmLogin Login = new frmLogin();
             Application.Run(Login);
 
-            if (Login.UserType == 1)
-            {
-                Application.Run(new frmMenu());
-            }
-            else if (Login.UserType == 2)
+            if (Login.UserType==true)
             {
                 Application.Run(new frmSellTickets());
             }
-
+           
 
             //<<<<<<< Updated upstream
             //Application.Run(new frmUsers());

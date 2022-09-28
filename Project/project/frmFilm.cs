@@ -21,6 +21,7 @@ namespace project
         public SqlDataAdapter adap;
         String sql;
         int genreID;
+        DataTable table;
 
 
 
@@ -45,6 +46,8 @@ namespace project
             pnl_Status.Visible = false;
             txt_title.Visible = false;
             txt_film_ID.Visible = false;
+            lbl_search.Visible = true;
+            txt_search.Visible = true;
 
             lv_filmID.Visible = false;
             lv_genre.Visible = false;
@@ -64,7 +67,6 @@ namespace project
             cbx_filmID.Visible = false;
 
             pcb_help.Visible = false;
-
         }
 
         private void lbl_addFilm_Click(object sender, EventArgs e)
@@ -81,8 +83,13 @@ namespace project
 
             pcb_help.Visible = false;
 
+            clearError();
+
             btn_help.Enabled = true;
             btn_helpClose.Enabled = false;
+
+            btn_help.Visible = true;
+            btn_helpClose.Visible = true;
 
             cbx_title.Visible = false;
             cbx_filmID.Visible = false;
@@ -109,16 +116,23 @@ namespace project
             dispAll();
             enable();
 
+            lbl_filmID.Enabled = false;
             btn_add.Visible = false;
             btn_delete.Visible = false;
             cbx_filmID.Visible = false;
+            txt_title.Visible = false;
 
             txt_film_ID.Visible = true;
             txt_film_ID.Enabled = false;
 
+            btn_help.Visible = true;
+            btn_helpClose.Visible = true;
+
             cbx_title.DropDownStyle = ComboBoxStyle.DropDown;
 
             pcb_help.Visible = false;
+
+            clearError();
 
             btn_help.Enabled = true;
             btn_helpClose.Enabled = false;
@@ -147,8 +161,14 @@ namespace project
             btn_add.Visible = false;
             btn_update.Visible = false;
             txt_film_ID.Visible = true;
+            txt_title.Visible = false;
 
-           btn_help.Enabled = true;
+            btn_help.Visible = true;
+            btn_helpClose.Visible = true;
+
+            clearError();
+
+            btn_help.Enabled = true;
            btn_helpClose.Enabled = false;
 
             cbx_title.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -176,14 +196,12 @@ namespace project
             addFilm();
 
         }
-
         private void btn_update_Click(object sender, EventArgs e)
         {
             //when update button is clicked use update film method to update database
             updateFilm();
            
         }
-
         private void btn_delete_Click(object sender, EventArgs e)
         {
             //when delete btn is clicked use delete film method to delete from database
@@ -191,7 +209,7 @@ namespace project
             comboBoxesload();
             ClearData();
         }
-
+        //Method to display controls
         public void dispAll()
         {
             //Creating a method to display all controls needed
@@ -203,6 +221,7 @@ namespace project
             lbl_genre.Visible = true;
             lbl_ageRestriction.Visible = true;
             lbl_title.Visible = true;
+            lbl_search.Visible = true;
 
             txt_ageRestiction.Visible = true;
             txt_filmCost.Visible = true;
@@ -211,6 +230,7 @@ namespace project
             pnl_Status.Visible = true;
             txt_title.Visible = true;
             txt_film_ID.Visible = true;
+            txt_search.Visible = true;
 
             lv_filmID.Visible = false;
             lv_genre.Visible = false;
@@ -229,7 +249,7 @@ namespace project
 
 
         }
-
+        //Method to load combo boxes
         public void comboBoxesload()
         {
 
@@ -279,7 +299,6 @@ namespace project
                 MessageBox.Show(ex.Message);
             }
         }
-
         //Creating clear method for controls
         public void ClearData()
         {
@@ -291,6 +310,8 @@ namespace project
             rdo_Inactive.Checked = false;
             txt_title.Text = "";
             txt_film_ID.Text = "";
+
+            txt_search.Text = "";
 
             cbx_title.Text = "";
             cbx_genre.Text = "";
@@ -331,6 +352,7 @@ namespace project
         {
             try
             {
+                errorProvider1.SetError(btn_add, "");
                 //iff statements for vailidation
                 if ((txt_title.Text.Length <= 100) && (txt_title.Text.Length > 0))
                 {
@@ -340,84 +362,109 @@ namespace project
                     int length;
                     int ageRestriction;
                     String genre_ID = cbx_genre.Text;
-                    if (decimal.TryParse(txt_filmCost.Text, out filmCost) && (filmCost > 0))
+
+                    errorProvider1.SetError(txt_title, "");
+
+                    
+                    SqlCommand com = new SqlCommand("SELECT COUNT(*) FROM FILMS WHERE Title= @Title",conn);
+                    com.Parameters.AddWithValue("@Title",this.txt_title.Text);
+                    conn.Open();
+                    int countDuplicates = (int)com.ExecuteScalar();
+                    conn.Close();
+                    if (countDuplicates > 0)
                     {
-                        if (decimal.TryParse(txt_sellingPrice.Text, out sellingPrice) && (sellingPrice > 0))
+                        errorProvider1.SetError(txt_title, "Title already exists.");
+                    }
+
+                    else
+                    {
+
+                        if (decimal.TryParse(txt_filmCost.Text, out filmCost) && (filmCost > 0))
                         {
-                            if (int.TryParse(txt_length.Text, out length) && (length > 0))
+                            errorProvider1.SetError(txt_filmCost, "");
+                            if (decimal.TryParse(txt_sellingPrice.Text, out sellingPrice) && (sellingPrice > 0))
                             {
-                                if (int.TryParse(txt_ageRestiction.Text, out ageRestriction) && (ageRestriction >= 0))
+                                errorProvider1.SetError(txt_sellingPrice, "");
+                                if (int.TryParse(txt_length.Text, out length) && (length > 0))
                                 {
-                                    if (cbx_genre.SelectedIndex!=-1)
+                                    errorProvider1.SetError(txt_length, "");
+                                    if (int.TryParse(txt_ageRestiction.Text, out ageRestriction) && (ageRestriction >= 0))
                                     {
-
-                                        if (rdo_Active.Checked || rdo_Inactive.Checked)
+                                        errorProvider1.SetError(txt_ageRestiction, "");
+                                        if (cbx_genre.SelectedIndex != -1)
                                         {
-                                            bool temp = false;
-
-                                            if (rdo_Active.Checked)
+                                            errorProvider1.SetError(cbx_genre, "");
+                                            if (rdo_Active.Checked || rdo_Inactive.Checked)
                                             {
-                                                temp = true;
+                                                errorProvider1.SetError(pnl_Status, "");
+                                                bool temp = false;
+
+                                                if (rdo_Active.Checked)
+                                                {
+                                                    temp = true;
+                                                }
+
+                                                //Sql query for adding
+                                                conn.Open();
+                                                com = new SqlCommand("insert into FILMS(Title, Film_Cost, Selling_Price, Length, Age_Restriction, Genre_ID, Status) values(@title, @filmCost , @sellingprice, @length, " +
+                                                    "@ageRestriction, @genre_Desc, @status)", conn);
+                                                com.Parameters.AddWithValue("@title", txt_title.Text);
+                                                com.Parameters.AddWithValue("@filmCost", txt_filmCost.Text);
+                                                com.Parameters.AddWithValue("@sellingprice", txt_sellingPrice.Text);
+                                                com.Parameters.AddWithValue("@length", txt_length.Text);
+                                                com.Parameters.AddWithValue("@ageRestriction", txt_ageRestiction.Text);
+                                                com.Parameters.AddWithValue("@genre_Desc", (cbx_genre.SelectedIndex + 1));
+                                                com.Parameters.AddWithValue("@status", temp);
+
+                                                DialogResult res = MessageBox.Show("Are you sure you want to add movie: " + txt_title.Text + "?", "Caution", MessageBoxButtons.YesNo);
+                                                if (res == DialogResult.Yes)
+                                                {
+                                                    com.ExecuteNonQuery();
+                                                    MessageBox.Show("Added the record successfully");
+                                                }
+
+                                                reLoad();
+                                                comboBoxesload();
+                                                ClearData();
+
                                             }
-
-                                            //Sql query for adding
-                                            conn.Open();
-                                            com = new SqlCommand("insert into FILMS(Title, Film_Cost, Selling_Price, Length, Age_Restriction, Genre_ID, Status) values(@title, @filmCost , @sellingprice, @length, " +
-                                                "@ageRestriction, @genre_Desc, @status)", conn);
-                                            com.Parameters.AddWithValue("@title", txt_title.Text);
-                                            com.Parameters.AddWithValue("@filmCost", txt_filmCost.Text);
-                                            com.Parameters.AddWithValue("@sellingprice", txt_sellingPrice.Text);
-                                            com.Parameters.AddWithValue("@length", txt_length.Text);
-                                            com.Parameters.AddWithValue("@ageRestriction", txt_ageRestiction.Text);
-                                            com.Parameters.AddWithValue("@genre_Desc", (cbx_genre.SelectedIndex + 1));
-                                            com.Parameters.AddWithValue("@status", temp);
-
-                                            DialogResult res = MessageBox.Show("Are you sure you want to add movie: " + txt_title.Text + "?", "Caution", MessageBoxButtons.YesNo);
-                                            if (res == DialogResult.Yes)
+                                            else
                                             {
-                                                com.ExecuteNonQuery();
-                                                MessageBox.Show("Added the record successfully");
+                                                errorProvider1.SetError(pnl_Status, "Sellet status.");
                                             }
-
-                                            reLoad();
-                                            comboBoxesload();
-                                            ClearData();
-
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Invalid status. Make sure you have selected a status.");
+                                            errorProvider1.SetError(cbx_genre, "Select a Genre.");
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Genre must be selected.");
+                                        errorProvider1.SetError(txt_ageRestiction, "Enter Age Restriction as a number.");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Age Restriction must have an input and make sure it is a valid number.");
+                                    errorProvider1.SetError(txt_length, "Enter Length as a number.");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Length must have an input and make sure it is a valid number.");
+                                errorProvider1.SetError(txt_sellingPrice, "Enter Selling Price as numbers.");
+
                             }
                         }
+
                         else
                         {
-                            MessageBox.Show("Selling Price must have an input and make sure it is a valid number.");
-
+                            errorProvider1.SetError(txt_filmCost, "Enter Film Cost as numbers.");
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Film cost must have an input and make sure it is a valid number.");
-                    }
                 }
+
                 else
                 {
-                    MessageBox.Show("Title must have an input and must be less than 100 characters.");
+                    errorProvider1.SetError(txt_title, "Enter a Film Name.");
                 }
             }
             catch (Exception ex)
@@ -426,8 +473,7 @@ namespace project
             }
             
         }
-    
-
+        //creating method to update a film
         public void updateFilm()
         {
             try
@@ -435,106 +481,165 @@ namespace project
                 //If else statemnts for validation
                 if ((cbx_title.Text.Length <= 100) && (cbx_title.Text.Length > 0))
                 {
+                    conn.Open();
+                    errorProvider1.SetError(cbx_title, "");
                     String title = cbx_title.Text;
 
-                    conn = new SqlConnection(conStr);
-                    conn.Open();
-                    com = new SqlCommand();
-
+                    //conn = new SqlConnection(conStr);
+                    // conn.Open();
+                    // com = new SqlCommand();
+                    com = new SqlCommand("SELECT Title FROM FILMS WHERE FIlm_ID = @filmID", conn);
+                    com.Parameters.AddWithValue("@filmID", txt_film_ID.Text);
+                    String tempTitle = (String)com.ExecuteScalar();
+                    conn.Close();
                     decimal filmCost;
                     decimal sellingPrice;
                     int length;
                     int ageRestriction;
                     String genre_ID = cbx_genre.Text;
-                    if (decimal.TryParse(txt_filmCost.Text, out filmCost)&&(filmCost>0))
+
+                    if(true)
                     {
-                        if (decimal.TryParse(txt_sellingPrice.Text, out sellingPrice)&&(sellingPrice>0))
+
+                        errorProvider1.SetError(cbx_title, "");
+                        if (cbx_genre.SelectedIndex != -1)
                         {
-                            if (int.TryParse(txt_length.Text, out length)&&(length>0))
+                            errorProvider1.SetError(cbx_genre, "");
+
+                            if (decimal.TryParse(txt_filmCost.Text, out filmCost) && (filmCost > 0))
                             {
-                                if (int.TryParse(txt_ageRestiction.Text, out ageRestriction)&&(ageRestriction>=0))
+                                errorProvider1.SetError(txt_filmCost, "");
+                                if (decimal.TryParse(txt_sellingPrice.Text, out sellingPrice) && (sellingPrice > 0))
                                 {
-                                    if (cbx_genre.SelectedIndex != -1)
+                                    errorProvider1.SetError(txt_sellingPrice, "");
+                                    if (int.TryParse(txt_ageRestiction.Text, out ageRestriction) && (ageRestriction >= 0))
                                     {
-                                        
-                                        if (rdo_Active.Checked || rdo_Inactive.Checked)
+
+                                        errorProvider1.SetError(txt_ageRestiction, "");
+                                        if (int.TryParse(txt_length.Text, out length) && (length > 0))
                                         {
-                                            bool temp = false;
-
-                                            if (rdo_Active.Checked)
+                                            errorProvider1.SetError(txt_length, "");
+                                            if (rdo_Active.Checked || rdo_Inactive.Checked)
                                             {
-                                                temp = true;
-                                            }
+                                                errorProvider1.SetError(pnl_Status, "");
+                                                bool temp = false;
 
-                                            //sql queries for updating
-                                            conn = new SqlConnection(conStr);
-                                            conn.Open();
+                                                if (rdo_Active.Checked)
+                                                {
+                                                    temp = true;
+                                                }
 
-                                            com = new SqlCommand("SELECT Title FROM FILMS WHERE Film_ID = @filmID", conn);
-                                            com.Parameters.AddWithValue("@filmID", txt_film_ID.Text);
-                                            title = (String)com.ExecuteScalar();
+                                                //sql queries for updating
+                                                conn = new SqlConnection(conStr);
+                                                conn.Open();
+                                                bool noDups=true;
+                                                com = new SqlCommand("SELECT Title FROM FILMS WHERE Film_ID = @filmID", conn);
+                                                com.Parameters.AddWithValue("@filmID", txt_film_ID.Text);
+                                                title = (String)com.ExecuteScalar();
 
-                                            com = new SqlCommand("UPDATE FILMS set Title = @title, Film_Cost = @filmCost, Selling_Price = @sellingPrice, Length = @length, Age_Restriction = @ageRestriction, Status = @status where Film_ID=@checkID;", conn);
-                                            com.Parameters.AddWithValue("@title", cbx_title.Text);
-                                            com.Parameters.AddWithValue("@filmCost", decimal.Parse(txt_filmCost.Text));
-                                            com.Parameters.AddWithValue("@sellingprice", decimal.Parse(txt_sellingPrice.Text));
-                                            com.Parameters.AddWithValue("@length", int.Parse(txt_length.Text));
-                                            com.Parameters.AddWithValue("@ageRestriction", int.Parse(txt_ageRestiction.Text));
-                                            com.Parameters.AddWithValue("@status", temp);
-                                            com.Parameters.AddWithValue("@checkID", txt_film_ID.Text);
-
-                                            DialogResult res = MessageBox.Show("Are you sure you want to update " + title + "?", "Caution", MessageBoxButtons.YesNo);
-                                            if (res == DialogResult.Yes)
-                                            {
-                                                com.ExecuteNonQuery();
-                                                com = new SqlCommand("SELECT Genre_ID FROM GENRES WHERE Description = @desc", conn);
-                                                com.Parameters.AddWithValue("@desc", cbx_genre.SelectedValue);
-                                                genreID = (int)com.ExecuteScalar();
-                                                com = new SqlCommand("UPDATE FILMS SET Genre_ID = @genreID WHERE Title = @title", conn);
-                                                com.Parameters.AddWithValue("@genreID", genreID);
+                                                com = new SqlCommand("UPDATE FILMS set Title = @title, Film_Cost = @filmCost, Selling_Price = @sellingPrice, Length = @length, Age_Restriction = @ageRestriction, Status = @status where Film_ID=@checkID;", conn);
                                                 com.Parameters.AddWithValue("@title", cbx_title.Text);
-
+                                                com.Parameters.AddWithValue("@filmCost", decimal.Parse(txt_filmCost.Text));
+                                                com.Parameters.AddWithValue("@sellingprice", decimal.Parse(txt_sellingPrice.Text));
+                                                com.Parameters.AddWithValue("@length", int.Parse(txt_length.Text));
+                                                com.Parameters.AddWithValue("@ageRestriction", int.Parse(txt_ageRestiction.Text));
+                                                com.Parameters.AddWithValue("@status", temp);
+                                                com.Parameters.AddWithValue("@checkID", txt_film_ID.Text);
                                                 com.ExecuteNonQuery();
-                                                MessageBox.Show("Updated the record successfully");
-                                            }
 
-                                            reLoad();
-                                            comboBoxesload();
-                                            ClearData();
+                                                com = new SqlCommand("SELECT COUNT(*) FROM FILMS WHERE Title=@title", conn);
+                                                com.Parameters.AddWithValue("@title", cbx_title.Text);
+                                                int dups = (int)com.ExecuteScalar();
+
+                                                if(dups > 1)
+                                                {
+                                                    noDups = false;
+                                                    errorProvider1.SetError(cbx_title, "More than one movie with this title");
+                                                    com = new SqlCommand("UPDATE FILMS set Title = @title, Film_Cost = @filmCost, Selling_Price = @sellingPrice, Length = @length, Age_Restriction = @ageRestriction, Status = @status where Film_ID=@checkID;", conn);
+                                                    com.Parameters.AddWithValue("@title", tempTitle);
+                                                    com.Parameters.AddWithValue("@filmCost", decimal.Parse(txt_filmCost.Text));
+                                                    com.Parameters.AddWithValue("@sellingprice", decimal.Parse(txt_sellingPrice.Text));
+                                                    com.Parameters.AddWithValue("@length", int.Parse(txt_length.Text));
+                                                    com.Parameters.AddWithValue("@ageRestriction", int.Parse(txt_ageRestiction.Text));
+                                                    com.Parameters.AddWithValue("@status", temp);
+                                                    com.Parameters.AddWithValue("@checkID", txt_film_ID.Text);
+                                                    com.ExecuteNonQuery();
+                                                }
+
+                                                
+
+                                                com = new SqlCommand("SELECT Title FROM FILMS WHERE Film_ID = @filmID", conn);
+                                                com.Parameters.AddWithValue("@filmID", txt_film_ID.Text);
+                                                title = (String)com.ExecuteScalar();
+
+                                                com = new SqlCommand("UPDATE FILMS set Title = @title, Film_Cost = @filmCost, Selling_Price = @sellingPrice, Length = @length, Age_Restriction = @ageRestriction, Status = @status where Film_ID=@checkID;", conn);
+                                                com.Parameters.AddWithValue("@title", cbx_title.Text);
+                                                com.Parameters.AddWithValue("@filmCost", decimal.Parse(txt_filmCost.Text));
+                                                com.Parameters.AddWithValue("@sellingprice", decimal.Parse(txt_sellingPrice.Text));
+                                                com.Parameters.AddWithValue("@length", int.Parse(txt_length.Text));
+                                                com.Parameters.AddWithValue("@ageRestriction", int.Parse(txt_ageRestiction.Text));
+                                                com.Parameters.AddWithValue("@status", temp);
+                                                com.Parameters.AddWithValue("@checkID", txt_film_ID.Text);
+
+                                                if (noDups)
+                                                {
+                                                    DialogResult res = MessageBox.Show("Are you sure you want to update " + title + "?", "Caution", MessageBoxButtons.YesNo);
+                                                    if (res == DialogResult.Yes)
+                                                    {
+                                                        com.ExecuteNonQuery();
+                                                        com = new SqlCommand("SELECT Genre_ID FROM GENRES WHERE Description = @desc", conn);
+                                                        com.Parameters.AddWithValue("@desc", cbx_genre.SelectedValue);
+                                                        genreID = (int)com.ExecuteScalar();
+                                                        com = new SqlCommand("UPDATE FILMS SET Genre_ID = @genreID WHERE Title = @title", conn);
+                                                        com.Parameters.AddWithValue("@genreID", genreID);
+                                                        com.Parameters.AddWithValue("@title", cbx_title.Text);
+                                                        MessageBox.Show("Updated the record successfully");
+                                                        com.ExecuteNonQuery();
+                                                        reLoad();
+                                                        comboBoxesload();
+                                                        ClearData();
+                                                    }
+                                                
+                                                }
+
+                                                
+                                                conn.Close();
+
+                                            }
+                                            else
+                                            {
+                                                errorProvider1.SetError(pnl_Status, "Sellet status.");
+                                            }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Invalid status. Make sure you have selected a status");
+                                            errorProvider1.SetError(txt_length, "Enter Length as a number.");
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Genre must be selected.");
+                                        errorProvider1.SetError(txt_ageRestiction, "Enter Age Restriction as a number.");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Age Restriction must have an input and make sure it is a valid number.");
+                                    errorProvider1.SetError(txt_sellingPrice, "Enter Selling Price as numbers.");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Length must have an input and make sure it is a valid number.");
+                                errorProvider1.SetError(txt_filmCost, "Enter Film Cost as numbers.");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Selling Price must have an input and make sure it is a valid number.");
+                            errorProvider1.SetError(cbx_genre, "Select a Genre.");
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Film cost must have an input and make sure it is a valid number.");
-                    }
-                }
+                 }
                 else
                 {
-                    MessageBox.Show("Title must have an input and must be less than 100 characters.");
+                    errorProvider1.SetError(cbx_title, "Enter a Film Name.");
                 }
 
 
@@ -544,12 +649,13 @@ namespace project
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //Creating methd to delete a film
         public void deleteFilm()
         {
             //sql queries for deleting 
             try
             {
+                errorProvider1.SetError(cbx_title, "");
                 conn = new SqlConnection(conStr);
                 String title = cbx_title.GetItemText(cbx_title.SelectedItem);
                 conn.Open();
@@ -563,6 +669,8 @@ namespace project
 
                 if(cbx_title.SelectedIndex != -1)
                 {
+                    errorProvider1.SetError(cbx_title, "");
+
                     com = new SqlCommand("DELETE FROM FILMS WHERE Title=@title", conn);
                     com.Parameters.AddWithValue("@title", title);
 
@@ -575,12 +683,16 @@ namespace project
                 }
                 else
                 {
-                    MessageBox.Show("Movie invalid. Please select a valid movie", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorProvider1.SetError(cbx_title, "Select a film.");
                 }
 
                 reLoad();
                 ClearData();
                 conn.Close();
+            }
+            catch(SqlException)
+            {
+                MessageBox.Show("This film cannot be deleted until all corresponding schedule entries for it has been deleted.");
             }
             catch (Exception ex)
             {
@@ -612,13 +724,14 @@ namespace project
                     adap.Fill(ds, "FILMS");
                     txt_film_ID.Text = film_id.ToString();
 
+                    
 
                     sql = $"SELECT Film_Cost FROM FILMS WHERE Title =  '{cbx_title.Text}' ";
                     com = new SqlCommand(sql, conn);
                     adap.SelectCommand = com;
                     decimal film = (decimal)com.ExecuteScalar();
                     adap.Fill(ds, "FILMS");
-                    txt_filmCost.Text = film.ToString();
+                    txt_filmCost.Text = film.ToString("F2");
 
 
                     sql = $"SELECT Selling_Price FROM FILMS WHERE Title = '{cbx_title.Text}' ";
@@ -626,7 +739,7 @@ namespace project
                     adap.SelectCommand = com;
                     decimal price = (decimal)com.ExecuteScalar();
                     adap.Fill(ds, "FILMS");
-                    txt_sellingPrice.Text = price.ToString();
+                    txt_sellingPrice.Text = price.ToString("F2");
 
 
                     sql = $"SELECT Length FROM FILMS WHERE Title =  '{cbx_title.Text}' ";
@@ -765,14 +878,13 @@ namespace project
             cbx_genre.Enabled = true;
             cbx_title.Enabled = true;
         }
-
-        
         //Craeting help button for films
         private void btn_help_Click(object sender, EventArgs e)
         {
             pcb_help.Visible = true;
             btn_help.Visible = false;
             btn_helpClose.Visible = true;
+            btn_helpClose.Enabled = true;
         }
         //creating help close button for films to close the help image
         private void btn_helpClose_Click(object sender, EventArgs e)
@@ -781,11 +893,28 @@ namespace project
             btn_help.Visible = true;
             btn_helpClose.Visible = false;
         }
-        //Craeting button to go back to previous aintain film
+        //Craeting button to go back to previous menu
         private void btn_previous_Click(object sender, EventArgs e)
         {
+            //this.Close();
             this.DialogResult = DialogResult.OK;
         }
-    
+        private void clearError()
+        {
+            errorProvider1.SetError(txt_sellingPrice, "");
+            errorProvider1.SetError(txt_ageRestiction, "");
+            errorProvider1.SetError(txt_filmCost, "");
+            errorProvider1.SetError(txt_film_ID, "");
+            errorProvider1.SetError(txt_length, "");
+            errorProvider1.SetError(txt_title, "");
+            errorProvider1.SetError(cbx_genre, "");
+            errorProvider1.SetError(cbx_title, "");
+            errorProvider1.SetError(pnl_Status, "");
+        }
+
+        private void txt_search_TextChanged(object sender, EventArgs e)
+        {
+            (dgv_films.DataSource as DataTable).DefaultView.RowFilter = string.Format("Title LIKE '%{0}%'", txt_search.Text);
+        }
     }
 }

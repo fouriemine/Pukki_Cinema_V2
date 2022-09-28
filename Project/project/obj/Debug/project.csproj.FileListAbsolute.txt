@@ -199,3 +199,41 @@ C:\Users\Marnus\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\proje
 C:\Users\Marnus\Documents\GitHub\Pukki_Cinema_V2\Project\project\bin\Debug\project.pdb
 C:\Users\Marnus\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmMenu.resources
 C:\Users\Marnus\Documents\GitHub\Pukki_Cinema_V2\Project\project\obj\Debug\project.frmGenre.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\bin\Debug\project.exe.config
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\bin\Debug\project.exe
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\bin\Debug\project.pdb
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmGenre.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmLogin.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmMenu.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmSellTickets.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmTime_Allocation.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmRequestReports.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.exe
+C:\Users\MINE FOURIE\Documents\Private\Pukke\CMPG223\GroupProject\Pukki_Cinema_Final\Project\project\obj\Debug\project.pdb
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\bin\Debug\project.exe.config
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\bin\Debug\project.exe
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\bin\Debug\project.pdb
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.csproj.AssemblyReference.cache
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmFilm.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmGenre.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmLogin.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmMenu.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmSchedule.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmSellTickets.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmTheatres.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmTime_Allocation.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmUsers.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.frmRequestReports.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.Properties.Resources.resources
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.csproj.GenerateResource.cache
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.exe
+C:\Users\joshu\Downloads\Pukki_Cinema_Final\Project\project\obj\Debug\project.pdb

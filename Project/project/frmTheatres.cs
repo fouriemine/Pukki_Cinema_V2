@@ -93,6 +93,8 @@ namespace project
                 dgvDisplayTheatres.DataSource = ds;
                 dgvDisplayTheatres.DataMember = "THEATRES";
                 conn.Close();
+
+                lblMaxTheatreWarning.Visible = false;
             }
             catch
             {
@@ -104,6 +106,11 @@ namespace project
         {
             try
             {
+                
+
+                errProvCapacity.SetError(cbTheatreID, "");
+                errProvCapacity.SetError(tbAddTheatreCapacity, "");
+
                 gbTheatre.Text = "Add Theatre";
                 //make the necessary controls visible
                 lblTheatreID.Visible = true;
@@ -139,6 +146,9 @@ namespace project
                 dgvDisplayTheatres.DataSource = ds;
                 dgvDisplayTheatres.DataMember = "THEATRES";
                 conn.Close();
+                cbTheatreID.Visible = false;
+                lblTheatreID.Visible = false;
+                lblMaxTheatreWarning.Visible = true;
 
             }
             catch
@@ -151,6 +161,7 @@ namespace project
         {
             try
             {
+                errProvCapacity.SetError(tbAddTheatreCapacity, "");
                 int addCapacity;
                 if (tbAddTheatreCapacity.Text != " ")
                 {
@@ -174,23 +185,34 @@ namespace project
                     }
                     else
                     {
-                        MessageBox.Show("Capacity can only be an integer");
+                        errProvCapacity.SetError(tbAddTheatreCapacity, "Capacity has to be an integer");
                     }
                 }
                 else
-                    MessageBox.Show("You have to specify the capacity in the provided textbox.");
+                    errProvCapacity.SetError(tbAddTheatreCapacity, "You have to specify the capacity in the provided textbox.");
+                    
             }
             catch(Exception wrong)
             {
-                MessageBox.Show("Could not add to theatre table." + wrong.Message);
+               
+                if ((dgvDisplayTheatres.Rows.Count)-1 == 3)
+                     MessageBox.Show("The number of theatres has reached its maximum capacity" );
+                else
+                     MessageBox.Show("Could not add to theatre table." + wrong.Message);
                 this.Close();
             }
         }
 
         private void lblChangeTheatre_Click(object sender, EventArgs e)
         {
+            
+            errProvCapacity.SetError(cbTheatreID, "");
+            errProvCapacity.SetError(tbAddTheatreCapacity, "");
+            
             gbTheatre.Text = "Update Theatre";
             cbTheatreID.Enabled = true;
+            errProvCapacity.SetError(cbTheatreID, "");
+            
 
             //Hide validation labels
 
@@ -226,8 +248,12 @@ namespace project
                 cbTheatreID.DataSource = ds.Tables["THEATRES"];
                 cbTheatreID.DisplayMember = "Theatre_ID";
                 cbTheatreID.ValueMember = "Theatre_ID";
+                cbTheatreID.Text = " ";
                 reLoad();
 
+                cbTheatreID.SelectedIndex = -1;
+                lblMaxTheatreWarning.Visible = true;
+                lblMaxTheatreWarning.Visible = false;
             }
             catch
             {
@@ -238,10 +264,16 @@ namespace project
         private void bttnUpdateTheatre_Click(object sender, EventArgs e)
         {
             try
-            { 
+            {
+                cbTheatreID.Text = " ";
+                errProvCapacity.SetError(tbAddTheatreCapacity, "");
+                errProvCapacity.SetError(cbTheatreID, "");
+
                 if (cbTheatreID.SelectedIndex != -1 )
                 {
-                        if (tbAddTheatreCapacity.Text != " ")
+                    if (tbAddTheatreCapacity.Text != " ")
+                    {
+                        if (int.TryParse(tbAddTheatreCapacity.Text, out int capacity))
                         {
                             conn.Open();
                             sql = $"UPDATE THEATRES SET Capacity = {int.Parse(tbAddTheatreCapacity.Text)} WHERE Theatre_ID = {int.Parse(cbTheatreID.SelectedValue.ToString())} ";
@@ -253,18 +285,25 @@ namespace project
 
                             //update user
                             MessageBox.Show("Updated successfully");
-                            
+
                             reLoad();
 
                             conn.Close();
                         }
                         else
-                            MessageBox.Show("Before you update a theatre, you need to provide a new size for the theatre!!");
+                        {
+                            errProvCapacity.SetError(tbAddTheatreCapacity, "The capacity must be an integer");
+                        }
+                    }
+                    else
+                        errProvCapacity.SetError(tbAddTheatreCapacity, "Before you update a theatre, you need to provide a new size for the theatre");
+                        
                 }
-            else
-            {
-                MessageBox.Show("Before you update a theatre, you need to first select a theatre ID from the options provided!!");
-            }
+                else
+                {
+                        errProvCapacity.SetError(cbTheatreID, "Before you update a theatre, you need to first select a theatre ID from the options provided");
+                   
+                }
 
             }
             catch(Exception error)
@@ -277,6 +316,7 @@ namespace project
         {
             try
             {
+                errProvCapacity.SetError(cbTheatreID, "");
                 conn = new SqlConnection(connStr);
                 conn.Open();
                 string delete = cbTheatreID.GetItemText(cbTheatreID.SelectedItem);
@@ -285,7 +325,7 @@ namespace project
                 comm.Parameters.AddWithValue("@deleteID", delete);
                 conn.Close();
 
-                DialogResult result = MessageBox.Show("Do you want to delete the time slot " + delete + "?", "Delete record", MessageBoxButtons.YesNo);
+                DialogResult result = MessageBox.Show("Do you want to delete the Theatre " + delete + "?", "Delete record", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     if (!tbAddTheatreCapacity.Enabled)
@@ -327,7 +367,8 @@ namespace project
                         }
                         else
                         {
-                            MessageBox.Show("Before you delete a theatre, you need to first select a theatre ID from the options provided!! ");
+                            errProvCapacity.SetError(cbTheatreID, "Before you delete a theatre, you need to first select a theatre ID from the options provided");
+                           
                         }
                     }
                     else
@@ -367,12 +408,24 @@ namespace project
             pictureBox2.Visible = false;
         }
 
+        private void dgvDisplayTheatres_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void lblDeleteTheatre_Click(object sender, EventArgs e)
         {
             try
             {
+                
+
+                errProvCapacity.SetError(cbTheatreID, "");
+                errProvCapacity.SetError(tbAddTheatreCapacity, "");
+                tbAddTheatreCapacity.Visible = false;
+
                 //hide validation lale
                 //lblMaxNumberValidation.Visible = false; 
+                errProvCapacity.SetError(cbTheatreID, "");
 
                 gbTheatre.Text = "Delete Theatre";
                 //making all controls visible 
@@ -405,13 +458,19 @@ namespace project
                 cbTheatreID.DataSource = ds.Tables["THEATRES"];
                 cbTheatreID.DisplayMember = "Theatre_ID";
                 cbTheatreID.ValueMember = "Theatre_ID";
-
+                cbTheatreID.Text = " ";
                 reLoad();  //populate gridview
 
+                lblAddTheatreCapacity.Visible = false;
+                tbAddTheatreCapacity.Visible = false;
+                cbTheatreID.SelectedIndex = -1;
+
+                lblMaxTheatreWarning.Visible = false;
+
             }
-            catch
+            catch(Exception err)
             {
-                MessageBox.Show("Could not access updated theatre table.");
+                MessageBox.Show("Could not access updated theatre table. " + err.Message );
             }
         }
     }

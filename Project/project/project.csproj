@@ -164,5 +164,11 @@
   <ItemGroup>
     <None Include="Resources\pukkicinema_Helpfunction.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PukkiCinema_Logo.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Schedule help.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

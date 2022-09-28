@@ -26,10 +26,7 @@ namespace project
         private SqlDataAdapter adap;
         private bool dependancy;
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
+        /*
         private void btn_ProcessReport_Clicked(object sender, EventArgs e)
         {
             try
@@ -79,12 +76,14 @@ namespace project
                     }
                     else
                     {
-                        MessageBox.Show("The entered Start Date is after the entered End Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorProvider1.SetError(dtp_Start, "The entered Start Date is after the entered End Date");
+                        //MessageBox.Show("The entered Start Date is after the entered End Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("The selected dates are exactly the same");
+                    errorProvider1.SetError(dtp_Start, "The selected dates are exactly the same");
+                   //MessageBox.Show("The selected dates are exactly the same");
                 }
             }
             catch (Exception ex)
@@ -92,9 +91,11 @@ namespace project
                 MessageBox.Show(ex.Message);
             }
         }
+        */
 
         private void btn_GetOther_Click(object sender, EventArgs e)
         {
+            btn_ProcessReport.Visible = false;
             int totTickets = 0;
             int counter;
             try
@@ -150,7 +151,7 @@ namespace project
                             }
 
                             lbl_TotTicketTitle.Text = "Tickets sold from " + dtp_Start.Value.Date.ToString("dd/MM/yyyy") + " to " + dtp_End.Value.Date.ToString("dd/MM/yyyy");
-                            lbl_TotTickets.Text = totTickets + " Tickets.";
+                            lbl_TotTickets.Text = totTickets + " Tickets";
 
 
                             conn.Close();
@@ -160,7 +161,8 @@ namespace project
                         }
                         else
                         {
-                            MessageBox.Show("The entered Start Date is after the entered End Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            errorProvider1.SetError(dtp_Start, "The entered Start Date is after the entered End Date");
+                            //MessageBox.Show("The entered Start Date is after the entered End Date", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     //If it is TOP 6 GENRES
@@ -187,7 +189,8 @@ namespace project
                 }
                 else
                 {
-                    MessageBox.Show("Error, dates are exactly the same");
+                    errorProvider1.SetError(dtp_Start, "The selected dates are exactly the same");
+                    //MessageBox.Show("Error, dates are exactly the same");
                 }
             }
             catch(Exception ex)
@@ -203,13 +206,23 @@ namespace project
 
         private void lbl_totTicketsSold_Clicked(object sender, EventArgs e)
         {
-            btn_GetOther.Text = "Get Total Tickets sold per Time Period";
+            btn_GetOther.Text = "Total Tickets sold per Time Period";
             btn_ProcessReport.Text = "Process Report";
             dgv_ReportView.DataSource = null;
             btn_ProcessReport.Visible = true;
             ClearData();
             dependancy = true;
             gbx_Info.Text = "Tickets Sold";
+            gbx_Info.Visible = true;
+            btn_ProcessReport.Visible = true;
+            btn_GetOther.Visible = true;
+            dgv_ReportView.Visible = true;
+            lbl_EndTime.Visible = true;
+            lbl_StartTime.Visible = true;
+            dtp_End.Visible = true;
+            dtp_Start.Visible = true;
+            btn_ProcessReport.Visible = false;
+            errorProvider1.SetError(dtp_Start, "");
         }
 
         public bool CheckDates(DateTime val1, DateTime val2)
@@ -223,6 +236,7 @@ namespace project
             {
                 return true;
             }
+            btn_ProcessReport.Visible = false;
         }
 
         public void ClearData()
@@ -231,6 +245,8 @@ namespace project
             lbl_TotTicketTitle.Text = "";
             lbl_TotTickets.Text = "";
             lbl_DateAccessed.Text = "";
+            errorProvider1.SetError(dtp_Start, "");
+            btn_ProcessReport.Visible = false;
         }
 
         private void lblGenre_Report_Click(object sender, EventArgs e)
@@ -242,22 +258,60 @@ namespace project
             btn_GetOther.Text = "Get top 6 Genres";
             dependancy = false;
             gbx_Info.Text = "Top 6 Genres";
+            gbx_Info.Visible = true;
+            btn_ProcessReport.Visible = false;
+            btn_GetOther.Visible = true;
+            dgv_ReportView.Visible = true;
+            lbl_EndTime.Visible = true;
+            lbl_StartTime.Visible = true;
+            dtp_End.Visible = true;
+            dtp_Start.Visible = true;
+            errorProvider1.SetError(dtp_Start, "");
+            btn_ProcessReport.Visible = false;
         }
 
         private void Menu_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
-            gbx_Info.Visible = false;
+            gbx_Info.Text = "Please select a report.";
+            gbx_Info.Visible = true;
+            btn_ProcessReport.Visible = false;
+            btn_GetOther.Visible = false;
+            dgv_ReportView.Visible = false;
+            lbl_EndTime.Visible = false;
+            lbl_StartTime.Visible = false;
+            dtp_End.Visible = false;
+            dtp_Start.Visible = false;
+            help_pbx.Visible = false;
+            btn_Help.Visible = true;
+            btn_CloseHelp.Visible = false;
+            errorProvider1.SetError(dtp_Start, "");
+            btn_ProcessReport.Visible = false;
+
         }
 
-        private void btn_CloseHelp_Click(object sender, EventArgs e)
+        private void btn_CloseHelp_Click_1(object sender, EventArgs e)
         {
-
+            help_pbx.Visible = false;
+            btn_CloseHelp.Visible = false;
+            btn_Help.Visible = true;
         }
 
-        private void btn_Help_Click(object sender, EventArgs e)
+        private void btn_Help_Click_1(object sender, EventArgs e)
         {
+            help_pbx.Visible = true;
+            btn_CloseHelp.Visible = true;
+            btn_Help.Visible = false;
+        }
 
+        private void dtp_Start_ValueChanged(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(dtp_Start, "");
+        }
+
+        private void dtp_End_ValueChanged(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(dtp_Start, "");
         }
     }
 }

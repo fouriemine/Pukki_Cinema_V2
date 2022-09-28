@@ -119,19 +119,16 @@ namespace project
 
         private void frmSchedule_Load(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
             try
             {
-                //reset();
-                //reLoad();
+                WindowState = FormWindowState.Maximized;
                 dtpShowDate.Format = DateTimePickerFormat.Short;
-                MessageBox.Show("Connection Successfull");
+                
                 gbxDeleteSchedule.Visible = false;
                 gbxSchedule.Visible = false;
                 pbHelp.Visible = false;
                 btnCloseScheduleHelp.Visible = false;
                 btnScheduleHelp.Visible = true;
-                //conn.Close();
             }
             catch (Exception ex)
             {
@@ -208,63 +205,58 @@ namespace project
         {
             try
             {
-                String message = "Delete " + title + " scheduled for " + showDateDisplayed + " at " + timeDisplayed + " in theatre " + theatre + "?";
-                String titleHead = "Delete schedule entry";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, titleHead, buttons);
-
-                if (result == DialogResult.Yes)
+                if (film_ID != 0 && theatre != 0 && time_ID != 0 && showDate != "")
                 {
-                    MessageBox.Show("FILM: " + film_ID + " Theatre" + theatre + " Time " + time_ID + " SHow date " + showDate);
-                    conn.Open();
-                    sql = $"SELECT Schedule_ID FROM SCHEDULES WHERE Film_ID = '{film_ID}' AND Theatre_ID = '{theatre}' AND Time_ID = '{time_ID}' AND Film_Date = '{showDate}'";
-                    com = new SqlCommand(sql, conn);
-                    adap.SelectCommand = com;
-                    int scheduleID = (int)com.ExecuteScalar(); //store result of chosen scheduleID
-                    adap.Fill(ds, "SCHEDULES");
-                    conn.Close();
+                    String message = "Delete " + title + " scheduled for " + showDateDisplayed + " at " + timeDisplayed + " in theatre " + theatre + "?";
+                    String titleHead = "Delete schedule entry";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, titleHead, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+                        conn.Open();
+                        sql = $"SELECT Schedule_ID FROM SCHEDULES WHERE Film_ID = '{film_ID}' AND Theatre_ID = '{theatre}' AND Time_ID = '{time_ID}' AND Film_Date = '{showDate}'";
+                        com = new SqlCommand(sql, conn);
+                        adap.SelectCommand = com;
+                        int scheduleID = (int)com.ExecuteScalar(); //store result of chosen scheduleID
+                        adap.Fill(ds, "SCHEDULES");
+                        conn.Close();
 
-                    conn.Open();
-                    sql = $"DELETE FROM SCHEDULES WHERE Schedule_ID = '{scheduleID}'";
-                    com = new SqlCommand(sql, conn);
-                    com.ExecuteNonQuery();
-                    conn.Close();
-                    MessageBox.Show("Schedule with ID: " + scheduleID + " has been deleted successfully!");
-                    /*conn = new SqlConnection(conStr);
-                    conn.Open();
-                    sql = "SELECT * FROM SCHEDULES ";
-                    adap = new SqlDataAdapter();
-                    ds = new DataSet();
-                    com = new SqlCommand(sql, conn);
-                    adap.SelectCommand = com;
-                    adap.Fill(ds, "SCHEDULES");
-                    dgvDeleteSchedule.DataSource = ds;
-                    dgvDeleteSchedule.DataMember = "SCHEDULES";
-                    conn.Close();*/
+                        conn.Open();
+                        sql = $"DELETE FROM SCHEDULES WHERE Schedule_ID = '{scheduleID}'";
+                        com = new SqlCommand(sql, conn);
+                        com.ExecuteNonQuery();
+                        conn.Close();
+                        MessageBox.Show("Schedule with ID: " + scheduleID + " has been deleted successfully!");
+                        clearDelete();
+                        film_ID = 0;
+                        theatre = 0;
+                        time_ID = 0;
+                        showDate = "";
 
-                    //POPULATE DATAGRIDVIEW
-                    conn = new SqlConnection(conStr);
-                    conn.Open();
-                    DataTable dt = new DataTable();
-                    sql = "SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
-                    com = new SqlCommand(sql, conn);
-                    adap = new SqlDataAdapter(com);
-                    adap.Fill(dt);
-                    dgvDeleteSchedule.DataSource = dt;
+                        //POPULATE DATAGRIDVIEW
+                        conn = new SqlConnection(conStr);
+                        conn.Open();
+                        DataTable dt = new DataTable();
+                        sql = "SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
+                        com = new SqlCommand(sql, conn);
+                        adap = new SqlDataAdapter(com);
+                        adap.Fill(dt);
+                        dgvDeleteSchedule.DataSource = dt;
 
-                    string QueryAlert = $"SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
-                    SqlCommand CMD = new SqlCommand(QueryAlert, conn);
-                    CMD.ExecuteReader();
-                    conn.Close();
+                        string QueryAlert = $"SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
+                        SqlCommand CMD = new SqlCommand(QueryAlert, conn);
+                        CMD.ExecuteReader();
+                        conn.Close();
+                    }
                 }
                 else
                 {
-
+                    MessageBox.Show("Ensure a row is selected.");
                 }
             }
             catch
             {
-                MessageBox.Show("Invalid selection");
+                MessageBox.Show("Invalid selection.");
             }
             
             
@@ -274,39 +266,46 @@ namespace project
         private void dgvDeleteSchedule_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //get film id
-
-            conn.Open();
-            title = (string)(dgvDeleteSchedule.CurrentRow.Cells[1].Value.ToString());
-            sql = $"SELECT Film_ID FROM FILMS WHERE Title = '{title}'";
-            com = new SqlCommand(sql, conn);
-            adap.SelectCommand = com;
-            film_ID = (int)com.ExecuteScalar(); //store result of chosen filmID
-            adap.Fill(ds, "FILMS");
-            txtFilm.Text = title;
-
-
-            //get theatre id
-            theatre = (int)(dgvDeleteSchedule.CurrentRow.Cells[3].Value);
-            txtTheatre.Text = theatre.ToString();
-
-            //get time
-            DateTime dtime = DateTime.Parse(dgvDeleteSchedule.CurrentRow.Cells[5].Value.ToString());
-            sql = $"SELECT Time_ID FROM TIME_ALLOCATIONS WHERE Time = '{dtime}'";
-            com = new SqlCommand(sql, conn);
-            adap.SelectCommand = com;
-            time_ID = (int)com.ExecuteScalar(); //store result of chosen timeID
-      
-            adap.Fill(ds, "TIME_ALLOCATIONS");
-            DateTime? timeDisplay = dtime;
-            timeDisplayed = timeDisplay?.ToString("HH:mm:ss");
-            txtTime.Text = timeDisplayed;
+            try
+            {
+                conn.Open();
+                title = (string)(dgvDeleteSchedule.CurrentRow.Cells[1].Value.ToString());
+                sql = $"SELECT Film_ID FROM FILMS WHERE Title = '{title}'";
+                com = new SqlCommand(sql, conn);
+                adap.SelectCommand = com;
+                film_ID = (int)com.ExecuteScalar(); //store result of chosen filmID
+                adap.Fill(ds, "FILMS");
+                txtFilm.Text = title;
 
 
-            showDate = dgvDeleteSchedule.CurrentRow.Cells[4].Value.ToString();
-            DateTime? showDateDisplay = DateTime.Parse(dgvDeleteSchedule.CurrentRow.Cells[4].Value.ToString());
-            showDateDisplayed = showDateDisplay?.ToString("dd/MM/yyyy");
-            txtShowDate.Text = showDateDisplayed;
-            conn.Close();
+                //get theatre id
+                theatre = (int)(dgvDeleteSchedule.CurrentRow.Cells[3].Value);
+                txtTheatre.Text = theatre.ToString();
+
+                //get time
+                DateTime dtime = DateTime.Parse(dgvDeleteSchedule.CurrentRow.Cells[5].Value.ToString());
+                sql = $"SELECT Time_ID FROM TIME_ALLOCATIONS WHERE Time = '{dtime}'";
+                com = new SqlCommand(sql, conn);
+                adap.SelectCommand = com;
+                time_ID = (int)com.ExecuteScalar(); //store result of chosen timeID
+
+                adap.Fill(ds, "TIME_ALLOCATIONS");
+                DateTime? timeDisplay = dtime;
+                timeDisplayed = timeDisplay?.ToString("HH:mm:ss");
+                txtTime.Text = timeDisplayed;
+
+
+                showDate = dgvDeleteSchedule.CurrentRow.Cells[4].Value.ToString();
+                DateTime? showDateDisplay = DateTime.Parse(dgvDeleteSchedule.CurrentRow.Cells[4].Value.ToString());
+                showDateDisplayed = showDateDisplay?.ToString("dd/MM/yyyy");
+                txtShowDate.Text = showDateDisplayed;
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex);
+            }
+            
         }
 
         private void gbxDeleteSchedule_Enter(object sender, EventArgs e)
@@ -321,25 +320,32 @@ namespace project
 
         private void gbxDeleteSchedule_VisibleChanged_1(object sender, EventArgs e)
         {
-            //POPULATE DATAGRIDVIEW
-            conn = new SqlConnection(conStr);
-            conn.Open();
-            DataTable dt = new DataTable();
-            sql = "SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
-            com = new SqlCommand(sql, conn);
-            adap = new SqlDataAdapter(com);
-            adap.Fill(dt);
-            dgvDeleteSchedule.DataSource = dt;
+            try
+            {
+                //POPULATE DATAGRIDVIEW
+                conn = new SqlConnection(conStr);
+                conn.Open();
+                DataTable dt = new DataTable();
+                sql = "SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
+                com = new SqlCommand(sql, conn);
+                adap = new SqlDataAdapter(com);
+                adap.Fill(dt);
+                dgvDeleteSchedule.DataSource = dt;
 
-            string QueryAlert = $"SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
-            SqlCommand CMD = new SqlCommand(QueryAlert,conn);
-            CMD.ExecuteReader();
-            conn.Close();
+                string QueryAlert = $"SELECT S.Schedule_ID, F.Title, G.Description, T.Theatre_ID, S.Film_Date, TM.Time FROM SCHEDULES S, FILMS F, GENRES G, THEATRES T, TIME_ALLOCATIONS TM WHERE F.Film_ID=S.Film_ID AND G.Genre_ID = F.Genre_ID AND T.Theatre_ID = S.Theatre_ID AND TM.Time_ID = S.Time_ID";
+                SqlCommand CMD = new SqlCommand(QueryAlert, conn);
+                CMD.ExecuteReader();
+                conn.Close();
 
-            txtFilm.Enabled = false;
-            txtShowDate.Enabled = false;
-            txtTheatre.Enabled = false;
-            txtTime.Enabled = false;
+                txtFilm.Enabled = false;
+                txtShowDate.Enabled = false;
+                txtTheatre.Enabled = false;
+                txtTime.Enabled = false;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex);
+            }
         }
 
         private void gbxSchedule_VisibleChanged(object sender, EventArgs e)
@@ -357,139 +363,156 @@ namespace project
         {
             try
             {
-                
-                if (cbxFilms.SelectedIndex == -1 || cbxTheatres.SelectedIndex == -1 || cbxTimes.SelectedIndex == -1)
+                errProvScheduleAdd.SetError(cbxFilms, "");
+                errProvScheduleAdd.SetError(cbxTheatres, "");
+                errProvScheduleAdd.SetError(cbxTimes, "");
+                if (cbxFilms.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Please ensure all boxes have a value selected");
-                    reset();
-                    clearAdd();
+                    errProvScheduleAdd.SetError(cbxFilms, "Ensure film is selected");
                 }
+
                 else
                 {
-                    conn.Open();
-                    string filmTitle = cbxFilms.Text;
-                    int theatre_ID = int.Parse(cbxTheatres.Text);
-                    string showTime = cbxTimes.Text;
-                    showDate = dtpShowDate.Text;
-                    DateTime showDateSchedule = DateTime.Parse(showDate);
-                    DateTime currentDate = DateTime.Now;
-
-                    //GET FILM ID FROM COMBO BOX
-                    sql = $"SELECT Film_ID FROM FILMS WHERE Title = '{filmTitle}'";
-                    com = new SqlCommand(sql, conn);
-                    adap.SelectCommand = com;
-                    film_ID = (int)com.ExecuteScalar(); //store result of chosen filmID
-                    adap.Fill(ds, "FILMS");
-
-                    //GET TIME ID FROM COMBO BOX
-                    sql = $"SELECT Time_ID FROM TIME_ALLOCATIONS WHERE Time = '{showTime}'";
-                    com = new SqlCommand(sql, conn);
-                    adap.SelectCommand = com;
-                    time_ID = (int)com.ExecuteScalar(); //store result of chosen timeID
-                    adap.Fill(ds, "TIME_ALLOCATIONS");
-
-                    //CHECK IF THAT DAYS BOOKINGS ARE ALREADY FULL
-                    sql = $"SELECT COUNT(*) FROM SCHEDULES WHERE Film_Date = '{showDate}'";
-                    com = new SqlCommand(sql, conn);
-                    int countDaySchedule = (int)com.ExecuteScalar();
-                    conn.Close();
-
-                    if (showDateSchedule < currentDate)
+                    if(cbxTheatres.SelectedIndex == -1)
                     {
-                        MessageBox.Show("The schedule deadline for this day has passed.");
-                        reset();
-                        clearAdd();
+                        errProvScheduleAdd.SetError(cbxTheatres, "Ensure theatre is selected");
                     }
                     else
                     {
-                        if (countDaySchedule == 9)
+                        if (cbxTimes.SelectedIndex == -1)
                         {
-                            MessageBox.Show("This day's bookings are already full");
-                            reset();
-                            clearAdd();
+                            errProvScheduleAdd.SetError(cbxTimes, "Ensure time is selected");
                         }
-                        else //CHECK HOW MANY IDENTICAL ENTRIES THERE IS
+                        else
                         {
-                            MessageBox.Show("Date " + showDate);
                             conn.Open();
-                            sql = $"SELECT COUNT(*) FROM SCHEDULES WHERE Time_ID = '{time_ID}' AND Theatre_ID = '{theatre_ID}' AND Film_Date = '{showDate}'";
+                            string filmTitle = cbxFilms.Text;
+                            int theatre_ID = int.Parse(cbxTheatres.Text);
+                            string showTime = cbxTimes.Text;
+                            showDate = dtpShowDate.Text;
+                            DateTime showDateSchedule = DateTime.Parse(showDate);
+                            DateTime currentDate = DateTime.Now;
+
+                            //GET FILM ID FROM COMBO BOX
+                            sql = $"SELECT Film_ID FROM FILMS WHERE Title = '{filmTitle}'";
                             com = new SqlCommand(sql, conn);
-                            int countDuplicates = (int)com.ExecuteScalar();
+                            adap.SelectCommand = com;
+                            film_ID = (int)com.ExecuteScalar(); //store result of chosen filmID
+                            adap.Fill(ds, "FILMS");
+
+                            //GET TIME ID FROM COMBO BOX
+                            sql = $"SELECT Time_ID FROM TIME_ALLOCATIONS WHERE Time = '{showTime}'";
+                            com = new SqlCommand(sql, conn);
+                            adap.SelectCommand = com;
+                            time_ID = (int)com.ExecuteScalar(); //store result of chosen timeID
+                            adap.Fill(ds, "TIME_ALLOCATIONS");
+
+                            //CHECK IF THAT DAYS BOOKINGS ARE ALREADY FULL
+                            sql = $"SELECT COUNT(*) FROM SCHEDULES WHERE Film_Date = '{showDate}'";
+                            com = new SqlCommand(sql, conn);
+                            int countDaySchedule = (int)com.ExecuteScalar();
                             conn.Close();
 
-                            if (countDuplicates > 0)//DUPLICATES EXIST
+                            if (showDateSchedule < currentDate)
                             {
-                                MessageBox.Show("There is already a film scheduled for this time, theatre and date.");
+                                MessageBox.Show("The schedule deadline for this day has passed.");
                                 reset();
                                 clearAdd();
                             }
-                            else //NO DUPLICATES-CHECK LENGTH OF MOVIE AGAINST TIME
+                            else
                             {
-                                cbxTimes.SelectedIndex = cbxTimes.SelectedIndex + 1;
-                                if (cbxTimes.Text.ToString() == "")
+                                if (countDaySchedule == 9)
                                 {
-                                    conn.Open();
-                                    sql = $"INSERT INTO SCHEDULES (Film_ID,Theatre_ID,Time_ID,Film_Date,Ticket_Counter) VALUES (@film_ID, @theatre_ID, @time_ID, @show_Date, @ticket_Cnt)";
-                                    SqlCommand command = new SqlCommand(sql, conn);
-                                    command.Parameters.AddWithValue("@film_ID", film_ID);
-                                    command.Parameters.AddWithValue("@theatre_ID", theatre_ID);
-                                    command.Parameters.AddWithValue("@time_ID", time_ID);
-                                    command.Parameters.AddWithValue("@show_Date", DateTime.Parse(showDate));
-                                    command.Parameters.AddWithValue("@ticket_Cnt", "0");
-                                    command.ExecuteNonQuery();
-                                    conn.Close();
-                                    MessageBox.Show("Film has been scheduled successfully!");
-                                    reLoadAdd();
+                                    MessageBox.Show("This day's bookings are already full");
                                     reset();
                                     clearAdd();
                                 }
-                                else
+                                else //CHECK HOW MANY IDENTICAL ENTRIES THERE IS
                                 {
-                                    string nextTime = cbxTimes.Text.ToString();
-                                    DateTime time1 = DateTime.Parse(showTime);
-                                    DateTime time2 = DateTime.Parse(nextTime);
-
+                                    
                                     conn.Open();
-                                    sql = $"SELECT Length FROM FILMS WHERE Film_ID = '{film_ID}' ";
+                                    sql = $"SELECT COUNT(*) FROM SCHEDULES WHERE Time_ID = '{time_ID}' AND Theatre_ID = '{theatre_ID}' AND Film_Date = '{showDate}'";
                                     com = new SqlCommand(sql, conn);
-                                    int length = (int)com.ExecuteScalar();
+                                    int countDuplicates = (int)com.ExecuteScalar();
                                     conn.Close();
 
-                                    TimeSpan duration = new TimeSpan(0, 0, length, 0);
-                                    DateTime movieEnd = time1.Add(duration);
- 
-                                    if (movieEnd >= time2)
+                                    if (countDuplicates > 0)//DUPLICATES EXIST
                                     {
-                                        MessageBox.Show("The duration of this movie is too long vir this timeslot, please try a different time slot or update times.");
+                                        MessageBox.Show("There is already a film scheduled for this time, theatre and date.");
                                         reset();
                                         clearAdd();
                                     }
-                                    else
+                                    else //NO DUPLICATES-CHECK LENGTH OF MOVIE AGAINST TIME
                                     {
-                                        conn.Open();
-                                        sql = $"INSERT INTO SCHEDULES (Film_ID,Theatre_ID,Time_ID,Film_Date,Ticket_Counter) VALUES (@film_ID, @theatre_ID, @time_ID, @show_Date, @ticket_Cnt)";
-                                        SqlCommand command = new SqlCommand(sql, conn);
-                                        command.Parameters.AddWithValue("@film_ID", film_ID);
-                                        command.Parameters.AddWithValue("@theatre_ID", theatre_ID);
-                                        command.Parameters.AddWithValue("@time_ID", time_ID);
-                                        command.Parameters.AddWithValue("@show_Date", DateTime.Parse(showDate));
-                                        command.Parameters.AddWithValue("@ticket_Cnt", "0");
-                                        command.ExecuteNonQuery();
-                                        conn.Close();
-                                        MessageBox.Show("Film has been scheduled successfully!");
-                                        reLoadAdd();
-                                        reset();
-                                        clearAdd();
+                                        cbxTimes.SelectedIndex = cbxTimes.SelectedIndex + 1;
+                                        if (cbxTimes.Text.ToString() == "")
+                                        {
+                                            conn.Open();
+                                            sql = $"INSERT INTO SCHEDULES (Film_ID,Theatre_ID,Time_ID,Film_Date,Ticket_Counter) VALUES (@film_ID, @theatre_ID, @time_ID, @show_Date, @ticket_Cnt)";
+                                            SqlCommand command = new SqlCommand(sql, conn);
+                                            command.Parameters.AddWithValue("@film_ID", film_ID);
+                                            command.Parameters.AddWithValue("@theatre_ID", theatre_ID);
+                                            command.Parameters.AddWithValue("@time_ID", time_ID);
+                                            command.Parameters.AddWithValue("@show_Date", DateTime.Parse(showDate));
+                                            command.Parameters.AddWithValue("@ticket_Cnt", "0");
+                                            command.ExecuteNonQuery();
+                                            conn.Close();
+                                            MessageBox.Show("Film has been scheduled successfully");
+                                            reLoadAdd();
+                                            reset();
+                                            clearAdd();
+                                        }
+                                        else
+                                        {
+                                            string nextTime = cbxTimes.Text.ToString();
+                                            DateTime time1 = DateTime.Parse(showTime);
+                                            DateTime time2 = DateTime.Parse(nextTime);
+
+                                            conn.Open();
+                                            sql = $"SELECT Length FROM FILMS WHERE Film_ID = '{film_ID}' ";
+                                            com = new SqlCommand(sql, conn);
+                                            int length = (int)com.ExecuteScalar();
+                                            conn.Close();
+
+                                            TimeSpan duration = new TimeSpan(0, 0, length, 0);
+                                            DateTime movieEnd = time1.Add(duration);
+
+                                            if (movieEnd >= time2)
+                                            {
+                                                MessageBox.Show("The duration of this movie is too long vir this timeslot, please try a different time slot or update times.");
+                                                reset();
+                                                clearAdd();
+                                            }
+                                            else
+                                            {
+                                                conn.Open();
+                                                sql = $"INSERT INTO SCHEDULES (Film_ID,Theatre_ID,Time_ID,Film_Date,Ticket_Counter) VALUES (@film_ID, @theatre_ID, @time_ID, @show_Date, @ticket_Cnt)";
+                                                SqlCommand command = new SqlCommand(sql, conn);
+                                                command.Parameters.AddWithValue("@film_ID", film_ID);
+                                                command.Parameters.AddWithValue("@theatre_ID", theatre_ID);
+                                                command.Parameters.AddWithValue("@time_ID", time_ID);
+                                                command.Parameters.AddWithValue("@show_Date", DateTime.Parse(showDate));
+                                                command.Parameters.AddWithValue("@ticket_Cnt", "0");
+                                                command.ExecuteNonQuery();
+                                                conn.Close();
+                                                MessageBox.Show("Film has been scheduled successfully!");
+                                                reLoadAdd();
+                                                reset();
+                                                clearAdd();
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
+           
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Failed to add schedule entry :" + ex);
+                errProvScheduleAdd.SetError(txtFilm, "");
             }
             conn.Close();
         }
@@ -497,8 +520,6 @@ namespace project
         private void btnScheduleHelp_Click(object sender, EventArgs e)
         {
             pbHelp.Visible = true;
-            pbHelp.BringToFront();
-            pbHelp.BringToFront();
             btnScheduleHelp.Visible = false;
             btnCloseScheduleHelp.Visible = true;
         }
